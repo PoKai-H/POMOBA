@@ -384,7 +384,7 @@ This version focuses on the minimal mechanics required for studying:
 - partial observability
 - opponent strategy inference
 
-![[Screenshot 2026-03-16 at 16.55.40.png]]
+![Core map](figures/core_map.png)
 
 ## Extension Map
 
@@ -399,7 +399,7 @@ This version may include:
 
 These elements increase the strategic complexity of the environment but are **not required for the core simulator**.
 
-![[Screenshot 2026-03-16 at 16.57.19.png]]
+![Image](figures/extension_map.png)
 
 ## Observation Range
 
@@ -494,4 +494,3 @@ Tasks include:
 Extensions can be developed **in parallel** and should follow the shared interfaces and be controlled through **config flags**.
 
 ---
-
