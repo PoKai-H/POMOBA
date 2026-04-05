@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://stkvvcy0a04d"]
+
+[ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://sn45o3r0u2n5" path="res://scenes/basic_arena.tscn" id="2_0wfyh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b2pv0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_umeaf"]
+
+[node name="main" type="Node2D" unique_id=382358385]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1382331574]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=980735971]
+
+[node name="arena" parent="CanvasLayer" unique_id=1517166684 instance=ExtResource("2_0wfyh")]
+
+[node name="Agent" type="Node2D" parent="CanvasLayer" unique_id=167904425]
+position = Vector2(550, 40)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="CanvasLayer/Agent" unique_id=1060941486]
+script = ExtResource("1_o5qli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Agent/CharacterBody2D" unique_id=1995958564]
+shape = SubResource("CircleShape2D_go1c3")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Agent/CharacterBody2D" unique_id=2143306109]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_b2pv0")
+texture = SubResource("CanvasTexture_umeaf")

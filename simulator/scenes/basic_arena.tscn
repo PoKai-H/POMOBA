@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sn45o3r0u2n5"]
 
-[node name="Node2D" type="Control" unique_id=1517166684]
+[node name="arena" type="Control" unique_id=1517166684]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
