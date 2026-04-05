@@ -102,13 +102,14 @@ sequenceDiagram
 participant Python
 participant Godot
 
-Python->>Python: policy(obs_t) = action_t
+Python->>Python: update belief(obs_t)
+Python->>Python: policy(belief) = action_t
 Python->>Godot: action_t
 Godot->>Godot: update world state
 Godot->>Godot: compute reward_t
 Godot->>Godot: check termination
 Godot->>Python: obs_{t+1}, reward_t, done, events
-Python->>Python: update belief / policy
+
 
 ```
 ```python
@@ -164,8 +165,7 @@ actions = {agent_id: action}
 Example:
 ```
 actions = {
-	0: action_agents,
-	1: action_opponent
+	id : action
 }
 ```
 ### Output
@@ -187,15 +187,22 @@ obs_next, reward, done, events = env.step(actions)
 ## Observation Format
 ```json
 obs = {
-    "self_id": int,
     "timestep": int,
-
-    "agents": [
+    "self":{
+        "id": int,
+        "team": str,
+        "hp": float,
+        "position": [x, y],
+        "status": {
+            "alive": bool
+        }
+    },
+    "agents": [ // only other agents 
         {
             "id": int,
             "team": str,
             "visible": bool,
-            "position": [x, y] | None,
+            "relative_position": [dx, dy] | None,
             "hp": float | None,
             "status": {
                 "alive": bool
@@ -208,7 +215,11 @@ obs = {
             "id": int,
             "type": str,
             "team": str | None,
-            "position": [x, y]
+            "visible": bool,
+            "relative_position": [dx, dy],
+            "status":{
+                "alive": bool
+            },
         }
     ],
 
@@ -230,11 +241,8 @@ Examples of objects:
 ## Action Format
 ```JSON
 action = {
-    "agent_id": int,
-    "move": [dx, dy],
-    "attack": bool,
-    "target_id": int | None,
-    "extensions": {}
+    "type": str, // "move_forward", ",move_left", "move_right",",move_back", "attack_hero", "attack_nearest_minion", "retreat", "attack_tower", "hold"
+    "target_slot": int | None
 }
 ```
 
@@ -494,3 +502,15 @@ Tasks include:
 Extensions can be developed **in parallel** and should follow the shared interfaces and be controlled through **config flags**.
 
 ---
+## Opponent Strategy
+```python
+class ScriptedPolicy:
+    def score(self, features):
+        raise NotImplementedError
+
+    def act(self, features, beta=3.0):
+        scores = self.score(features)
+        logits = np.array([scores[a] for a in ACTIONS], dtype=float)
+        probs = softmax(beta * logits)
+        return np.random.choice(ACTIONS, p=probs)
+```
