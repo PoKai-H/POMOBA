@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://sn45o3r0u2n5" path="res://scenes/basic_arena.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://b7bi1t5jv1gyx" path="res://scripts/controller.gd" id="3_sugp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
 
@@ -31,3 +32,7 @@ modulate = Color(0, 0, 1, 1)
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_b2pv0")
 texture = SubResource("CanvasTexture_umeaf")
+
+[node name="AIController2D" type="Node2D" parent="CanvasLayer/Agent/CharacterBody2D" unique_id=82509756]
+script = ExtResource("3_sugp2")
+metadata/_custom_type_script = "uid://coh1qfsfspbib"
