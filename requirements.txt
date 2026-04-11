@@ -1,0 +1,10 @@
+gymnax
+evosax
+distrax
+optax
+flax
+numpy
+brax
+wandb
+flashbax
+navix

@@ -1,0 +1,2 @@
+https://medium.com/data-science/breaking-down-state-of-the-art-ppo-implementations-in-jax-6f102c06c149
+https://github.com/luchris429/purejaxrl/tree/main?source=post_page-----6f102c06c149---------------------------------------
