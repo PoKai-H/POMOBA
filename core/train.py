@@ -13,11 +13,16 @@ from core.utils.obs_encoder import ObservationEncoder
 
 import jax
 import jax.numpy as jnp
+import optax
 
 
 
 NUM_ACTIONS = 9
-USE_BELIEF_INPUT = True
+USE_BELIEF_INPUT = False
+PPO_CLIP_EPS = 0.2
+VALUE_COEF = 0.5
+ENTROPY_COEF = 0.01
+LEARNING_RATE = 3e-4
 
 
 def random_policy(obs_vec, belief):
@@ -62,9 +67,7 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
     for step in range(max_steps):
         obs_vec = encoder.encode(obs)
         belief_vec = belief.update(obs_vec)
-        obs_belief_vec = build_policy_input(obs_vec, belief_vec, use_belief_input=False)
-        # observation only uses obs_vec
-        # obs + belief uses obs_belief_vec
+        obs_belief_vec = build_policy_input(obs_vec, belief_vec, use_belief_input=True)
 
         action, logprob, value, rng = select_action(
             model,
@@ -100,6 +103,131 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
     return trajectory
 
 
+def compute_gae(trajectory, last_value=0.0, gamma=0.99, gae_lambda=0.95):
+    advantages = np.zeros(len(trajectory), dtype=np.float32)
+    returns = np.zeros(len(trajectory), dtype=np.float32)
+
+    next_gae = 0.0
+    next_value = float(last_value)
+
+    for t in reversed(range(len(trajectory))):
+        reward = float(trajectory[t]["reward"])
+        value = float(trajectory[t]["value"])
+        done = float(trajectory[t]["done"])
+
+        delta = reward + gamma * next_value * (1.0 - done) - value
+        gae = delta + gamma * gae_lambda * (1.0 - done) * next_gae
+
+        advantages[t] = gae
+        returns[t] = gae + value
+
+        next_gae = gae
+        next_value = value
+
+    return advantages, returns
+
+
+def attach_returns_and_advantages(
+    trajectory,
+    last_value=0.0,
+    gamma=0.99,
+    gae_lambda=0.95,
+):
+    advantages, returns = compute_gae(
+        trajectory,
+        last_value=last_value,
+        gamma=gamma,
+        gae_lambda=gae_lambda,
+    )
+
+    for t in range(len(trajectory)):
+        trajectory[t]["advantage"] = float(advantages[t])
+        trajectory[t]["return"] = float(returns[t])
+
+    return trajectory
+
+
+def build_ppo_batch(trajectory, use_belief_input=USE_BELIEF_INPUT, normalize_advantage=True): # for 
+    obs_key = "obs_belief" if use_belief_input else "obs"
+
+    batch = {
+        "inputs": np.asarray([step[obs_key] for step in trajectory], dtype=np.float32),
+        "obs": np.asarray([step["obs"] for step in trajectory], dtype=np.float32),
+        "belief": np.asarray([step["belief"] for step in trajectory], dtype=np.float32),
+        "actions": np.asarray([step["action"] for step in trajectory], dtype=np.int32),
+        "old_logprobs": np.asarray([step["logprob"] for step in trajectory], dtype=np.float32),
+        "values": np.asarray([step["value"] for step in trajectory], dtype=np.float32),
+        "returns": np.asarray([step["return"] for step in trajectory], dtype=np.float32),
+        "advantages": np.asarray([step["advantage"] for step in trajectory], dtype=np.float32),
+        "rewards": np.asarray([step["reward"] for step in trajectory], dtype=np.float32),
+        "dones": np.asarray([step["done"] for step in trajectory], dtype=np.float32),
+    }
+
+    if normalize_advantage:
+        adv = batch["advantages"]
+        batch["advantages"] = (adv - adv.mean()) / (adv.std() + 1e-8)
+
+    return {key: jnp.asarray(value) for key, value in batch.items()}
+
+
+def ppo_loss(
+    model,
+    params,
+    batch,
+    clip_eps=PPO_CLIP_EPS,
+    value_coef=VALUE_COEF,
+    entropy_coef=ENTROPY_COEF,
+):
+    def loss_per_sample(x, action, old_logprob, advantage, target_return):
+        pi, value = model.apply(params, x)
+        new_logprob = pi.log_prob(action)
+        ratio = jnp.exp(new_logprob - old_logprob)
+
+        unclipped = ratio * advantage
+        clipped = jnp.clip(ratio, 1.0 - clip_eps, 1.0 + clip_eps) * advantage
+        actor_loss = -jnp.minimum(unclipped, clipped)
+
+        value_error = target_return - value
+        critic_loss = value_error * value_error
+        entropy = pi.entropy()
+
+        total = actor_loss + value_coef * critic_loss - entropy_coef * entropy
+        return total, (actor_loss, critic_loss, entropy, new_logprob, value)
+
+    total_loss, aux = jax.vmap(
+        loss_per_sample,
+        in_axes=(0, 0, 0, 0, 0),
+    )(
+        batch["inputs"],
+        batch["actions"],
+        batch["old_logprobs"],
+        batch["advantages"],
+        batch["returns"],
+    )
+
+    actor_loss, critic_loss, entropy, new_logprob, value = aux
+
+    metrics = {
+        "total_loss": jnp.mean(total_loss),
+        "actor_loss": jnp.mean(actor_loss),
+        "critic_loss": jnp.mean(critic_loss),
+        "entropy": jnp.mean(entropy),
+        "mean_ratio": jnp.mean(jnp.exp(new_logprob - batch["old_logprobs"])),
+        "mean_value": jnp.mean(value),
+    }
+    return metrics["total_loss"], metrics
+
+
+def train_step(model, params, opt_state, optimizer, batch): # update model
+    def loss_fn(current_params):
+        return ppo_loss(model, current_params, batch)
+
+    (loss, metrics), grads = jax.value_and_grad(loss_fn, has_aux=True)(params)
+    updates, opt_state = optimizer.update(grads, opt_state, params)
+    params = optax.apply_updates(params, updates)
+    return params, opt_state, loss, metrics
+
+
 def main():
     env = DummyEnv()
     encoder = ObservationEncoder()
@@ -110,6 +238,8 @@ def main():
         action_dim=NUM_ACTIONS,
         use_belief_input=USE_BELIEF_INPUT,
     )
+    optimizer = optax.adam(learning_rate=LEARNING_RATE)
+    opt_state = optimizer.init(params)
 
     trajectory = collect_rollout(
         env,
@@ -121,12 +251,34 @@ def main():
         max_steps=50,
     )
 
+    trajectory = attach_returns_and_advantages(trajectory, last_value=0.0)
+    batch = build_ppo_batch(trajectory, use_belief_input=USE_BELIEF_INPUT) 
+    loss_before, metrics_before = ppo_loss(model, params, batch)
+    params, opt_state, _, _ = train_step(
+        model,
+        params,
+        opt_state,
+        optimizer,
+        batch,
+    )
+    loss_after, metrics_after = ppo_loss(model, params, batch)
+
     print(f"Collected {len(trajectory)} transitions.")
     action_dict = {0: "move forward", 1:"move left", 2: "move right", 3:"move back", 4: "attack hero", 5: "attack nearest minions", 6:"retreat", 7:"attack tower", 8: "hold"}
     if trajectory:
-        print(trajectory[0]["obs_belief"].shape)
-        for i in range(len(trajectory)):
-            print(action_dict[trajectory[i]['action']])
+        print(f"Policy input dim: {batch['inputs'].shape[-1]}")
+        print(f"Advantage shape: {batch['advantages'].shape}")
+        print(f"Initial PPO loss: {float(loss_before):.4f}")
+        print(f"Post-update PPO loss: {float(loss_after):.4f}")
+        print(
+            "Before update:",
+            {k: float(v) for k, v in metrics_before.items() if k != "mean_value"},
+        )
+        print(
+            "After update:",
+            {k: float(v) for k, v in metrics_after.items() if k != "mean_value"},
+        )
+        print("Sampled actions:", [action_dict[step["action"]] for step in trajectory[:5]])
 
 
 if __name__ == "__main__":
