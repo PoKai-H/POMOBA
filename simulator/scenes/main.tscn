@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://sn45o3r0u2n5" path="res://scenes/basic_arena.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://b7bi1t5jv1gyx" path="res://scripts/controller.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://ytkdfi45dlwe" path="res://addons/godot_rl_agents/sync.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://b7bi1t5jv1gyx" path="res://scripts/controller.gd" id="4_ctrl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
 
@@ -34,5 +35,10 @@ mesh = SubResource("SphereMesh_b2pv0")
 texture = SubResource("CanvasTexture_umeaf")
 
 [node name="AIController2D" type="Node2D" parent="CanvasLayer/Agent/CharacterBody2D" unique_id=82509756]
-script = ExtResource("3_sugp2")
+script = ExtResource("4_ctrl")
 metadata/_custom_type_script = "uid://coh1qfsfspbib"
+
+[node name="Sync" type="Node" parent="." unique_id=155072698]
+script = ExtResource("3_sugp2")
+control_mode = 0
+metadata/_custom_type_script = "uid://ytkdfi45dlwe"
