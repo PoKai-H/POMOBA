@@ -228,6 +228,43 @@ def train_step(model, params, opt_state, optimizer, batch): # update model
     return params, opt_state, loss, metrics
 
 
+def tree_l2_diff(tree_a, tree_b):
+    leaves_a = jax.tree_util.tree_leaves(tree_a)
+    leaves_b = jax.tree_util.tree_leaves(tree_b)
+    squared_sum = sum(jnp.sum((a - b) ** 2) for a, b in zip(leaves_a, leaves_b))
+    return jnp.sqrt(squared_sum)
+
+
+def repeated_update_sanity_check(model, params, optimizer, opt_state, batch, num_steps=10):
+    losses = []
+    critic_losses = []
+    current_params = params
+    current_opt_state = opt_state
+
+    for _ in range(num_steps):
+        loss, metrics = ppo_loss(model, current_params, batch)
+        losses.append(float(loss))
+        critic_losses.append(float(metrics["critic_loss"]))
+        current_params, current_opt_state, _, _ = train_step(
+            model,
+            current_params,
+            current_opt_state,
+            optimizer,
+            batch,
+        )
+
+    final_loss, final_metrics = ppo_loss(model, current_params, batch)
+    losses.append(float(final_loss))
+    critic_losses.append(float(final_metrics["critic_loss"]))
+
+    return {
+        "losses": losses,
+        "critic_losses": critic_losses,
+        "final_params": current_params,
+        "final_opt_state": current_opt_state,
+    }
+
+
 def main():
     env = DummyEnv()
     encoder = ObservationEncoder()
@@ -253,6 +290,7 @@ def main():
 
     trajectory = attach_returns_and_advantages(trajectory, last_value=0.0)
     batch = build_ppo_batch(trajectory, use_belief_input=USE_BELIEF_INPUT) 
+    params_before = params
     loss_before, metrics_before = ppo_loss(model, params, batch)
     params, opt_state, _, _ = train_step(
         model,
@@ -262,6 +300,15 @@ def main():
         batch,
     )
     loss_after, metrics_after = ppo_loss(model, params, batch)
+    param_delta = tree_l2_diff(params_before, params)
+    sanity = repeated_update_sanity_check(
+        model,
+        params,
+        optimizer,
+        opt_state,
+        batch,
+        num_steps=10,
+    )
 
     print(f"Collected {len(trajectory)} transitions.")
     action_dict = {0: "move forward", 1:"move left", 2: "move right", 3:"move back", 4: "attack hero", 5: "attack nearest minions", 6:"retreat", 7:"attack tower", 8: "hold"}
@@ -277,6 +324,12 @@ def main():
         print(
             "After update:",
             {k: float(v) for k, v in metrics_after.items() if k != "mean_value"},
+        )
+        print(f"Parameter L2 delta: {float(param_delta):.6f}")
+        print(f"Repeated update loss trace: {sanity['losses'][:5]} ... -> {sanity['losses'][-1]:.4f}")
+        print(
+            f"Repeated update critic trace: {sanity['critic_losses'][:5]} ... -> "
+            f"{sanity['critic_losses'][-1]:.4f}"
         )
         print("Sampled actions:", [action_dict[step["action"]] for step in trajectory[:5]])
 
