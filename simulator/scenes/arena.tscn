@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dq1s63uxx1xjp"]
+
+[ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_wl4x5"]
+[ext_resource type="Script" uid="uid://b7bi1t5jv1gyx" path="res://scripts/controller.gd" id="2_olpmc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b2pv0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_umeaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug7gw"]
+size = Vector2(46, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl4x5"]
+
+[node name="arena" type="Control" unique_id=1517166684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Outline" type="ColorRect" parent="." unique_id=1508084320]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.25490198)
+
+[node name="Lane" type="ColorRect" parent="." unique_id=108194597]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44
+anchor_right = 0.56
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.972549, 0.972549, 0.972549, 1)
+
+[node name="Obstacles" type="StaticBody2D" parent="." unique_id=1609187920]
+
+[node name="TopRLane" type="CollisionPolygon2D" parent="Obstacles" unique_id=557052779]
+position = Vector2(0.2, 99.8)
+polygon = PackedVector2Array(645, 120, 745, 121, 784, 131, 749, 146, 645, 146)
+
+[node name="BotRLane" type="CollisionPolygon2D" parent="Obstacles" unique_id=1094549705]
+position = Vector2(0.2, 282)
+polygon = PackedVector2Array(645, 120, 745, 121, 784, 131, 749, 146, 645, 146)
+
+[node name="TopLLane" type="CollisionPolygon2D" parent="Obstacles" unique_id=466935366]
+position = Vector2(1152, 99.8)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(645, 120, 745, 121, 784, 131, 749, 146, 645, 146)
+
+[node name="BotLLane" type="CollisionPolygon2D" parent="Obstacles" unique_id=1330241035]
+position = Vector2(1152, 282)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(645, 120, 745, 121, 784, 131, 749, 146, 645, 146)
+
+[node name="TopL" type="CollisionPolygon2D" parent="Obstacles" unique_id=441003709]
+position = Vector2(31, 22)
+polygon = PackedVector2Array(282, 78, 269, 104, 222, 136, 241, 152, 258, 142, 275, 128, 299, 103, 317, 67, 304, 46)
+
+[node name="TopR" type="CollisionPolygon2D" parent="Obstacles" unique_id=1558063260]
+position = Vector2(-2, 33)
+polygon = PackedVector2Array(781, 78, 801, 113, 850, 128, 894, 126, 922, 98, 922, 60, 898, 88, 888, 106, 858, 109, 838, 96)
+
+[node name="TopL2" type="CollisionPolygon2D" parent="Obstacles" unique_id=477882795]
+position = Vector2(1143, 613)
+rotation = -3.1415927
+polygon = PackedVector2Array(282, 78, 269, 104, 222, 136, 241, 152, 258, 142, 275, 128, 299, 103, 317, 67, 304, 46)
+
+[node name="TopR2" type="CollisionPolygon2D" parent="Obstacles" unique_id=1939529650]
+position = Vector2(1154, 618)
+rotation = -3.1415927
+polygon = PackedVector2Array(781, 78, 801, 113, 850, 128, 894, 126, 922, 98, 922, 60, 898, 88, 888, 106, 858, 109, 838, 96)
+
+[node name="Agent" type="Node2D" parent="." unique_id=207395251]
+position = Vector2(550, 40)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Agent" unique_id=1299283027]
+script = ExtResource("1_wl4x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agent/CharacterBody2D" unique_id=1879522687]
+shape = SubResource("CircleShape2D_go1c3")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Agent/CharacterBody2D" unique_id=968820222]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_b2pv0")
+texture = SubResource("CanvasTexture_umeaf")
+
+[node name="AIController2D" type="Node2D" parent="Agent/CharacterBody2D" unique_id=311684953]
+script = ExtResource("2_olpmc")
+metadata/_custom_type_script = "uid://coh1qfsfspbib"
+
+[node name="LeftBush" type="StaticBody2D" parent="." unique_id=1807274162]
+position = Vector2(484, 325)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBush" unique_id=1783032591]
+position = Vector2(-0.2, -1)
+shape = SubResource("RectangleShape2D_ug7gw")
+debug_color = Color(1.347661e-06, 0.63486785, 0.42771196, 0.41960785)
+
+[node name="RightBush" type="StaticBody2D" parent="." unique_id=1186209320]
+position = Vector2(668.31995, 325)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBush" unique_id=1965913885]
+position = Vector2(0.05, -1)
+shape = SubResource("RectangleShape2D_ug7gw")
+debug_color = Color(1.347661e-06, 0.63486785, 0.42771196, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1010406460]
+
+[node name="Tower1" type="CollisionShape2D" parent="StaticBody2D" unique_id=246125283]
+position = Vector2(609, 83)
+shape = SubResource("RectangleShape2D_wl4x5")
+
+[node name="Tower2" type="CollisionShape2D" parent="StaticBody2D" unique_id=881513142]
+position = Vector2(544, 575)
+shape = SubResource("RectangleShape2D_wl4x5")
