@@ -263,7 +263,6 @@ config = {
         "map_name": "basic_arena",
         "random_seed": 42,
         "max_steps": 300,
-        "num_teams": 2,
         "agents_per_team": 1,
         "vision_range": 5.0,
         "opponent_strategy": "aggressive",

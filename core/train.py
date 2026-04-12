@@ -10,6 +10,7 @@ from core.beliefs.dummy_belief import DummyBelief
 from core.envs.dummy_env import DummyEnv
 from core.models.ppo_netowork import ActorCritic
 from core.utils.obs_encoder import ObservationEncoder
+from config.basic_config import basic_config
 
 import jax
 import jax.numpy as jnp
@@ -62,7 +63,7 @@ def select_action(model, params, rng, obs_vec, belief_vec, use_belief_input=USE_
 
 def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max_steps=50):
     trajectory = []
-    obs = env.reset()
+    obs = env.reset(basic_config)
 
     for step in range(max_steps):
         obs_vec = encoder.encode(obs)

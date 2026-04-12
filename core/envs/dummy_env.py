@@ -5,7 +5,7 @@ class DummyEnv:
     def __init__(self):
         self.t = 0
 
-    def reset(self):
+    def reset(self, config):
         self.t = 0
         return self._get_obs()
 
