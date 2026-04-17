@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://crdbp0f6udv2y"]
+
+[ext_resource type="Script" uid="uid://ckjao36eyqg5r" path="res://scripts/minion.gd" id="1_6h8ee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 12.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_body"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_body"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_observation"]
+radius = 180.0
+
+[node name="Minion" type="CharacterBody2D" unique_id=219673183]
+script = ExtResource("1_6h8ee")
+actor_kind = &"minion"
+max_hp = 45.0
+move_speed = 55.0
+show_health_bar = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987568952]
+shape = SubResource("CircleShape2D_body")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1261595104]
+scale = Vector2(18, 18)
+mesh = SubResource("SphereMesh_body")
+texture = SubResource("CanvasTexture_body")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1216395061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=497389658]
+shape = SubResource("CircleShape2D_hurtbox")
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=1899929353]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=274661133]
+shape = SubResource("CircleShape2D_attack")
+
+[node name="ObservationArea" type="Area2D" parent="." unique_id=290092836]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObservationArea" unique_id=1439995342]
+shape = SubResource("CircleShape2D_observation")
+debug_color = Color(0, 0.6, 0.69803923, 0.14901961)

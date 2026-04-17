@@ -15,6 +15,10 @@ run/main_scene="uid://stkvvcy0a04d"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SimConfig="*res://scripts/sim_config.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")

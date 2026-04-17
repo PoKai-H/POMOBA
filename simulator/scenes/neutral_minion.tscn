@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dbr0m5c0ln2ai"]
+
+[ext_resource type="Script" path="res://scripts/neutral_minion.gd" id="1_neutral"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 14.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_body"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_body"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_observation"]
+radius = 135.0
+
+[node name="NeutralMinion" type="CharacterBody2D"]
+script = ExtResource("1_neutral")
+max_hp = 70.0
+move_speed = 48.0
+body_radius = 14.0
+body_color = Color(0.78, 0.68, 0.32, 1)
+show_health_bar = true
+detection_range = 135.0
+attack_range = 30.0
+attack_damage = 10.0
+leash_radius = 120.0
+observation_ring_color = Color(0.95, 0.82, 0.25, 0.06)
+observation_outline_color = Color(0.95, 0.82, 0.25, 0.22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_body")
+texture = SubResource("CanvasTexture_body")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hurtbox")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_attack")
+
+[node name="ObservationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObservationArea"]
+shape = SubResource("CircleShape2D_observation")

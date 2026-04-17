@@ -1,16 +1,26 @@
 [gd_scene format=3 uid="uid://ki61lr8g1xgo"]
 
+[ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_char"]
 [ext_resource type="Script" uid="uid://coh1qfsfspbib" path="res://addons/godot_rl_agents/controller/ai_controller_2d.gd" id="1_b2pv0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
+radius = 12.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_b2pv0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_umeaf"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player_attack"]
+radius = 110.0
+
 [node name="Agent" type="Node2D" unique_id=167904425]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1060941486]
+script = ExtResource("1_char")
+show_health_bar = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1995958564]
 shape = SubResource("CircleShape2D_go1c3")
@@ -24,3 +34,13 @@ texture = SubResource("CanvasTexture_umeaf")
 [node name="AIController2D" type="Node2D" parent="CharacterBody2D" unique_id=634940801]
 script = ExtResource("1_b2pv0")
 metadata/_custom_type_script = "uid://coh1qfsfspbib"
+
+[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+shape = SubResource("CircleShape2D_hurtbox")
+
+[node name="AttackArea" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea"]
+shape = SubResource("CircleShape2D_player_attack")

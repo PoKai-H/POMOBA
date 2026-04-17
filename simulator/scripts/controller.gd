@@ -11,6 +11,13 @@ func get_obs() -> Dictionary:
 
 func get_reward() -> float:	
 	return reward
+
+
+func get_info() -> Dictionary:
+	return {
+		"hp": _player.hp if _player != null and is_instance_valid(_player) else 0.0,
+		"alive": _player != null and is_instance_valid(_player) and _player.is_alive()
+	}
 	
 func get_action_space() -> Dictionary:
 	return {

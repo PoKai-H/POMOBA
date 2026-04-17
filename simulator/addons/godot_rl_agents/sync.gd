@@ -385,6 +385,8 @@ func _get_agents():
 
 func _set_heuristic(heuristic, agents: Array):
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		agent.set_heuristic(heuristic)
 
 
@@ -542,6 +544,8 @@ func handle_message() -> bool:
 func _call_method_on_agents(method):
 	var returns = []
 	for agent in all_agents:
+		if not is_instance_valid(agent):
+			continue
 		returns.append(agent.call(method))
 
 	return returns
@@ -549,12 +553,16 @@ func _call_method_on_agents(method):
 
 func _reset_agents_if_done(agents = all_agents):
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		if agent.get_done():
 			agent.set_done_false()
 
 
 func _reset_agents(agents = all_agents):
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		agent.needs_reset = true
 		#agent.reset()
 
@@ -562,6 +570,8 @@ func _reset_agents(agents = all_agents):
 func _get_obs_from_agents(agents: Array = all_agents):
 	var obs = []
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		obs.append(agent.get_obs())
 	return obs
 
@@ -569,6 +579,8 @@ func _get_obs_from_agents(agents: Array = all_agents):
 func _get_reward_from_agents(agents: Array = agents_training):
 	var rewards = []
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		rewards.append(agent.get_reward())
 		agent.zero_reward()
 	return rewards
@@ -577,6 +589,8 @@ func _get_reward_from_agents(agents: Array = agents_training):
 func _get_info_from_agents(agents: Array = all_agents):
 	var info = []
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		info.append(agent.get_info())
 	return info
 
@@ -584,6 +598,8 @@ func _get_info_from_agents(agents: Array = all_agents):
 func _get_done_from_agents(agents: Array = agents_training):
 	var dones = []
 	for agent in agents:
+		if not is_instance_valid(agent):
+			continue
 		var done = agent.get_done()
 		if done:
 			agent.set_done_false()
@@ -593,6 +609,10 @@ func _get_done_from_agents(agents: Array = agents_training):
 
 func _set_agent_actions(actions, agents: Array = all_agents):
 	for i in range(len(actions)):
+		if i >= len(agents):
+			return
+		if not is_instance_valid(agents[i]):
+			continue
 		agents[i].set_action(actions[i])
 
 

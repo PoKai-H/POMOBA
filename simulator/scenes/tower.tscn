@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dkof1lr5jf47l"]
+
+[ext_resource type="Script" path="res://scripts/tower.gd" id="1_tower"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 18.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_tower"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tower"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 18.0
+
+[node name="Tower" type="CharacterBody2D"]
+script = ExtResource("1_tower")
+actor_kind = &"tower"
+max_hp = 160.0
+move_speed = 0.0
+body_radius = 18.0
+show_health_bar = true
+health_bar_size = Vector2(34, 5)
+health_bar_offset = Vector2(-17, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(26, 26)
+mesh = SubResource("SphereMesh_tower")
+texture = SubResource("CanvasTexture_tower")
+modulate = Color(0.82, 0.82, 0.82, 1)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hurtbox")
