@@ -241,7 +241,7 @@ Examples of objects:
 ## Action Format
 ```JSON
 action = {
-    "type": str, // ["move_forward", ",move_left", "move_right",",move_back", "attack_hero", "attack_nearest_minion", "retreat", "attack_tower", "hold"]
+    "type": str, // ["move_up", "move_left", "move_right","move_down", "move_up_left","move_up_right","move_down_left","move_down_right","attack_hero", "attack_nearest_minion", "retreat", "attack_tower", "hold"]
     "target_slot": int | None
 }
 ```

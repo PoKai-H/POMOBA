@@ -3,7 +3,7 @@ basic_config = {
     "core": {
         "map_name": "basic_arena",
         "random_seed": 42,
-        "max_steps": 300,
+        "max_steps": 1000,
         "agents_per_team": 1,
         "vision_range": 5.0,
         "opponent_strategy": "aggressive",

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dq1s63uxx1xjp" path="res://scenes/arena.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://ytkdfi45dlwe" path="res://addons/godot_rl_agents/sync.gd" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://caqmqtaiiye6r" path="res://scripts/minion_wave_spawner.gd" id="6_wave"]
+[ext_resource type="Script" path="res://scripts/minion_wave_spawner.gd" id="6_wave"]
 [ext_resource type="PackedScene" uid="uid://crdbp0f6udv2y" path="res://scenes/minion.tscn" id="7_minion"]
 
 [node name="main" type="Node2D" unique_id=382358385]
@@ -21,5 +21,4 @@ wave_interval_seconds = 10.0
 
 [node name="Sync" type="Node" parent="." unique_id=155072698]
 script = ExtResource("3_sugp2")
-control_mode = 0
 metadata/_custom_type_script = "uid://ytkdfi45dlwe"

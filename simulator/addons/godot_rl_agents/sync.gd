@@ -520,6 +520,11 @@ func handle_message() -> bool:
 #            "obs": obs
 #        }
 #        _send_dict_as_json_message(reply)
+		# need to set the configuration for this whole thing!
+		#TODO ^
+		message.erase("type")
+		SimConfig.config = message
+		
 		return true
 
 	if message["type"] == "call":

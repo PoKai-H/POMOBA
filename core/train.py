@@ -11,6 +11,8 @@ from core.envs.dummy_env import DummyEnv
 from core.models.ppo_netowork import ActorCritic
 from core.utils.obs_encoder import ObservationEncoder
 from config.basic_config import basic_config
+from godot_rl.core.godot_env import GodotEnv
+
 
 import jax
 import jax.numpy as jnp
@@ -18,7 +20,7 @@ import optax
 
 
 
-NUM_ACTIONS = 9
+NUM_ACTIONS = 13
 USE_BELIEF_INPUT = False
 PPO_CLIP_EPS = 0.2
 VALUE_COEF = 0.5
@@ -63,7 +65,9 @@ def select_action(model, params, rng, obs_vec, belief_vec, use_belief_input=USE_
 
 def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max_steps=50):
     trajectory = []
-    obs = env.reset(basic_config)
+    obs_list, info = env.reset(basic_config)
+    # Extract single observation from list (single-agent case)
+    obs = obs_list[0] if isinstance(obs_list, list) else obs_list
 
     for step in range(max_steps):
         obs_vec = encoder.encode(obs)
@@ -79,7 +83,17 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
             use_belief_input=USE_BELIEF_INPUT,
         )
 
-        obs_next, reward, done, info = env.step(action)
+        # Send discrete action (0-12) to Godot controller
+        # Format: [action_index] for each environment (single-agent case)
+        action_for_env = [np.asarray([action], dtype=np.int32)]
+        
+        # Step the environment
+        obs_list, reward_list, done_list, truncated_list, info_list = env.step(action_for_env)
+        # Extract single-agent results from lists
+        obs_next = obs_list[0] if isinstance(obs_list, list) else obs_list
+        reward = reward_list[0] if isinstance(reward_list, list) else reward_list
+        done = done_list[0] if isinstance(done_list, list) else done_list
+        info = info_list[0] if isinstance(info_list, list) else info_list
 
         trajectory.append(
             {
@@ -267,7 +281,15 @@ def repeated_update_sanity_check(model, params, optimizer, opt_state, batch, num
 
 
 def main():
-    env = DummyEnv()
+    # Give the editor more time to start and connect when using Play.
+    GodotEnv.DEFAULT_TIMEOUT = 180
+    # Initialize the environment - If env_path is None, it will wait for you to press PLAY in the Godot editor
+    env = GodotEnv(
+        env_path=None,  # Set to path of exported Godot binary, or None for in-editor training
+        port=11008,
+        show_window=False,
+    )
+
     encoder = ObservationEncoder()
     belief = DummyBelief()
     model, params, rng = init_policy_model(
@@ -286,7 +308,7 @@ def main():
         model=model,
         params=params,
         rng=rng,
-        max_steps=50,
+        max_steps=1000,
     )
 
     trajectory = attach_returns_and_advantages(trajectory, last_value=0.0)
@@ -333,6 +355,12 @@ def main():
             f"{sanity['critic_losses'][-1]:.4f}"
         )
         print("Sampled actions:", [action_dict[step["action"]] for step in trajectory[:5]])
+    
+    # Close the environment
+    env.close()
+    print("Training complete!")
+    #TODO need to add a message to close the environment/exit the python code when you exit the simulator
+    
 
 
 if __name__ == "__main__":
