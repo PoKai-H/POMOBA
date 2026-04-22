@@ -191,10 +191,10 @@ obs = {
     "self":{
         "id": int,
         "team": str,
-        "hp": float,
         "position": [x, y],
         "status": {
-            "alive": bool
+            "alive": bool,
+            "hp": float | None
         }
     },
     "agents": [ // only other agents 
@@ -203,9 +203,9 @@ obs = {
             "team": str,
             "visible": bool,
             "relative_position": [dx, dy] | None,
-            "hp": float | None,
             "status": {
-                "alive": bool
+                "alive": bool,
+                "hp": float | None,
             }
         }
     ],
@@ -218,12 +218,19 @@ obs = {
             "visible": bool,
             "relative_position": [dx, dy],
             "status":{
-                "alive": bool
+                "alive": bool,
+                "hp": float | None
             },
         }
     ],
 
-    "extensions": {}
+    "extensions": {
+        "observed_enemy_actions" :{
+            "2": int | None,         # id, action
+            "4": int | None
+        }
+
+    }
 }
 ```
 ### Notes

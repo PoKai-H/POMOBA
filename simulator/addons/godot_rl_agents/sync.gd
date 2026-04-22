@@ -62,6 +62,7 @@ var _obs_space_training: Array[Dictionary] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("SYNC READY DEBUG")
 	await get_parent().ready
 	get_tree().set_pause(true)
 	_initialize()
@@ -376,6 +377,11 @@ func _get_agents():
 				"Currently only a single AIController can be used for recording expert demos."
 			)
 			agent_demo_record = agent
+
+	printerr("all_agents count = ", all_agents.size())
+	for agent in all_agents:
+			printerr("agent path = ", agent.get_path(), " mode = ", agent.control_mode)
+
 
 	var training_agent_count = agents_training.size()
 	agents_training_policy_names.resize(training_agent_count)
