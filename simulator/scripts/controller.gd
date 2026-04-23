@@ -56,7 +56,7 @@ func get_info() -> Dictionary:
 func get_action_space() -> Dictionary:
 	return {
 		"action" : {
-			"size": 9,
+			"size": 13,
 			"action_type": "discrete"
 		},
 	}
