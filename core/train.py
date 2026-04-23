@@ -89,6 +89,7 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
         
         # Step the environment
         obs_list, reward_list, done_list, truncated_list, info_list = env.step(action_for_env)
+        print(obs_list[0])
         # Extract single-agent results from lists
         obs_next = obs_list[0] if isinstance(obs_list, list) else obs_list
         reward = reward_list[0] if isinstance(reward_list, list) else reward_list
