@@ -12,6 +12,8 @@ class_name LaneMinion
 @export var observation_ring_color: Color = Color(0.4, 0.95, 0.7, 0.08)
 @export var observation_outline_color: Color = Color(0.4, 0.95, 0.7, 0.28)
 
+@export var minion_reward_amount: float = 1.0
+
 var _attack_cooldown_remaining: float = 0.0
 var _target_refresh_remaining: float = 0.0
 var _target: Variant = null
@@ -25,6 +27,7 @@ var _target: Variant = null
 func _ready() -> void:
 	actor_kind = &"minion"
 	super._ready()
+	reward_amount = minion_reward_amount
 	_configure_attack_range()
 	_configure_observation_area()
 	queue_redraw()

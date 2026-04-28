@@ -34,7 +34,7 @@ var onnx_model: ONNXModel
 
 var heuristic := "human"
 var done := false
-var reward := 0.0
+var reward: float = 0.0
 var n_steps := 0
 var needs_reset := false
 
@@ -56,8 +56,11 @@ func get_obs() -> Dictionary:
 
 
 func get_reward() -> float:
-	assert(false, "the get_reward method is not implemented when extending from ai_controller")
-	return 0.0
+	return reward
+
+
+func set_reward(amount: float) -> void:
+	reward = amount
 
 
 func get_action_space() -> Dictionary:

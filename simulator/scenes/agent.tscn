@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ki61lr8g1xgo"]
 
-[ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_char"]
 [ext_resource type="Script" uid="uid://coh1qfsfspbib" path="res://addons/godot_rl_agents/controller/ai_controller_2d.gd" id="1_b2pv0"]
+[ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_char"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
 radius = 12.0
@@ -35,12 +35,12 @@ texture = SubResource("CanvasTexture_umeaf")
 script = ExtResource("1_b2pv0")
 metadata/_custom_type_script = "uid://coh1qfsfspbib"
 
-[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+[node name="Hurtbox" type="Area2D" parent="CharacterBody2D" unique_id=674952120]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox" unique_id=1193570018]
 shape = SubResource("CircleShape2D_hurtbox")
 
-[node name="AttackArea" type="Area2D" parent="CharacterBody2D"]
+[node name="AttackArea" type="Area2D" parent="CharacterBody2D" unique_id=1483503258]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea" unique_id=220150260]
 shape = SubResource("CircleShape2D_player_attack")

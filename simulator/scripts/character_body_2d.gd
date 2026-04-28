@@ -6,6 +6,12 @@ extends CombatActor
 @export var attack_ring_color: Color = Color(0.35, 0.7, 1.0, 0.08)
 @export var attack_ring_outline_color: Color = Color(0.35, 0.7, 1.0, 0.35)
 
+@export var reward_delta: float = -0.001
+@export var reward: float = 0.0
+@export var agent_reward_amount: float = 10.0
+@export var agent_death_penalty_amount: float = 10.0
+@export var damage_reward: float = 0.01
+
 var _click_attack_cooldown_remaining: float = 0.0
 
 @onready var ai_controller: Node2D = $AIController2D
@@ -14,6 +20,7 @@ var _click_attack_cooldown_remaining: float = 0.0
 
 func _ready() -> void:
 	super._ready()
+	reward_amount = agent_reward_amount
 	ai_controller.init(self)
 	_configure_attack_area()
 	queue_redraw()
@@ -41,6 +48,33 @@ func _physics_process(delta: float) -> void:
 	
 	set_move_direction(input_vector)
 	move_and_slide()
+	reward += reward_delta
+	update_reward()
+
+
+func set_reward(amount) -> void:
+	reward = amount
+
+
+func get_reward() -> float:
+	return reward
+
+
+func reward_penalty_on_death() -> void:
+	set_reward(get_reward() - agent_death_penalty_amount)
+	update_reward()
+
+func get_damage_reward() -> float:
+	return damage_reward
+
+
+func get_reward_amount() -> float:
+	return reward_amount
+
+
+func update_reward() -> void:
+	ai_controller.set_reward(reward)
+	print("%0.3f" % reward)
 
 
 func _handle_death() -> void:
@@ -52,6 +86,8 @@ func _handle_death() -> void:
 		hurtbox_shape.disabled = true
 	if attack_area_shape != null:
 		attack_area_shape.disabled = true
+	
+	reward_penalty_on_death()
 	game_over()
 	get_tree().paused = true
 

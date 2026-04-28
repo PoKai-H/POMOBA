@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ck6aceb3shi1n" path="res://scripts/character_body_2d.gd" id="1_wl4x5"]
 [ext_resource type="Script" uid="uid://b7bi1t5jv1gyx" path="res://scripts/controller.gd" id="2_olpmc"]
-[ext_resource type="Script" path="res://scripts/bush_area.gd" id="3_bush"]
+[ext_resource type="Script" uid="uid://bhqxkbmwsmm3m" path="res://scripts/bush_area.gd" id="3_bush"]
 [ext_resource type="PackedScene" uid="uid://dkof1lr5jf47l" path="res://scenes/tower.tscn" id="4_tower"]
 [ext_resource type="PackedScene" uid="uid://dbr0m5c0ln2ai" path="res://scenes/neutral_minion.tscn" id="5_neutral"]
 

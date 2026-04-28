@@ -4,6 +4,8 @@ class_name NeutralMinion
 @export var leash_radius: float = 120.0
 @export var home_tolerance: float = 8.0
 
+@export var neutral_minion_reward_amount: float = 3.0
+
 var _spawn_position: Vector2
 var _retaliation_target: Variant = null
 
@@ -14,6 +16,7 @@ func _ready() -> void:
 	lane_targetable = false
 	forward_direction = Vector2.ZERO
 	super._ready()
+	reward_amount = neutral_minion_reward_amount
 	_spawn_position = global_position
 
 

@@ -43,7 +43,7 @@ func get_obs() -> Dictionary:
 	
 	return {"obs": obs}
 
-func get_reward() -> float:	
+func get_reward() -> float:
 	return reward
 
 

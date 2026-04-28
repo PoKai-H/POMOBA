@@ -7,13 +7,15 @@ class_name LaneTower
 @export var range_ring_color: Color = Color(1.0, 0.9, 0.35, 0.18)
 @export var range_outline_color: Color = Color(1.0, 0.95, 0.6, 0.45)
 
+@export var lane_tower_reward_amount: float = 10.0
+
 var _cooldown_remaining: float = 0.0
 
 
 func _ready() -> void:
 	actor_kind = &"tower"
 	super._ready()
-
+	reward_amount = lane_tower_reward_amount
 
 func _physics_process(delta: float) -> void:
 	if not is_alive():

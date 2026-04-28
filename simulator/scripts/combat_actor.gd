@@ -15,6 +15,7 @@ signal died(actor: CombatActor)
 @export var health_bar_offset: Vector2 = Vector2(-13.0, -22.0)
 @export var health_bar_bg_color: Color = Color(0.12, 0.12, 0.12, 0.9)
 @export var health_bar_fill_color: Color = Color(0.3, 0.9, 0.35, 1.0)
+@export var reward_amount: float
 
 var hp: float = 0.0
 var _active_bushes: Dictionary = {}
@@ -70,13 +71,17 @@ func set_move_direction(direction: Vector2) -> void:
 func take_damage(amount: float, _attacker: CombatActor = null) -> void:
 	if hp <= 0.0:
 		return
-
+	
+	if self.is_in_group(&"player"):
+		_handle_reward_on_damage_taken(self, hp, maxf(0.0, hp - amount))
 	hp = maxf(0.0, hp - amount)
 	_after_damage(_attacker)
+	_handle_reward_on_attack(_attacker, amount)
 	queue_redraw()
 	if hp > 0.0:
 		return
-
+	
+	_handle_reward_on_death(_attacker)
 	_handle_death()
 
 
@@ -140,6 +145,24 @@ func _handle_death() -> void:
 	emit_signal("died", self)
 	queue_free()
 
+
+func _handle_reward_on_damage_taken(agent, starting_hp: float, ending_hp: float) -> void:
+	agent.set_reward(agent.get_reward() - (agent.get_damage_reward() * (starting_hp - ending_hp)))
+
+
+func _handle_reward_on_attack(attacker: CombatActor, damage: int) -> void:
+	if attacker == null:
+		return
+	if attacker.is_in_group(&"player"):
+		attacker.set_reward(attacker.get_reward() + (attacker.get_damage_reward() * damage))
+
+
+func _handle_reward_on_death(attacker: CombatActor) -> void:
+	if attacker == null:
+		return
+	if attacker.is_in_group(&"player"):
+		attacker.set_reward(attacker.get_reward() + reward_amount)
+	
 
 func _after_damage(_attacker: CombatActor) -> void:
 	pass

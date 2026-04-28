@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbr0m5c0ln2ai"]
 
-[ext_resource type="Script" path="res://scripts/neutral_minion.gd" id="1_neutral"]
+[ext_resource type="Script" uid="uid://bs8g1jqd0k8ll" path="res://scripts/neutral_minion.gd" id="1_neutral"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 14.0
@@ -18,39 +18,38 @@ radius = 30.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_observation"]
 radius = 135.0
 
-[node name="NeutralMinion" type="CharacterBody2D"]
+[node name="NeutralMinion" type="CharacterBody2D" unique_id=272991622]
 script = ExtResource("1_neutral")
+detection_range = 135.0
+attack_range = 30.0
+attack_damage = 10.0
+observation_ring_color = Color(0.95, 0.82, 0.25, 0.06)
+observation_outline_color = Color(0.95, 0.82, 0.25, 0.22)
 max_hp = 70.0
 move_speed = 48.0
 body_radius = 14.0
 body_color = Color(0.78, 0.68, 0.32, 1)
 show_health_bar = true
-detection_range = 135.0
-attack_range = 30.0
-attack_damage = 10.0
-leash_radius = 120.0
-observation_ring_color = Color(0.95, 0.82, 0.25, 0.06)
-observation_outline_color = Color(0.95, 0.82, 0.25, 0.22)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1566285483]
 shape = SubResource("CircleShape2D_body")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1956523867]
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_body")
 texture = SubResource("CanvasTexture_body")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1576741576]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=681929023]
 shape = SubResource("CircleShape2D_hurtbox")
 
-[node name="AttackRange" type="Area2D" parent="."]
+[node name="AttackRange" type="Area2D" parent="." unique_id=1523853248]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=914488831]
 shape = SubResource("CircleShape2D_attack")
 
-[node name="ObservationArea" type="Area2D" parent="."]
+[node name="ObservationArea" type="Area2D" parent="." unique_id=595159540]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObservationArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObservationArea" unique_id=1895295150]
 shape = SubResource("CircleShape2D_observation")
