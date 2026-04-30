@@ -54,6 +54,7 @@ var initialized = false
 var just_reset = false
 var onnx_model = null
 var n_action_steps = 0
+var shutdown_sent = false
 
 var _action_space_training: Array[Dictionary] = []
 var _action_space_inference: Array[Dictionary] = []
@@ -636,6 +637,11 @@ func clamp_array(arr: Array, min: float, max: float):
 
 ## Save recorded export demos on window exit (Close game window instead of "Stop" button in Godot Editor)
 func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_send_shutdown_notification()
+		get_tree().quit()
+		return
+
 	if demo_trajectories.size() == 0 or expert_demo_save_path.is_empty():
 		return
 
@@ -650,3 +656,11 @@ func _notification(what):
 		file.store_line(json_string)
 		var error = file.get_error()
 		assert(not error, "There was an error after trying to write to the file: %d" % error)
+
+
+func _send_shutdown_notification():
+	if shutdown_sent or not connected or stream == null:
+		return
+
+	shutdown_sent = true
+	_send_dict_as_json_message({"type": "close"})

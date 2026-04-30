@@ -2,6 +2,7 @@ from pathlib import Path
 import sys
 
 import numpy as np
+import socket
 
 if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -65,7 +66,15 @@ def select_action(model, params, rng, obs_vec, belief_vec, use_belief_input=USE_
 
 def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max_steps=50):
     trajectory = []
-    obs_list, info = env.reset(basic_config)
+    try:
+        obs_list, info = env.reset(basic_config)
+    except (ConnectionError, ConnectionResetError, BrokenPipeError, OSError, socket.error) as e:
+        print("Godot connection lost during reset:", e)
+        try:
+            env.close()
+        except Exception:
+            pass
+        sys.exit(1)
     # Extract single observation from list (single-agent case)
     obs = obs_list[0] if isinstance(obs_list, list) else obs_list
 
@@ -88,7 +97,15 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
         action_for_env = [np.asarray([action], dtype=np.int32)]
         
         # Step the environment
-        obs_list, reward_list, done_list, truncated_list, info_list = env.step(action_for_env)
+        try:
+            obs_list, reward_list, done_list, truncated_list, info_list = env.step(action_for_env)
+        except (ConnectionError, ConnectionResetError, BrokenPipeError, OSError, socket.error) as e:
+            print("Godot connection lost during step():", e)
+            try:
+                env.close()
+            except Exception:
+                pass
+            sys.exit(1)
         print(obs_list[0])
         # Extract single-agent results from lists
         obs_next = obs_list[0] if isinstance(obs_list, list) else obs_list

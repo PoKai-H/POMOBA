@@ -439,6 +439,8 @@ class GodotEnv:
 
     def _get_json_dict(self):
         data = self._get_data()
+        if data is None:
+            raise ConnectionError("Godot connection closed")
         return json.loads(data)
 
     def _get_obs(self):
@@ -481,6 +483,14 @@ class GodotEnv:
                 string_bytes.extend(data)
 
             string: str = string_bytes.decode()
+
+            if string:
+                try:
+                    parsed = json.loads(string)
+                    if isinstance(parsed, dict) and parsed.get("type") == "close":
+                        raise ConnectionError("Godot requested shutdown")
+                except json.JSONDecodeError:
+                    pass
 
             return string
         except socket.timeout as e:
