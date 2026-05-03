@@ -6,6 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://dkof1lr5jf47l" path="res://scenes/tower.tscn" id="4_tower"]
 [ext_resource type="PackedScene" uid="uid://dbr0m5c0ln2ai" path="res://scenes/neutral_minion.tscn" id="5_neutral"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7ft05"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4ag8t"]
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dpxgc"]
+a = Vector2(1152, 648)
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oexds"]
+a = Vector2(1152, 648)
+b = Vector2(0, 648)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_go1c3"]
 radius = 12.0
 
@@ -140,6 +154,21 @@ position = Vector2(1154, 618)
 rotation = 3.1415925
 color = Color(0.14097235, 0.051583037, 0.028527824, 1)
 polygon = PackedVector2Array(781, 78, 801, 113, 850, 128, 894, 126, 922, 98, 922, 60, 898, 88, 888, 106, 858, 109, 838, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles" unique_id=902014409]
+shape = SubResource("SegmentShape2D_7ft05")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacles" unique_id=1729532530]
+shape = SubResource("SegmentShape2D_4ag8t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacles" unique_id=1585287779]
+shape = SubResource("SegmentShape2D_4ag8t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Obstacles" unique_id=1860617779]
+shape = SubResource("SegmentShape2D_dpxgc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Obstacles" unique_id=2015875826]
+shape = SubResource("SegmentShape2D_oexds")
 
 [node name="Agent" type="Node2D" parent="." unique_id=207395251]
 position = Vector2(550, 40)

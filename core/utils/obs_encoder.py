@@ -17,9 +17,9 @@ def _safe_bool(value: Any) -> float:
 
 
 def _encode_team(team: Any) -> List[float]:
-    if team == "ally":
+    if team in {"ally", "blue"}:
         return [1.0, 0.0, 0.0]
-    if team == "enemy":
+    if team in {"enemy", "red"}:
         return [0.0, 1.0, 0.0]
     return [0.0, 0.0, 1.0]
 
@@ -97,10 +97,11 @@ class ObservationEncoder:
         """
         position = self_obs.get("position") or [0.0, 0.0]
         status = self_obs.get("status", {})
+        hp = self_obs.get("hp", status.get("hp"))
 
         features = [
             *_encode_team(self_obs.get("team")),
-            _safe_float(self_obs.get("hp")) / self.config.hp_scale,
+            _safe_float(hp) / self.config.hp_scale,
             _safe_float(position[0]) / self.config.position_scale,
             _safe_float(position[1]) / self.config.position_scale,
             _safe_bool(status.get("alive")),
@@ -177,7 +178,7 @@ class ObservationEncoder:
         features = [
             *_encode_team(agent.get("team")),
             _safe_bool(visible),
-            (_safe_float(agent.get("hp")) / self.config.hp_scale) if visible else 0.0,
+            (_safe_float(agent.get("hp", status.get("hp"))) / self.config.hp_scale) if visible else 0.0,
             (_safe_float(relative_position[0]) / self.config.position_scale) if visible else 0.0,
             (_safe_float(relative_position[1]) / self.config.position_scale) if visible else 0.0,
             _safe_bool(status.get("alive")),
@@ -196,10 +197,12 @@ class ObservationEncoder:
         relative_position: Sequence[Any],
         status: Dict[str, Any],
     ) -> List[float]:
+        hp = obj.get("hp", status.get("hp"))
         features = [
             *_encode_team(obj.get("team")),
             _safe_bool(visible),
             self._encode_object_type(obj.get("type")),
+            (_safe_float(hp) / self.config.hp_scale) if visible else 0.0,
             (_safe_float(relative_position[0]) / self.config.position_scale) if visible else 0.0,
             (_safe_float(relative_position[1]) / self.config.position_scale) if visible else 0.0,
             _safe_bool(status.get("alive")),

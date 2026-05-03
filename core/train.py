@@ -65,7 +65,7 @@ def select_action(model, params, rng, obs_vec, belief_vec, use_belief_input=USE_
 
 
 def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max_steps=50):
-    trajectory = []
+    trajectories = []
     try:
         obs_list, info = env.reset(basic_config)
     except (ConnectionError, ConnectionResetError, BrokenPipeError, OSError, socket.error) as e:
@@ -75,26 +75,46 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
         except Exception:
             pass
         sys.exit(1)
-    # Extract single observation from list (single-agent case)
-    obs = obs_list[0] if isinstance(obs_list, list) else obs_list
+
+    if not isinstance(obs_list, list):
+        obs_list = [obs_list]
+
+    num_agents = len(obs_list)
+    trajectories = [[] for _ in range(num_agents)]
 
     for step in range(max_steps):
-        obs_vec = encoder.encode(obs)
-        belief_vec = belief.update(obs_vec)
-        obs_belief_vec = build_policy_input(obs_vec, belief_vec, use_belief_input=True)
+        pending_steps = []
+        actions = []
 
-        action, logprob, value, rng = select_action(
-            model,
-            params,
-            rng,
-            obs_vec,
-            belief_vec,
-            use_belief_input=USE_BELIEF_INPUT,
-        )
+        for agent_idx, obs in enumerate(obs_list):
+            obs_vec = encoder.encode(obs)
+            belief_vec = belief.update(obs_vec)
+            obs_belief_vec = build_policy_input(obs_vec, belief_vec, use_belief_input=True)
 
-        # Send discrete action (0-12) to Godot controller
-        # Format: [action_index] for each environment (single-agent case)
-        action_for_env = [np.asarray([action], dtype=np.int32)]
+            action, logprob, value, rng = select_action(
+                model,
+                params,
+                rng,
+                obs_vec,
+                belief_vec,
+                use_belief_input=USE_BELIEF_INPUT,
+            )
+
+            actions.append(action)
+            pending_steps.append(
+                {
+                    "agent_index": agent_idx,
+                    "step": step,
+                    "obs": obs_vec,
+                    "belief": belief_vec,
+                    "obs_belief": obs_belief_vec,
+                    "action": action,
+                    "logprob": float(logprob),
+                    "value": float(value),
+                }
+            )
+
+        action_for_env = [np.asarray(actions, dtype=np.int32)]
         
         # Step the environment
         try:
@@ -106,34 +126,23 @@ def collect_rollout(env, encoder, belief, model=None, params=None, rng=None, max
             except Exception:
                 pass
             sys.exit(1)
-        print(obs_list[0])
-        # Extract single-agent results from lists
-        obs_next = obs_list[0] if isinstance(obs_list, list) else obs_list
-        reward = reward_list[0] if isinstance(reward_list, list) else reward_list
-        done = done_list[0] if isinstance(done_list, list) else done_list
-        info = info_list[0] if isinstance(info_list, list) else info_list
+        if not isinstance(obs_list, list):
+            obs_list = [obs_list]
 
-        trajectory.append(
-            {
-                "step": step,
-                "obs": obs_vec,
-                "belief": belief_vec,
-                "obs_belief": obs_belief_vec,
-                "action": action,
-                "reward": float(reward),
-                "done": float(done),
-                "logprob": float(logprob),
-                "value": float(value),
-                "info": info,
-            }
-        )
+        for agent_idx, pending in enumerate(pending_steps):
+            trajectories[agent_idx].append(
+                {
+                    **pending,
+                    "reward": float(reward_list[agent_idx]),
+                    "done": float(done_list[agent_idx]),
+                    "info": info_list[agent_idx],
+                }
+            )
 
-        obs = obs_next
-
-        if done:
+        if all(done_list):
             break
 
-    return trajectory
+    return trajectories
 
 
 def compute_gae(trajectory, last_value=0.0, gamma=0.99, gae_lambda=0.95):
@@ -319,7 +328,7 @@ def main():
     optimizer = optax.adam(learning_rate=LEARNING_RATE)
     opt_state = optimizer.init(params)
 
-    trajectory = collect_rollout(
+    agent_trajectories = collect_rollout(
         env,
         encoder,
         belief,
@@ -329,7 +338,12 @@ def main():
         max_steps=1000,
     )
 
-    trajectory = attach_returns_and_advantages(trajectory, last_value=0.0)
+    trajectory = []
+    for single_agent_trajectory in agent_trajectories:
+        trajectory.extend(
+            attach_returns_and_advantages(single_agent_trajectory, last_value=0.0)
+        )
+
     batch = build_ppo_batch(trajectory, use_belief_input=USE_BELIEF_INPUT) 
     params_before = params
     loss_before, metrics_before = ppo_loss(model, params, batch)
@@ -351,8 +365,25 @@ def main():
         num_steps=10,
     )
 
-    print(f"Collected {len(trajectory)} transitions.")
-    action_dict = {0: "move forward", 1:"move left", 2: "move right", 3:"move back", 4: "attack hero", 5: "attack nearest minions", 6:"retreat", 7:"attack tower", 8: "hold"}
+    print(
+        f"Collected {len(trajectory)} transitions across "
+        f"{len(agent_trajectories)} agent trajectories."
+    )
+    action_dict = {
+        0: "move_up",
+        1: "move_left",
+        2: "move_right",
+        3: "move_down",
+        4: "move_up_left",
+        5: "move_up_right",
+        6: "move_down_left",
+        7: "move_down_right",
+        8: "hold",
+        9: "attack_hero",
+        10: "attack_nearest_minion",
+        11: "attack_tower",
+        12: "retreat",
+    }
     if trajectory:
         print(f"Policy input dim: {batch['inputs'].shape[-1]}")
         print(f"Advantage shape: {batch['advantages'].shape}")
@@ -372,7 +403,7 @@ def main():
             f"Repeated update critic trace: {sanity['critic_losses'][:5]} ... -> "
             f"{sanity['critic_losses'][-1]:.4f}"
         )
-        print("Sampled actions:", [action_dict[step["action"]] for step in trajectory[:5]])
+        print("Sampled actions:", [action_dict.get(step["action"], str(step["action"])) for step in trajectory[:5]])
     
     # Close the environment
     env.close()

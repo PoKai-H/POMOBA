@@ -48,6 +48,8 @@ func _physics_process(delta: float) -> void:
 	
 	set_move_direction(input_vector)
 	move_and_slide()
+	if ai_controller.heuristic != "human":
+		_process_agent_attack()
 	reward += reward_delta
 	update_reward()
 
@@ -90,6 +92,26 @@ func _handle_death() -> void:
 	reward_penalty_on_death()
 	game_over()
 	get_tree().paused = true
+
+
+func _process_agent_attack() -> void:
+	if _click_attack_cooldown_remaining > 0.0:
+		return
+
+	if not ai_controller.has_method("get_requested_attack_target"):
+		return
+
+	var action_type = ai_controller.get("current_action_type")
+	if action_type == null:
+		return
+
+	var target: CombatActor = ai_controller.get_requested_attack_target()
+
+	if target == null or not _is_actor_in_attack_area(target):
+		return
+
+	target.take_damage(click_attack_damage, self)
+	_click_attack_cooldown_remaining = click_attack_cooldown
 
 
 func _input(event: InputEvent) -> void:
@@ -161,6 +183,45 @@ func _get_clicked_enemy(_screen_position: Vector2) -> CombatActor:
 		best_target = actor
 
 	return best_target
+
+
+func _get_nearest_enemy_by_kind(actor_kind: StringName) -> CombatActor:
+	var best_target: CombatActor = null
+	var best_distance := INF
+
+	for area in attack_area.get_overlapping_areas():
+		var owner = area.get_meta("owner_actor", null)
+		if not (owner is CombatActor):
+			continue
+
+		var actor := owner as CombatActor
+		if actor.actor_kind != actor_kind:
+			continue
+		if not actor.is_alive() or not is_enemy(actor):
+			continue
+		if actor.is_hidden_from(self):
+			continue
+		if actor.actor_kind != &"tower" and not _has_line_of_sight(actor):
+			continue
+
+		var distance := global_position.distance_squared_to(actor.global_position)
+		if distance >= best_distance:
+			continue
+
+		best_distance = distance
+		best_target = actor
+
+	return best_target
+
+
+func _is_actor_in_attack_area(actor: CombatActor) -> bool:
+	if actor == null or not is_instance_valid(actor):
+		return false
+
+	for area in attack_area.get_overlapping_areas():
+		if area.get_meta("owner_actor", null) == actor:
+			return true
+	return false
 
 
 func _has_line_of_sight(actor: CombatActor) -> bool:

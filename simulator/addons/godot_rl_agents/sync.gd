@@ -515,6 +515,9 @@ func handle_message() -> bool:
 
 	if message["type"] == "reset":
 		print("resetting all agents")
+		var config_message = message.duplicate(true)
+		config_message.erase("type")
+		SimConfig.apply_config_message(config_message)
 		_reset_agents()
 		just_reset = true
 		get_tree().set_pause(false)
@@ -527,11 +530,6 @@ func handle_message() -> bool:
 #            "obs": obs
 #        }
 #        _send_dict_as_json_message(reply)
-		# need to set the configuration for this whole thing!
-		#TODO ^
-		message.erase("type")
-		SimConfig.config = message
-		
 		return true
 
 	if message["type"] == "call":

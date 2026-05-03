@@ -20,10 +20,10 @@ signal died(actor: CombatActor)
 var hp: float = 0.0
 var _active_bushes: Dictionary = {}
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var mesh_instance: MeshInstance2D = $MeshInstance2D
-@onready var hurtbox: Area2D = $Hurtbox
-@onready var hurtbox_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
+@onready var collision_shape: CollisionShape2D = get_node_or_null("CollisionShape2D")
+@onready var mesh_instance: MeshInstance2D = get_node_or_null("MeshInstance2D")
+@onready var hurtbox: Area2D = get_node_or_null("Hurtbox")
+@onready var hurtbox_shape: CollisionShape2D = get_node_or_null("Hurtbox/CollisionShape2D")
 
 
 func _ready() -> void:
@@ -41,19 +41,22 @@ func _ready() -> void:
 
 
 func _configure_body() -> void:
-	var body_shape := collision_shape.shape as CircleShape2D
-	if body_shape == null:
-		body_shape = CircleShape2D.new()
-		collision_shape.shape = body_shape
-	body_shape.radius = body_radius
+	if collision_shape != null:
+		var body_shape := collision_shape.shape as CircleShape2D
+		if body_shape == null:
+			body_shape = CircleShape2D.new()
+			collision_shape.shape = body_shape
+		body_shape.radius = body_radius
 
-	var hurt_shape := hurtbox_shape.shape as CircleShape2D
-	if hurt_shape == null:
-		hurt_shape = CircleShape2D.new()
-		hurtbox_shape.shape = hurt_shape
-	hurt_shape.radius = body_radius
+	if hurtbox_shape != null:
+		var hurt_shape := hurtbox_shape.shape as CircleShape2D
+		if hurt_shape == null:
+			hurt_shape = CircleShape2D.new()
+			hurtbox_shape.shape = hurt_shape
+		hurt_shape.radius = body_radius
 
-	mesh_instance.modulate = body_color
+	if mesh_instance != null:
+		mesh_instance.modulate = body_color
 
 
 func refresh_visuals() -> void:
