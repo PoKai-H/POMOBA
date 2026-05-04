@@ -1,0 +1,281 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2026
+
+% The authors should use one of these tracks.
+% Before accepting by the NeurIPS conference, select one of the options below.
+% 0. "default" for submission
+\usepackage[preprint]{neurips_2026}
+% the "default" option is equal to the "main" option, which is used for the Main Track with double-blind reviewing.
+% 1. "main" option is used for the Main Track
+%  \usepackage[main]{neurips_2026}
+% 2. "position" option is used for the Position Paper Track
+%  \usepackage[position]{neurips_2026}
+% 3. "eandd" option is used for the Evaluations & Datasets Track
+ % \usepackage[eandd]{neurips_2026}
+ % if you want to opt-in for a de-anomymized submission (not recommended, but OK):
+ %\usepackage[eandd, nonanonymous]{neurips_2026}
+% 4. "creativeai" option is used for the Creative AI Track
+%  \usepackage[creativeai]{neurips_2026}
+% 5. "sglblindworkshop" option is used for the Workshop with single-blind reviewing
+ % \usepackage[sglblindworkshop]{neurips_2026}
+% 6. "dblblindworkshop" option is used for the Workshop with double-blind reviewing
+%  \usepackage[dblblindworkshop]{neurips_2026}
+
+% After being accepted, the authors should add "final" behind the track to compile a camera-ready version.
+% 1. Main Track
+ % \usepackage[main, final]{neurips_2026}
+% 2. Position Paper Track
+%  \usepackage[position, final]{neurips_2026}
+% 3. Evaluations & Datasets Track
+ % \usepackage[eandd, final]{neurips_2026}
+% 4. Creative AI Track
+%  \usepackage[creativeai, final]{neurips_2026}
+% 5. Workshop with single-blind reviewing
+%  \usepackage[sglblindworkshop, final]{neurips_2026}
+% 6. Workshop with double-blind reviewing
+%  \usepackage[dblblindworkshop, final]{neurips_2026}
+% Note. For the workshop paper template, both \title{} and \workshoptitle{} are required, with the former indicating the paper title shown in the title and the latter indicating the workshop title displayed in the footnote.
+% For workshops (5., 6.), the authors should add the name of the workshop, "\workshoptitle" command is used to set the workshop title.
+% \workshoptitle{WORKSHOP TITLE}
+
+% "preprint" option is used for arXiv or other preprint submissions
+ % \usepackage[preprint]{neurips_2026}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2026}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+
+% Note. For the workshop paper template, both \title{} and \workshoptitle{} are required, with the former indicating the paper title shown in the title and the latter indicating the workshop title displayed in the footnote. 
+\title{Inferring Hidden Opponent Strategy Changes under Partial Observability in MOBA-like Environments}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{
+Po-Kai Huang \\
+University of Minnesota \\
+\texttt{huan3263@umn.edu}
+\And
+Erik Whittaker \\
+University of Minnesota \\
+\texttt{whitt369@umn.edu}
+\And
+Nicholas Pederson \\
+University of Minnesota \\
+\texttt{pede1116@umn.edu}
+\AND
+Adam Wagner \\
+Unversity of Minnesota \\
+\texttt{Wagn1200@umn.edu}
+\And
+Nikita Tuli \\
+University of Minnesota \\
+\texttt{tuli0020@umn.edu }
+}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+  This project studies belief-based reasoning in partially observable environments with non-stationary opponents. Under such settings, the same observation sequence may be explained by multiple underlying strategies, making strategy inference fundamentally ambiguous. We propose a controlled MOBA-like environment in which opponent behavior is drawn from a predefined strategy library and may switch over time. The agent maintains a belief distribution over opponent strategies using Bayesian inference and uses this belief to support decision-making. To evaluate the role of belief-based reasoning, we compare belief-conditioned policies with observation-only baselines and introduce perturbed belief baselines to isolate the effect of correct inference. Our evaluation focuses on strategy inference accuracy, switch detection, and downstream decision performance. We further analyze under what conditions belief-based reasoning provides the greatest benefit. This work provides a controlled framework for understanding the role of reasoning in multi-agent environments with hidden and non-stationary dynamics.
+\end{abstract}
+
+
+\section{Introduction}
+
+Partial observability and non-stationary opponents are two key challenges in multi-agent reinforcement learning (\cite{hernandez2017survey, hernandez2019critique, papoudakis2019dealing}). In many multi-agent environments, agents must make decisions based on incomplete information about the environment while interacting with other agents whose behavior may change over time. These challenges are especially prominent in competitive settings, where the policies of other agents may evolve or switch strategies during interaction.
+
+A large body of research has studied decision-making under partial observability (\cite{srinivasan2018acpo}) and learning in non-stationary multi-agent environments separately. However, in many real-world strategic scenarios, agents must address both challenges simultaneously. In such settings, an agent must reason about hidden opponent behaviors while also adapting to potential changes in those behaviors over time.
+
+Some recent approaches have begun to consider this joint setting by combining opponent modeling with partially observable environments (\cite{zheng2018deep, wang2022bayesian, davies2020opponent}). In many of these methods, opponent behaviors are assumed to be drawn from a bounded or predefined library of strategies. While this assumption simplifies the learning problem, it still leaves a fundamental challenge unresolved.
+
+Under partial observability and stochastic policies, the same observation sequence may be explained by multiple strategies, making strategy inference fundamentally ambiguous. As a result, an agent must not only infer the opponent’s current strategy from interaction history, but also determine whether changes in observed behavior are due to stochastic variation or an actual shift in the underlying strategy.
+
+This leads to a key research question: does explicitly modeling a belief over opponent strategies help resolve this ambiguity, enabling more accurate detection of strategy changes and improving decision-making under partial observability?
+
+Understanding this is important for designing agents that can robustly operate in real-world strategic environments, where both uncertainty and non-stationarity are unavoidable.
+
+We make the following contributions:
+\begin{itemize}
+    \item We propose a controlled framework for studying belief-based reasoning under partial observability and non-stationary opponent dynamics.
+    \item We isolate the effect of belief-based reasoning through a causal evaluation design, including perturbed belief baselines.
+    \item We provide empirical analysis of when and under what conditions belief-based reasoning improves strategy inference, change detection, and downstream decision-making.
+\end{itemize}
+
+
+\section{Problem Statement}
+We consider a partially observable multi-agent environment in which an agent interacts with an opponent whose underlying strategy is not directly observable and may change over time.
+
+Let $\theta \in \Theta$ denote the opponent’s strategy, where $\Theta$ is a predefined strategy library. At each time step $t$, the agent receives an observation $o_t$ and observes the opponent’s action, but does not have access to $\theta_t$. The agent instead maintains a history of interactions $h_t = (o_1, a_1, \dots, o_t)$.
+
+The goal of the agent is to infer the opponent’s current strategy from $h_t$ and use this information to support decision-making. However, under partial observability and stochastic policies, multiple strategies may induce similar observation sequences. This makes the mapping from $h_t$ to $\theta_t$ inherently ambiguous.
+
+To address this, we consider maintaining a belief distribution over opponent strategies:
+\[
+b_t = P(\theta \mid h_t)
+\]
+
+which summarizes the agent’s inference over possible strategies given interaction history.
+
+We study whether conditioning on this belief improves:
+\begin{itemize}
+    \item strategy inference accuracy,
+    \item detection of strategy changes,
+    \item and downstream decision-making performance.
+\end{itemize}
+
+\section{Hypotheses}
+
+We hypothesize that explicitly modeling a belief over opponent strategies improves inference and decision-making in partially observable environments with non-stationary opponents.
+
+\textbf{H1 (Disambiguation):} Belief-based methods achieve higher strategy inference accuracy than observation-only methods, particularly when multiple strategies induce similar observation sequences.
+
+\textbf{H2 (Change Detection):} Belief-based agents detect opponent strategy switches with lower delay and greater stability than observation-based agents.
+
+\textbf{H3 (Environment Dependence):} The benefit of belief modeling is most significant in environments with both partial observability and strategy switching, and diminishes when the opponent strategy is stationary.
+
+\section{Environment}
+
+We design a simplified MOBA-style multi-agent environment with two teams interacting in a partially observable setting. Each team consists of two agents (a laner and a jungler) operating in a symmetric map with a central lane and surrounding regions.
+
+At each time step, agents receive partial observations $o_t$ consisting of nearby units, visible opponents, and state variables (e.g., health, position, cooldowns). Observations are limited by fog of war.
+
+Agents select actions from a discrete set, including movement, attacks, and ability usage. The environment evolves according to these joint actions.
+
+Opponent behavior is governed by a latent strategy $\theta \in \Theta$, where each strategy corresponds to a stochastic policy. During an episode, the opponent may switch strategies at unknown time steps, inducing non-stationarity.
+
+An episode terminates when a terminal condition is reached (e.g., objective completion or time limit).
+
+
+\section{Approach}
+
+Our framework consists of two components: opponent modeling and belief-conditioned policy learning.
+
+\subsection{Opponent Strategy Model}
+
+We assume that opponent behavior is governed by a latent strategy $\theta \in \Theta$, where each strategy defines a stochastic policy over actions.
+
+The action distribution is defined as:
+\[
+\pi_\theta(a \mid o) = \frac{\exp(\beta \cdot \text{score}_\theta(o,a))}{\sum_{a'} \exp(\beta \cdot \text{score}_\theta(o,a'))}
+\]
+
+where $o$ denotes the observation, $a$ denotes an action, $\beta$ controls the stochasticity, and $\text{score}_\theta(o,a)$ is a strategy-specific preference function.
+
+\subsection{Belief Update}
+
+The agent maintains a belief over strategies:
+\[
+b_t(\theta) = P(\theta \mid h_t)
+\]
+
+We update the belief using Bayesian inference:
+\[
+P(\theta \mid h_t) = \frac{P(h_t \mid \theta) P(\theta)}{\sum_{\theta'} P(h_t \mid \theta') P(\theta')}
+\]
+
+The likelihood is approximated as:
+\[
+P(h_t \mid \theta) \approx \prod_{k=1}^{t} \pi_\theta(a_k \mid o_k)
+\]
+assuming conditional independence of actions given $\theta$.
+
+\subsection{Policy Learning}
+
+We train a policy conditioned on observation and belief:
+\[
+\pi(a_t \mid o_t, b_t)
+\]
+
+We optimize the policy using PPO to maximize expected return:
+\[
+J(\pi) = \mathbb{E}\left[\sum_{t=0}^{T} \gamma^t r_t\right]
+\]
+
+We compare two policies:
+\begin{itemize}
+    \item Observation-only policy $\pi(a_t \mid o_t)$
+    \item Belief-conditioned policy $\pi(a_t \mid o_t, b_t)$
+\end{itemize}
+
+\section{Evaluation}
+
+The proposed framework is evaluated along three dimensions: strategy inference, strategy switch detection, and downstream decision performance.
+
+\subsection{Strategy Inference}
+
+Let $\theta_t$ denote the ground-truth opponent strategy at time $t$, and let $b_t(\theta)$ denote the inferred belief distribution. The predicted strategy is defined as:
+\[
+\hat{\theta}_t = \arg\max_{\theta} b_t(\theta)
+\]
+
+Inference accuracy is measured as:
+\[
+\text{Accuracy} = \frac{1}{T} \sum_{t=1}^{T} \mathbb{I}[\hat{\theta}_t = \theta_t]
+\]
+
+Under higher levels of observation ambiguity, belief-based methods are expected to maintain significantly higher classification accuracy, whereas observation-only baselines are expected to degrade due to indistinguishable behavior patterns.
+
+\subsection{Strategy Switch Detection}
+
+Let $t_{\text{switch}}$ denote the time step at which the opponent changes its strategy. The detection delay is defined as:
+\[
+\Delta = \min \{ t > t_{\text{switch}} : \arg\max_{\theta} b_t(\theta) = \theta_t \} - t_{\text{switch}}
+\]
+
+Belief stability is evaluated during non-switching intervals by measuring fluctuations in $b_t$ when $\theta_t$ remains constant.
+
+We expect belief-based agents to detect strategy switches with lower delay and exhibit smoother belief transitions, whereas baseline methods may either respond more slowly or exhibit unstable fluctuations.
+
+\subsection{Decision Performance}
+
+Two policies are compared:
+\begin{itemize}
+    \item Observation-only policy $\pi(a_t \mid o_t)$
+    \item Belief-conditioned policy $\pi(a_t \mid o_t, b_t)$
+\end{itemize}
+
+Performance is evaluated using the following metrics:
+\begin{itemize}
+    \item cumulative reward
+    \item win rate
+\end{itemize}
+
+To isolate the effect of belief correctness, additional baselines with perturbed beliefs are introduced:
+\begin{itemize}
+    \item Random belief
+    \item Shuffled belief
+    \item Lagged belief
+\end{itemize}
+
+We expect belief-conditioned policies to achieve higher cumulative reward and win rate, particularly in non-stationary environments. In contrast, when the opponent's strategy is stationary, the performance gap between the two policies is expected to diminish.
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
