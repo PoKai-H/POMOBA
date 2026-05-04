@@ -1,3 +1,10 @@
 *.pyc
 
 rl/*
+
+CSCI5512_ProjectPlan/*
+!CSCI5512_ProjectPlan/*.pdf
+!CSCI5512_ProjectPlan/*.bib
+!CSCI5512_ProjectPlan/*.tex
+!CSCI5512_ProjectPlan/*.sty
+
