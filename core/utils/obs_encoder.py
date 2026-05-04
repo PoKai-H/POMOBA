@@ -5,6 +5,10 @@ from typing import Any, Dict, List, Sequence
 
 import numpy as np
 
+def unwrap_obs(obs: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(obs, dict) and isinstance(obs.get("obs"), dict):
+        return obs["obs"]
+    return obs
 
 def _safe_float(value: Any, default: float = 0.0) -> float:
     if value is None:
@@ -65,6 +69,7 @@ class ObservationEncoder:
         )
 
     def encode(self, obs: Dict[str, Any], array_lib=np):
+        obs = unwrap_obs(obs)
         features: List[float] = []
 
         if self.config.include_timestep:
@@ -222,6 +227,5 @@ class ObservationEncoder:
             "monster": 4.0,
         }
         return object_types.get(value, 0.0)
-
 
 

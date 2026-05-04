@@ -4,6 +4,7 @@
  2. Pull the latest changes
  3. Create a Python virtual environment of your choice
  4. Run this command inside the environment: pip install -r rl_requirements.txt
+ 5. Activate vitrual environment: source <venv>/bin/activate
 
 ### Instructions to run with RL Agents:
 

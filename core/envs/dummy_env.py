@@ -18,6 +18,11 @@ class DummyEnv:
 
     def reset(self, config):
         core_config = (config or {}).get("core", {})
+        env_config = (config or {}).get("env_config", {})
+        if not core_config:
+            core_config = env_config
+        if not env_config:
+            env_config = core_config
         self.t = 0
         self.max_steps = int(core_config.get("max_steps", 50))
         self.agents_per_team = int(core_config.get("agents_per_team", 1))

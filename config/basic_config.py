@@ -1,9 +1,11 @@
-env_config = {
-    "map_name": "arena",
-    "random_seed": 42,
-    "max_steps": 1000,
-    "agents_per_team": 1,
-    "vision_range": 5.0,
+basic_config = {
+    "core": {
+        "map_name": "arena",
+        "random_seed": 42,
+        "max_steps": 1000,
+        "agents_per_team": 1,
+        "vision_range": 5.0,
+    },
     "extensions": {
         "minion_wave": True,
         "tower": True,
@@ -15,25 +17,40 @@ env_config = {
     },
 }
 
-episode_config = {
+
+training_config = {
+    "SEED": 42,
+    "NUM_ACTIONS": 13,
+    "USE_BELIEF_INPUT": False,
+    "TIMESTEP_PER_BATCH": 1024,
+    "MAX_STEPS_PER_EPISODE": 1000,
+    "TOTAL_TIMESTEPS": 10_240,
+    "LEARNING_AGENT_ID": 0,
+    "LR": 3e-4,
+    "GAMMA": 0.99,
+    "GAE_LAMBDA": 0.95,
+    "CLIP_EPS": 0.2,
+    "VF_COEF": 0.5,
+    "ENT_COEF": 0.01,
+    "MAX_GRAD_NORM": 0.5,
+    "UPDATE_EPOCHS": 4,
+    "NUM_MINIBATCHES": 4,
+    "HIDDEN_DIM": 64,
+    "ACTIVATION": "tanh",
+    "NPC_POLICY_ID_SOURCE": "index",
     "opponent_strategy": "aggressive",
     "strategy_switch_mode": "time_based",
-}
-
-basic_config = {
-    "env_config": env_config,
-    "episode_config": episode_config,
-}
-
-legacy_basic_config = {
-    "core": {
-        "map_name": env_config["map_name"],
-        "random_seed": env_config["random_seed"],
-        "max_steps": env_config["max_steps"],
-        "agents_per_team": env_config["agents_per_team"],
-        "vision_range": env_config["vision_range"],
-        "opponent_strategy": episode_config["opponent_strategy"],
-        "strategy_switch_mode": episode_config["strategy_switch_mode"],
+    "DEFAULT_NPC_POLICY": "neutral",
+    "NPC_POLICIES": {
+        1: "aggressive",
     },
-    "extensions": env_config["extensions"],
+    "RANDOMIZE_NPC_POLICY_EACH_EPISODE": True,
+    "NPC_POLICY_IDS": [1],
+    "NPC_STRATEGY_POOL": [
+        "aggressive",
+        "farming",
+        "neutral",
+        "observation_craving",
+    ],
+    "NPC_SWITCH_STEP_RANGE": [150, 850],
 }

@@ -1,5 +1,8 @@
 
 
+from core.utils.obs_encoder import unwrap_obs
+
+
 class BayesianBelief:
     SCORE_ORDER = ["aggressive", "neutral", "farming", "observation_craving"]
     LANE_ENEMY_ID = 2
@@ -25,15 +28,8 @@ class BayesianBelief:
         self.opponent_last_action = None
         self.opponent_last2t_action = None
 
-    def _unwrap_obs(self, obs):
-        if obs is None:
-            return None
-        if "obs" in obs and isinstance(obs["obs"], dict):
-            return obs["obs"]
-        return obs
-
     def update_observaition(self, obs):
-        self.curr_obs = self._unwrap_obs(obs)
+        self.curr_obs = unwrap_obs(obs)
 
     def _current_lane_enemy(self):
         if self.curr_obs is None:
@@ -398,8 +394,8 @@ class BayesianBelief:
         return [score_map[name] for name in self.SCORE_ORDER]
 
     def _extract_signal(self):
-        self.curr_obs = self._unwrap_obs(self.curr_obs)
-        self.prev_obs = self._unwrap_obs(self.prev_obs)
+        self.curr_obs = unwrap_obs(self.curr_obs)
+        self.prev_obs = unwrap_obs(self.prev_obs)
         context = self._build_context()
         return self._apply_rule_scores(context)
 
@@ -407,7 +403,7 @@ class BayesianBelief:
         """
         Heuristic posterior update using extracted evidence scores.
         """
-        next_obs = self._unwrap_obs(obs)
+        next_obs = unwrap_obs(obs)
         self.curr_obs = next_obs
         signal = self._extract_signal()
 
