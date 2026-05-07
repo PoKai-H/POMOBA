@@ -12,5 +12,5 @@
  2. In the main scene click the sync node and set the "Control Mode" to "Training".
  3. Open a terminal in the root directory of this repository
  4. Activate the Python environment
- 5. Run train.py
+ 5. Run core/run.py
  7. Press play in the Godot editor
