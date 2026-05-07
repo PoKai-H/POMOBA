@@ -20,7 +20,7 @@ func _ready() -> void:
 	if not visible:
 		return
 
-	spawn_wave()
+	reset_waves(true)
 
 	if wave_interval_seconds <= 0.0:
 		return
@@ -35,7 +35,13 @@ func _ready() -> void:
 func reset_waves(respawn_immediately: bool = false) -> void:
 	for child in get_children():
 		if child is LaneMinion:
-			child.queue_free()
+			remove_child(child)
+			child.free()
+
+	if _wave_timer != null:
+		_wave_timer.stop()
+		if visible and wave_interval_seconds > 0.0:
+			_wave_timer.start()
 
 	if respawn_immediately and visible:
 		spawn_wave()

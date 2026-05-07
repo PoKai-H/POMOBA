@@ -362,6 +362,12 @@ func _set_agent_mode(agent: Node):
 
 
 func _get_agents():
+	all_agents = []
+	agents_training = []
+	agents_inference = []
+	agents_heuristic = []
+	agent_demo_record = null
+
 	all_agents = get_tree().get_nodes_in_group("AGENT")
 	for agent in all_agents:
 		_set_agent_mode(agent)
@@ -388,6 +394,19 @@ func _get_agents():
 	agents_training_policy_names.resize(training_agent_count)
 	for i in range(0, training_agent_count):
 		agents_training_policy_names[i] = agents_training[i].policy_name
+
+
+func _reset_world():
+	n_action_steps = 0
+	var main_scene := get_parent()
+	if main_scene != null and main_scene.has_method("apply_sim_config"):
+		main_scene.apply_sim_config()
+		_get_agents()
+		if connected:
+			_set_heuristic("model", agents_training)
+		return
+
+	_reset_agents()
 
 
 func _set_heuristic(heuristic, agents: Array):
@@ -518,7 +537,7 @@ func handle_message() -> bool:
 		var config_message = message.duplicate(true)
 		config_message.erase("type")
 		SimConfig.apply_config_message(config_message)
-		_reset_agents()
+		_reset_world()
 		just_reset = true
 		get_tree().set_pause(false)
 		#print("resetting forcing draw")

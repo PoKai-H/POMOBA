@@ -8,6 +8,7 @@ class_name LaneTower
 @export var range_outline_color: Color = Color(1.0, 0.95, 0.6, 0.45)
 
 @export var lane_tower_reward_amount: float = 10.0
+@export var tower_objective_reward_amount: float = 100.0
 
 var _cooldown_remaining: float = 0.0
 
@@ -15,7 +16,9 @@ var _cooldown_remaining: float = 0.0
 func _ready() -> void:
 	actor_kind = &"tower"
 	super._ready()
+	attack_range = SimConfig.get_vision_radius_pixels()
 	reward_amount = lane_tower_reward_amount
+	queue_redraw()
 
 func _physics_process(delta: float) -> void:
 	if not is_alive():
@@ -65,6 +68,31 @@ func _sort_targets(a: CombatActor, b: CombatActor) -> bool:
 	return global_position.distance_squared_to(a.global_position) < global_position.distance_squared_to(
 		b.global_position
 	)
+
+
+func _handle_death() -> void:
+	_apply_tower_objective_rewards()
+	super._handle_death()
+
+
+func _apply_tower_objective_rewards() -> void:
+	for node in get_tree().get_nodes_in_group("player"):
+		if not (node is CombatActor):
+			continue
+
+		var player := node as CombatActor
+		var reward_delta := tower_objective_reward_amount
+		if player.team_id == team_id:
+			reward_delta = -tower_objective_reward_amount
+
+		if player.has_method("set_reward") and player.has_method("get_reward"):
+			player.set_reward(player.get_reward() + reward_delta)
+			if player.has_method("update_reward"):
+				player.update_reward()
+
+		var controller := player.get_node_or_null("AIController2D")
+		if controller != null:
+			controller.done = true
 
 
 func _draw() -> void:

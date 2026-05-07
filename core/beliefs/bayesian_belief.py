@@ -1,10 +1,10 @@
 
-
+import jax.numpy as jnp
 from core.utils.obs_encoder import unwrap_obs
 
 
 class BayesianBelief:
-    SCORE_ORDER = ["aggressive", "neutral", "farming", "observation_craving"]
+    SCORE_ORDER = ["aggressive", "neutral", "farming"]
     LANE_ENEMY_ID = 2
     ACTION_MOVE_SET = tuple(range(0, 9))
     ACTION_ATTACK_HERO = 9
@@ -15,20 +15,19 @@ class BayesianBelief:
     WEAK = 0.1
     BELIEF_UPDATE_ALPHA = 0.3
 
-    def __init__(self, num_strategies=4):
+    def __init__(self, num_strategies=3):
         self.num_strategies = num_strategies
         self.belief = {
-            "aggressive": 0.25,
-            "neutral": 0.25,
-            "farming": 0.25,
-            "observation_craving": 0.25,
+            "aggressive": 1.0 / 3.0,
+            "neutral": 1.0 / 3.0,
+            "farming": 1.0 / 3.0,
         }
         self.curr_obs = None
         self.prev_obs = None
         self.opponent_last_action = None
         self.opponent_last2t_action = None
 
-    def update_observaition(self, obs):
+    def update_observation(self, obs):
         self.curr_obs = unwrap_obs(obs)
 
     def _current_lane_enemy(self):
@@ -279,7 +278,7 @@ class BayesianBelief:
                     self._action_is_move(c["enemy_action"])
                     and not c["ally_in_enemy_vision_last_t"]
                 ),
-                "add": {"observation_craving": self.STRONG},
+                "add": {"neutral": self.WEAK},
             },
             {
                 "name": "observe_move_with_targets_available",
@@ -287,7 +286,7 @@ class BayesianBelief:
                     self._action_is_move(c["enemy_action"])
                     and c["ally_in_enemy_vision_last_t"]
                 ),
-                "add": {"observation_craving": self.WEAK, "neutral": self.WEAK},
+                "add": {"neutral": self.WEAK},
             },
             {
                 "name": "hero_to_hero",
@@ -338,7 +337,6 @@ class BayesianBelief:
                 "add": {
                     "aggressive": self.MEDIUM,
                     "neutral": self.MEDIUM,
-                    "observation_craving": self.MEDIUM,
                 },
             },
             {
@@ -347,7 +345,7 @@ class BayesianBelief:
                     self._action_is_move(c["prev_enemy_action"])
                     and self._action_is_object_attack(c["enemy_action"])
                 ),
-                "add": {"farming": self.MEDIUM, "observation_craving": self.MEDIUM},
+                "add": {"farming": self.MEDIUM, "neutral": self.WEAK},
             },
             {
                 "name": "move_to_move",
@@ -355,7 +353,7 @@ class BayesianBelief:
                     self._action_is_move(c["prev_enemy_action"])
                     and self._action_is_move(c["enemy_action"])
                 ),
-                "add": {"observation_craving": self.WEAK},
+                "add": {"neutral": self.WEAK},
             },
             {
                 "name": "hero_action_matches_self_hp_drop",
@@ -421,3 +419,10 @@ class BayesianBelief:
         self.prev_obs = self.curr_obs
 
         return self.belief
+
+    def update(self, obs):
+        belief_dict = self.bayesian_update(obs)
+        return jnp.asarray(
+            [belief_dict[name] for name in self.SCORE_ORDER],
+            dtype=jnp.float32,
+        )

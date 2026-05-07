@@ -7,14 +7,40 @@ class BaseStrategy:
     ATTACK_HERO = 9
     ATTACK_MINION = 10
     ATTACK_TOWER = 11
-    MOVE_TOWARD_ENEMY_TOWER = 3
-    RANDOM_MOVE_ACTIONS = [0, 1, 2, 4, 5, 6, 7, 8]
+    MOVE_UP = 0
+    MOVE_LEFT = 1
+    MOVE_RIGHT = 2
+    MOVE_DOWN = 3
+    LANE_CENTER_Y = 325.0
+    HOLD = 8
+    RETREAT = 12
+    RANDOM_MOVE_ACTIONS = [MOVE_UP, MOVE_LEFT, MOVE_RIGHT, MOVE_DOWN, 4, 5, 6, 7, HOLD]
 
     def select_action(self, obs):
+        tower_avoidance_action = self._avoid_enemy_tower_without_ally_minions(obs)
+        if tower_avoidance_action is not None:
+            return tower_avoidance_action
+
+        if not self._visible_enemy_objects(obs):
+            return self._select_observation_craving_action(obs)
+
+        return self._select_action(obs)
+
+    def _select_action(self, obs):
         raise NotImplementedError
 
     def _self_team(self, obs):
         return obs["self"]["team"]
+
+    def _visible_ally_objects(self, obs):
+        self_team = self._self_team(obs)
+        return [
+            obj
+            for obj in obs["objects"]
+            if obj["visible"]
+            and obj["team"] == self_team
+            and obj["status"]["alive"]
+        ]
 
     def _visible_enemy_agents(self, obs):
         self_team = self._self_team(obs)
@@ -39,8 +65,38 @@ class BaseStrategy:
     def _visible_enemy_minions(self, obs):
         return [obj for obj in self._visible_enemy_objects(obs) if obj["type"] == "minion"]
 
+    def _visible_ally_minions(self, obs):
+        return [obj for obj in self._visible_ally_objects(obs) if obj["type"] == "minion"]
+
     def _visible_enemy_towers(self, obs):
         return [obj for obj in self._visible_enemy_objects(obs) if obj["type"] == "tower"]
+
+    def _avoid_enemy_tower_without_ally_minions(self, obs):
+        visible_enemy_towers = self._visible_enemy_towers(obs)
+        if not visible_enemy_towers or self._visible_ally_minions(obs):
+            return None
+
+        return self.RETREAT
+
+    def _select_observation_craving_action(self, obs):
+        if len(self._visible_enemy_agents(obs)) <= 1:
+            intent = self._sample_intent(
+                [
+                    ("move", 0.7),
+                    ("attack_hero", 0.2),
+                    ("attack_object", 0.1),
+                ]
+            )
+        else:
+            intent = self._sample_intent(
+                [
+                    ("move", 0.6),
+                    ("attack_hero", 0.3),
+                    ("attack_object", 0.1),
+                ]
+            )
+
+        return self._resolve_intent(intent, obs)
 
     def _sample_intent(self, weighted_intents):
         """
@@ -65,18 +121,53 @@ class BaseStrategy:
             if self._visible_enemy_towers(obs):
                 return self.ATTACK_TOWER
 
-        return self._sample_movement_action()
+        return self._sample_movement_action(obs)
 
-    def _sample_movement_action(self):
+    def _sample_movement_action(self, obs):
         if random.random() < 0.61:
-            return self.MOVE_TOWARD_ENEMY_TOWER
+            return self._move_toward_enemy_tower_action(obs)
         return random.choice(self.RANDOM_MOVE_ACTIONS)
+
+    def _move_toward_enemy_tower_action(self, obs):
+        visible_enemy_towers = self._visible_enemy_towers(obs)
+        if visible_enemy_towers:
+            nearest_tower = min(
+                visible_enemy_towers,
+                key=lambda tower: self._distance_sq(tower.get("relative_position")),
+            )
+            return self._vertical_move_toward(nearest_tower.get("relative_position"))
+
+        self_team = self._self_team(obs)
+        if self_team == "red":
+            return self.MOVE_UP
+        if self_team in {"blue", "enemy"}:
+            return self.MOVE_DOWN
+
+        self_position = obs.get("self", {}).get("position")
+        if self_position is not None and len(self_position) >= 2:
+            return self.MOVE_DOWN if self_position[1] < self.LANE_CENTER_Y else self.MOVE_UP
+
+        return self.MOVE_UP
+
+    def _distance_sq(self, relative_position):
+        if relative_position is None:
+            return float("inf")
+
+        dx, dy = relative_position
+        return dx * dx + dy * dy
+
+    def _vertical_move_toward(self, relative_position):
+        if relative_position is None:
+            return self.MOVE_UP
+        if relative_position[1] > 0:
+            return self.MOVE_DOWN
+        return self.MOVE_UP
 
 
 class AggressiveStrategy(BaseStrategy):
     name = "aggressive"
 
-    def select_action(self, obs) -> int:
+    def _select_action(self, obs) -> int:
         """
         Aggressive strategy with controlled stochasticity.
 
@@ -113,7 +204,7 @@ class AggressiveStrategy(BaseStrategy):
 class FarmingStrategy(BaseStrategy):
     name = "farming"
 
-    def select_action(self, obs) -> int:
+    def _select_action(self, obs) -> int:
         if self._visible_enemy_minions(obs) or self._visible_enemy_towers(obs):
             intent = self._sample_intent(
                 [
@@ -135,7 +226,7 @@ class FarmingStrategy(BaseStrategy):
 class NeutralStrategy(BaseStrategy):
     name = "neutral"
 
-    def select_action(self, obs) -> int:
+    def _select_action(self, obs) -> int:
         if self._visible_enemy_agents(obs):
             intent = self._sample_intent(
                 [
@@ -154,39 +245,3 @@ class NeutralStrategy(BaseStrategy):
 
         return self._resolve_intent(intent, obs)
 
-
-class ObservationCravingStrategy(BaseStrategy):
-    name = "observation_craving"
-
-    def select_action(self, obs) -> int:
-        visible_enemy_agents = self._visible_enemy_agents(obs)
-        visible_enemy_objects = self._visible_enemy_objects(obs)
-
-        # When information is sparse, prioritize moving to reveal more entities.
-        if len(visible_enemy_agents) <= 1:
-            intent = self._sample_intent(
-                [
-                    ("move", 0.7),
-                    ("attack_object", 0.2),
-                    ("attack_hero", 0.1),
-                ]
-            )
-        # Once enough enemy agents are visible, behave more like a neutral probe.
-        elif visible_enemy_objects:
-            intent = self._sample_intent(
-                [
-                    ("attack_hero", 0.35),
-                    ("attack_object", 0.35),
-                    ("move", 0.3),
-                ]
-            )
-        else:
-            intent = self._sample_intent(
-                [
-                    ("move", 0.6),
-                    ("attack_hero", 0.25),
-                    ("attack_object", 0.15),
-                ]
-            )
-
-        return self._resolve_intent(intent, obs)

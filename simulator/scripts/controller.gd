@@ -20,6 +20,13 @@ var current_target_slot: Variant = null
 var last_action_index: int = 8
 var last_action_type: String = ACTION_HOLD
 
+var valid_attack_action_reward: float = 0.02
+var invalid_attack_action_penalty: float = -0.02
+var approach_enemy_hero_reward: float = 0.02
+var lane_progress_with_minion_reward: float = 0.01
+var approach_enemy_tower_with_minion_reward: float = 0.03
+var enemy_tower_no_minion_penalty: float = -0.05
+
 
 func get_obs() -> Dictionary:
 	if _player == null or not is_instance_valid(_player):
@@ -65,7 +72,11 @@ func get_obs_space() -> Dictionary:
 
 
 func get_reward() -> float:
-	return reward
+	var current_reward := reward
+	reward = 0.0
+	if _player != null and is_instance_valid(_player):
+		_player.set_reward(0.0)
+	return current_reward
 
 
 func get_info() -> Dictionary:
@@ -173,6 +184,7 @@ func set_action(action) -> void:
 		last_action_type = current_action_type
 		last_action_index = _action_type_to_index(current_action_type)
 		move_action = _resolve_move_action()
+		_apply_action_shaping()
 		return
 
 	if not action.has("action"):
@@ -180,18 +192,17 @@ func set_action(action) -> void:
 		last_action_type = current_action_type
 		last_action_index = _action_type_to_index(current_action_type)
 		move_action = Vector2.ZERO
+		_apply_action_shaping()
 		return
 
 	var action_index := int(action["action"])
-	if action_index <= 8:
-		current_action_type = _legacy_action_index_to_type(action_index)
-	else:
-		current_action_type = _action_index_to_type(action_index)
+	current_action_type = _action_index_to_type(action_index)
 
 	last_action_index = action_index
 	last_action_type = current_action_type
 	current_target_slot = action.get("target_slot", null)
 	move_action = _resolve_move_action()
+	_apply_action_shaping()
 
 
 func _build_other_agents(self_position: Vector2) -> Array[Dictionary]:
@@ -401,6 +412,133 @@ func _is_movement_action(action_type: String) -> bool:
 		ACTION_MOVE_DOWN_LEFT,
 		ACTION_MOVE_DOWN_RIGHT
 	]
+
+
+func _apply_action_shaping() -> void:
+	if _player == null or not is_instance_valid(_player) or not _player.is_alive():
+		return
+
+	_apply_attack_action_shaping()
+	_apply_approach_enemy_hero_shaping()
+	_apply_lane_progress_shaping()
+	_apply_enemy_tower_push_shaping()
+	_apply_enemy_tower_danger_shaping()
+
+
+func _apply_attack_action_shaping() -> void:
+	if not _is_attack_action(current_action_type):
+		return
+
+	var target := get_requested_attack_target()
+	if target == null:
+		_add_player_reward(invalid_attack_action_penalty)
+		return
+
+	_add_player_reward(valid_attack_action_reward)
+
+
+func _apply_approach_enemy_hero_shaping() -> void:
+	if move_action == Vector2.ZERO:
+		return
+
+	var enemy_hero := _get_visible_target(&"player")
+	if enemy_hero == null:
+		return
+
+	var to_enemy := enemy_hero.global_position - _player.global_position
+	if to_enemy == Vector2.ZERO:
+		return
+
+	var alignment := move_action.normalized().dot(to_enemy.normalized())
+	if alignment > 0.5:
+		_add_player_reward(approach_enemy_hero_reward * alignment)
+
+
+func _apply_lane_progress_shaping() -> void:
+	if move_action == Vector2.ZERO:
+		return
+	if _visible_ally_minion_count() <= 0:
+		return
+
+	var allied_tower := _get_nearest_allied_tower()
+	if allied_tower == null:
+		return
+
+	var away_from_tower := _player.global_position - allied_tower.global_position
+	if away_from_tower == Vector2.ZERO:
+		return
+
+	var alignment := move_action.normalized().dot(away_from_tower.normalized())
+	if alignment > 0.5:
+		_add_player_reward(lane_progress_with_minion_reward * alignment)
+
+
+func _apply_enemy_tower_push_shaping() -> void:
+	if move_action == Vector2.ZERO:
+		return
+	if _visible_ally_minion_count() <= 0:
+		return
+
+	var enemy_tower := _get_visible_target(&"tower")
+	if enemy_tower == null:
+		return
+
+	var to_tower := enemy_tower.global_position - _player.global_position
+	if to_tower == Vector2.ZERO:
+		return
+
+	var alignment := move_action.normalized().dot(to_tower.normalized())
+	if alignment > 0.5:
+		_add_player_reward(approach_enemy_tower_with_minion_reward * alignment)
+
+
+func _apply_enemy_tower_danger_shaping() -> void:
+	var enemy_tower := _get_visible_target(&"tower")
+	if enemy_tower == null:
+		return
+	if _visible_ally_minion_count() > 0:
+		return
+
+	_add_player_reward(enemy_tower_no_minion_penalty)
+
+
+func _is_attack_action(action_type: String) -> bool:
+	return action_type in [
+		ACTION_ATTACK_HERO,
+		ACTION_ATTACK_NEAREST_MINION,
+		ACTION_ATTACK_TOWER
+	]
+
+
+func _visible_ally_minion_count() -> int:
+	var count := 0
+	for node in get_tree().get_nodes_in_group("combat_actor"):
+		if not (node is CombatActor):
+			continue
+
+		var actor := node as CombatActor
+		if actor.actor_kind != &"minion" or actor.team_id != _player.team_id:
+			continue
+		if not actor.is_alive() or not _is_visible_actor(actor):
+			continue
+
+		count += 1
+	return count
+
+
+func _add_player_reward(amount: float) -> void:
+	if amount == 0.0:
+		return
+	if _player == null or not is_instance_valid(_player) or not _player.has_method("set_reward"):
+		return
+
+	var current_reward = _player.get("reward")
+	if current_reward == null:
+		current_reward = 0.0
+
+	_player.set_reward(float(current_reward) + amount)
+	if _player.has_method("update_reward"):
+		_player.update_reward()
 
 
 func _get_seek_direction(actor_kind: StringName) -> Vector2:

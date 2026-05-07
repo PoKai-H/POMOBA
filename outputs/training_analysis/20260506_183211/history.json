@@ -1,0 +1,3774 @@
+[
+  {
+    "update": 1,
+    "steps": 1024,
+    "loss": 63.819229,
+    "metrics": {
+      "actor_loss": -0.0051,
+      "critic_loss": 127.7,
+      "entropy": 2.5648,
+      "mean_ratio": 0.999,
+      "mean_value": 0.3836,
+      "total_loss": 63.8192
+    },
+    "episode_reward": -103.8027,
+    "episode_length": 221,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3041,
+    "reward_sum": -311.4118,
+    "reward_min": -100.058,
+    "reward_max": 1.213,
+    "return_mean": -4.4216,
+    "advantage_mean": -5.2751,
+    "advantage_min": -101.2601,
+    "advantage_max": 1.0215,
+    "value_mean": 0.8535,
+    "positive_reward_steps": 29,
+    "negative_reward_steps": 995,
+    "attack_rate": 0.201,
+    "movement_rate": 0.639,
+    "retreat_rate": 0.084,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 98,
+        "pct": 0.096
+      },
+      {
+        "name": "move_down",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_down_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "retreat",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "move_left",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "hold",
+        "count": 78,
+        "pct": 0.076
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0732,
+      "move_left": 0.084,
+      "move_right": 0.0957,
+      "move_down": 0.085,
+      "move_up_left": 0.0762,
+      "move_up_right": 0.0713,
+      "move_down_left": 0.085,
+      "move_down_right": 0.0684,
+      "hold": 0.0762,
+      "attack_hero": 0.0723,
+      "attack_nearest_minion": 0.0615,
+      "attack_tower": 0.0674,
+      "retreat": 0.084
+    }
+  },
+  {
+    "update": 2,
+    "steps": 1024,
+    "loss": 61.82946,
+    "metrics": {
+      "actor_loss": -0.0026,
+      "critic_loss": 123.7153,
+      "entropy": 2.5633,
+      "mean_ratio": 0.9989,
+      "mean_value": -0.5622,
+      "total_loss": 61.8295
+    },
+    "episode_reward": -99.927,
+    "episode_length": 305,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3195,
+    "reward_sum": -327.1604,
+    "reward_min": -100.008,
+    "reward_max": 1.2257,
+    "return_mean": -5.4797,
+    "advantage_mean": -5.3497,
+    "advantage_min": -100.1485,
+    "advantage_max": 1.2477,
+    "value_mean": -0.13,
+    "positive_reward_steps": 65,
+    "negative_reward_steps": 959,
+    "attack_rate": 0.225,
+    "movement_rate": 0.641,
+    "retreat_rate": 0.071,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_left",
+        "count": 93,
+        "pct": 0.091
+      },
+      {
+        "name": "move_down_right",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "move_right",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "move_up",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_up_left",
+        "count": 84,
+        "pct": 0.082
+      },
+      {
+        "name": "attack_tower",
+        "count": 80,
+        "pct": 0.078
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.085,
+      "move_left": 0.0908,
+      "move_right": 0.0869,
+      "move_down": 0.0635,
+      "move_up_left": 0.082,
+      "move_up_right": 0.0693,
+      "move_down_left": 0.0752,
+      "move_down_right": 0.0879,
+      "hold": 0.0635,
+      "attack_hero": 0.0693,
+      "attack_nearest_minion": 0.0771,
+      "attack_tower": 0.0781,
+      "retreat": 0.0713
+    }
+  },
+  {
+    "update": 3,
+    "steps": 1024,
+    "loss": 61.927151,
+    "metrics": {
+      "actor_loss": -0.0027,
+      "critic_loss": 123.9109,
+      "entropy": 2.5621,
+      "mean_ratio": 0.9996,
+      "mean_value": -1.4593,
+      "total_loss": 61.9272
+    },
+    "episode_reward": -99.329,
+    "episode_length": 289,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3085,
+    "reward_sum": -315.8991,
+    "reward_min": -100.008,
+    "reward_max": 1.2289,
+    "return_mean": -6.0348,
+    "advantage_mean": -4.9691,
+    "advantage_min": -98.8995,
+    "advantage_max": 2.2074,
+    "value_mean": -1.0657,
+    "positive_reward_steps": 47,
+    "negative_reward_steps": 977,
+    "attack_rate": 0.213,
+    "movement_rate": 0.635,
+    "retreat_rate": 0.088,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_up_right",
+        "count": 100,
+        "pct": 0.098
+      },
+      {
+        "name": "move_left",
+        "count": 94,
+        "pct": 0.092
+      },
+      {
+        "name": "retreat",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "move_up_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_down_right",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "attack_tower",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0732,
+      "move_left": 0.0918,
+      "move_right": 0.0674,
+      "move_down": 0.0654,
+      "move_up_left": 0.085,
+      "move_up_right": 0.0977,
+      "move_down_left": 0.0713,
+      "move_down_right": 0.083,
+      "hold": 0.0645,
+      "attack_hero": 0.0605,
+      "attack_nearest_minion": 0.0732,
+      "attack_tower": 0.0791,
+      "retreat": 0.0879
+    }
+  },
+  {
+    "update": 4,
+    "steps": 1024,
+    "loss": 40.403782,
+    "metrics": {
+      "actor_loss": -0.0026,
+      "critic_loss": 80.8639,
+      "entropy": 2.5607,
+      "mean_ratio": 1.0006,
+      "mean_value": -2.2153,
+      "total_loss": 40.4038
+    },
+    "episode_reward": -98.0551,
+    "episode_length": 350,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2068,
+    "reward_sum": -211.7974,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -5.0436,
+    "advantage_mean": -3.1402,
+    "advantage_min": -99.351,
+    "advantage_max": 6.3029,
+    "value_mean": -1.9034,
+    "positive_reward_steps": 69,
+    "negative_reward_steps": 955,
+    "attack_rate": 0.219,
+    "movement_rate": 0.608,
+    "retreat_rate": 0.089,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "retreat",
+        "count": 91,
+        "pct": 0.089
+      },
+      {
+        "name": "move_up_right",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "hold",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "move_down_right",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "move_left",
+        "count": 83,
+        "pct": 0.081
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0645,
+      "move_left": 0.0811,
+      "move_right": 0.0811,
+      "move_down": 0.0664,
+      "move_up_left": 0.0703,
+      "move_up_right": 0.0859,
+      "move_down_left": 0.0762,
+      "move_down_right": 0.083,
+      "hold": 0.084,
+      "attack_hero": 0.0693,
+      "attack_nearest_minion": 0.0898,
+      "attack_tower": 0.0596,
+      "retreat": 0.0889
+    }
+  },
+  {
+    "update": 5,
+    "steps": 1024,
+    "loss": 39.296795,
+    "metrics": {
+      "actor_loss": -0.0026,
+      "critic_loss": 78.65,
+      "entropy": 2.5578,
+      "mean_ratio": 0.9997,
+      "mean_value": -2.7504,
+      "total_loss": 39.2968
+    },
+    "episode_reward": -113.5873,
+    "episode_length": 219,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2203,
+    "reward_sum": -225.5453,
+    "reward_min": -100.058,
+    "reward_max": 1.212,
+    "return_mean": -5.7569,
+    "advantage_mean": -3.2624,
+    "advantage_min": -96.5536,
+    "advantage_max": 2.261,
+    "value_mean": -2.4946,
+    "positive_reward_steps": 55,
+    "negative_reward_steps": 969,
+    "attack_rate": 0.218,
+    "movement_rate": 0.614,
+    "retreat_rate": 0.104,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 106,
+        "pct": 0.104
+      },
+      {
+        "name": "move_up_right",
+        "count": 98,
+        "pct": 0.096
+      },
+      {
+        "name": "move_left",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "attack_tower",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "move_down_left",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0674,
+      "move_left": 0.0879,
+      "move_right": 0.0703,
+      "move_down": 0.0713,
+      "move_up_left": 0.0645,
+      "move_up_right": 0.0957,
+      "move_down_left": 0.0791,
+      "move_down_right": 0.0781,
+      "hold": 0.0645,
+      "attack_hero": 0.0527,
+      "attack_nearest_minion": 0.0811,
+      "attack_tower": 0.084,
+      "retreat": 0.1035
+    }
+  },
+  {
+    "update": 6,
+    "steps": 1024,
+    "loss": 58.327374,
+    "metrics": {
+      "actor_loss": -0.0029,
+      "critic_loss": 116.7116,
+      "entropy": 2.5566,
+      "mean_ratio": 0.9992,
+      "mean_value": -3.0247,
+      "total_loss": 58.3274
+    },
+    "episode_reward": -119.2344,
+    "episode_length": 368,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3358,
+    "reward_sum": -343.8376,
+    "reward_min": -100.008,
+    "reward_max": 1.2315,
+    "return_mean": -7.7916,
+    "advantage_mean": -5.1048,
+    "advantage_min": -95.8614,
+    "advantage_max": 3.0524,
+    "value_mean": -2.6867,
+    "positive_reward_steps": 68,
+    "negative_reward_steps": 956,
+    "attack_rate": 0.21,
+    "movement_rate": 0.626,
+    "retreat_rate": 0.099,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 101,
+        "pct": 0.099
+      },
+      {
+        "name": "move_up_right",
+        "count": 100,
+        "pct": 0.098
+      },
+      {
+        "name": "move_left",
+        "count": 96,
+        "pct": 0.094
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 93,
+        "pct": 0.091
+      },
+      {
+        "name": "move_down_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_down_left",
+        "count": 76,
+        "pct": 0.074
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0625,
+      "move_left": 0.0938,
+      "move_right": 0.0703,
+      "move_down": 0.0703,
+      "move_up_left": 0.0723,
+      "move_up_right": 0.0977,
+      "move_down_left": 0.0742,
+      "move_down_right": 0.085,
+      "hold": 0.0654,
+      "attack_hero": 0.0518,
+      "attack_nearest_minion": 0.0908,
+      "attack_tower": 0.0674,
+      "retreat": 0.0986
+    }
+  },
+  {
+    "update": 7,
+    "steps": 1024,
+    "loss": 73.579391,
+    "metrics": {
+      "actor_loss": -0.0022,
+      "critic_loss": 147.2142,
+      "entropy": 2.5539,
+      "mean_ratio": 0.999,
+      "mean_value": -4.1449,
+      "total_loss": 73.5794
+    },
+    "episode_reward": -96.422,
+    "episode_length": 223,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3819,
+    "reward_sum": -391.0644,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -9.3725,
+    "advantage_mean": -5.6795,
+    "advantage_min": -95.3144,
+    "advantage_max": 10.5253,
+    "value_mean": -3.693,
+    "positive_reward_steps": 69,
+    "negative_reward_steps": 955,
+    "attack_rate": 0.231,
+    "movement_rate": 0.599,
+    "retreat_rate": 0.091,
+    "done_count": 4,
+    "truncated_count": 4,
+    "actions": [
+      {
+        "name": "move_up_right",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "retreat",
+        "count": 93,
+        "pct": 0.091
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "move_down_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "attack_tower",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "hold",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0703,
+      "move_left": 0.0645,
+      "move_right": 0.0752,
+      "move_down": 0.0732,
+      "move_up_left": 0.0625,
+      "move_up_right": 0.0967,
+      "move_down_left": 0.0713,
+      "move_down_right": 0.085,
+      "hold": 0.0791,
+      "attack_hero": 0.0645,
+      "attack_nearest_minion": 0.0879,
+      "attack_tower": 0.0791,
+      "retreat": 0.0908
+    }
+  },
+  {
+    "update": 8,
+    "steps": 1024,
+    "loss": 71.001968,
+    "metrics": {
+      "actor_loss": -0.0024,
+      "critic_loss": 142.0598,
+      "entropy": 2.5538,
+      "mean_ratio": 1.0,
+      "mean_value": -4.8148,
+      "total_loss": 71.002
+    },
+    "episode_reward": -101.9731,
+    "episode_length": 149,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3855,
+    "reward_sum": -394.7505,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -9.9827,
+    "advantage_mean": -5.5522,
+    "advantage_min": -95.6166,
+    "advantage_max": 3.0658,
+    "value_mean": -4.4305,
+    "positive_reward_steps": 54,
+    "negative_reward_steps": 970,
+    "attack_rate": 0.218,
+    "movement_rate": 0.601,
+    "retreat_rate": 0.11,
+    "done_count": 4,
+    "truncated_count": 4,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 113,
+        "pct": 0.11
+      },
+      {
+        "name": "move_up_right",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "move_down_right",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "move_left",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "move_right",
+        "count": 80,
+        "pct": 0.078
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0635,
+      "move_left": 0.084,
+      "move_right": 0.0781,
+      "move_down": 0.0703,
+      "move_up_left": 0.0605,
+      "move_up_right": 0.0898,
+      "move_down_left": 0.0645,
+      "move_down_right": 0.0898,
+      "hold": 0.0713,
+      "attack_hero": 0.0732,
+      "attack_nearest_minion": 0.084,
+      "attack_tower": 0.0605,
+      "retreat": 0.1104
+    }
+  },
+  {
+    "update": 9,
+    "steps": 1024,
+    "loss": 53.821388,
+    "metrics": {
+      "actor_loss": -0.0034,
+      "critic_loss": 107.7005,
+      "entropy": 2.5453,
+      "mean_ratio": 1.0008,
+      "mean_value": -5.6574,
+      "total_loss": 53.8214
+    },
+    "episode_reward": -102.0657,
+    "episode_length": 204,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2985,
+    "reward_sum": -305.6296,
+    "reward_min": -100.008,
+    "reward_max": 1.2309,
+    "return_mean": -9.3805,
+    "advantage_mean": -3.9632,
+    "advantage_min": -93.807,
+    "advantage_max": 2.1059,
+    "value_mean": -5.4174,
+    "positive_reward_steps": 48,
+    "negative_reward_steps": 976,
+    "attack_rate": 0.223,
+    "movement_rate": 0.63,
+    "retreat_rate": 0.1,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 103,
+        "pct": 0.101
+      },
+      {
+        "name": "move_up_right",
+        "count": 102,
+        "pct": 0.1
+      },
+      {
+        "name": "retreat",
+        "count": 102,
+        "pct": 0.1
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 98,
+        "pct": 0.096
+      },
+      {
+        "name": "move_down_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_up_left",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0625,
+      "move_left": 0.0605,
+      "move_right": 0.1006,
+      "move_down": 0.0762,
+      "move_up_left": 0.0791,
+      "move_up_right": 0.0996,
+      "move_down_left": 0.085,
+      "move_down_right": 0.0664,
+      "hold": 0.0479,
+      "attack_hero": 0.0596,
+      "attack_nearest_minion": 0.0957,
+      "attack_tower": 0.0674,
+      "retreat": 0.0996
+    }
+  },
+  {
+    "update": 10,
+    "steps": 1024,
+    "loss": 54.644569,
+    "metrics": {
+      "actor_loss": -0.0032,
+      "critic_loss": 109.3464,
+      "entropy": 2.5394,
+      "mean_ratio": 1.0001,
+      "mean_value": -6.2698,
+      "total_loss": 54.6446
+    },
+    "episode_reward": -111.0439,
+    "episode_length": 290,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3103,
+    "reward_sum": -317.707,
+    "reward_min": -100.008,
+    "reward_max": 3.212,
+    "return_mean": -10.0848,
+    "advantage_mean": -4.0025,
+    "advantage_min": -92.8844,
+    "advantage_max": 2.3097,
+    "value_mean": -6.0823,
+    "positive_reward_steps": 39,
+    "negative_reward_steps": 985,
+    "attack_rate": 0.239,
+    "movement_rate": 0.608,
+    "retreat_rate": 0.088,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 116,
+        "pct": 0.113
+      },
+      {
+        "name": "move_up_right",
+        "count": 103,
+        "pct": 0.101
+      },
+      {
+        "name": "move_down_right",
+        "count": 91,
+        "pct": 0.089
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 91,
+        "pct": 0.089
+      },
+      {
+        "name": "retreat",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "move_down",
+        "count": 84,
+        "pct": 0.082
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.04,
+      "move_left": 0.0615,
+      "move_right": 0.1133,
+      "move_down": 0.082,
+      "move_up_left": 0.0557,
+      "move_up_right": 0.1006,
+      "move_down_left": 0.0664,
+      "move_down_right": 0.0889,
+      "hold": 0.0645,
+      "attack_hero": 0.0752,
+      "attack_nearest_minion": 0.0889,
+      "attack_tower": 0.0752,
+      "retreat": 0.0879
+    }
+  },
+  {
+    "update": 11,
+    "steps": 1024,
+    "loss": 55.430908,
+    "metrics": {
+      "actor_loss": -0.0042,
+      "critic_loss": 110.9209,
+      "entropy": 2.5313,
+      "mean_ratio": 1.0011,
+      "mean_value": -6.5617,
+      "total_loss": 55.4309
+    },
+    "episode_reward": -109.3132,
+    "episode_length": 217,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3065,
+    "reward_sum": -313.9056,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -10.3002,
+    "advantage_mean": -3.913,
+    "advantage_min": -92.4968,
+    "advantage_max": 11.5313,
+    "value_mean": -6.3872,
+    "positive_reward_steps": 61,
+    "negative_reward_steps": 963,
+    "attack_rate": 0.244,
+    "movement_rate": 0.58,
+    "retreat_rate": 0.117,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 120,
+        "pct": 0.117
+      },
+      {
+        "name": "move_right",
+        "count": 109,
+        "pct": 0.106
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 108,
+        "pct": 0.105
+      },
+      {
+        "name": "move_down_left",
+        "count": 91,
+        "pct": 0.089
+      },
+      {
+        "name": "move_up_right",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "attack_hero",
+        "count": 83,
+        "pct": 0.081
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.042,
+      "move_left": 0.0586,
+      "move_right": 0.1064,
+      "move_down": 0.0732,
+      "move_up_left": 0.0469,
+      "move_up_right": 0.0869,
+      "move_down_left": 0.0889,
+      "move_down_right": 0.0771,
+      "hold": 0.0586,
+      "attack_hero": 0.0811,
+      "attack_nearest_minion": 0.1055,
+      "attack_tower": 0.0576,
+      "retreat": 0.1172
+    }
+  },
+  {
+    "update": 12,
+    "steps": 1024,
+    "loss": 51.548576,
+    "metrics": {
+      "actor_loss": -0.0063,
+      "critic_loss": 103.1601,
+      "entropy": 2.5209,
+      "mean_ratio": 1.0005,
+      "mean_value": -6.6308,
+      "total_loss": 51.5486
+    },
+    "episode_reward": -89.5112,
+    "episode_length": 224,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2934,
+    "reward_sum": -300.4125,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -10.1874,
+    "advantage_mean": -3.6468,
+    "advantage_min": -91.7657,
+    "advantage_max": 10.5003,
+    "value_mean": -6.5406,
+    "positive_reward_steps": 54,
+    "negative_reward_steps": 970,
+    "attack_rate": 0.236,
+    "movement_rate": 0.59,
+    "retreat_rate": 0.108,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 128,
+        "pct": 0.125
+      },
+      {
+        "name": "retreat",
+        "count": 111,
+        "pct": 0.108
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 109,
+        "pct": 0.106
+      },
+      {
+        "name": "move_down_right",
+        "count": 82,
+        "pct": 0.08
+      },
+      {
+        "name": "move_up_right",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_down_left",
+        "count": 79,
+        "pct": 0.077
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0527,
+      "move_left": 0.0664,
+      "move_right": 0.125,
+      "move_down": 0.0693,
+      "move_up_left": 0.041,
+      "move_up_right": 0.0781,
+      "move_down_left": 0.0771,
+      "move_down_right": 0.0801,
+      "hold": 0.0654,
+      "attack_hero": 0.0557,
+      "attack_nearest_minion": 0.1064,
+      "attack_tower": 0.0742,
+      "retreat": 0.1084
+    }
+  },
+  {
+    "update": 13,
+    "steps": 1024,
+    "loss": 51.712688,
+    "metrics": {
+      "actor_loss": -0.0035,
+      "critic_loss": 103.4825,
+      "entropy": 2.5035,
+      "mean_ratio": 0.9991,
+      "mean_value": -6.6478,
+      "total_loss": 51.7127
+    },
+    "episode_reward": -90.7788,
+    "episode_length": 157,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2894,
+    "reward_sum": -296.3187,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -10.0729,
+    "advantage_mean": -3.6334,
+    "advantage_min": -91.837,
+    "advantage_max": 10.8379,
+    "value_mean": -6.4395,
+    "positive_reward_steps": 54,
+    "negative_reward_steps": 970,
+    "attack_rate": 0.209,
+    "movement_rate": 0.581,
+    "retreat_rate": 0.132,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 135,
+        "pct": 0.132
+      },
+      {
+        "name": "move_right",
+        "count": 126,
+        "pct": 0.123
+      },
+      {
+        "name": "move_down_left",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "hold",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_down_right",
+        "count": 78,
+        "pct": 0.076
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 75,
+        "pct": 0.073
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0527,
+      "move_left": 0.0674,
+      "move_right": 0.123,
+      "move_down": 0.0723,
+      "move_up_left": 0.0449,
+      "move_up_right": 0.0654,
+      "move_down_left": 0.0791,
+      "move_down_right": 0.0762,
+      "hold": 0.0781,
+      "attack_hero": 0.0713,
+      "attack_nearest_minion": 0.0732,
+      "attack_tower": 0.0645,
+      "retreat": 0.1318
+    }
+  },
+  {
+    "update": 14,
+    "steps": 1024,
+    "loss": 50.754105,
+    "metrics": {
+      "actor_loss": -0.0033,
+      "critic_loss": 101.5644,
+      "entropy": 2.4812,
+      "mean_ratio": 1.0003,
+      "mean_value": -7.5722,
+      "total_loss": 50.7541
+    },
+    "episode_reward": -102.005,
+    "episode_length": 356,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2987,
+    "reward_sum": -305.892,
+    "reward_min": -100.008,
+    "reward_max": 1.212,
+    "return_mean": -11.0154,
+    "advantage_mean": -3.6086,
+    "advantage_min": -91.4651,
+    "advantage_max": 3.5407,
+    "value_mean": -7.4068,
+    "positive_reward_steps": 29,
+    "negative_reward_steps": 995,
+    "attack_rate": 0.24,
+    "movement_rate": 0.553,
+    "retreat_rate": 0.149,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 153,
+        "pct": 0.149
+      },
+      {
+        "name": "move_right",
+        "count": 147,
+        "pct": 0.144
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 93,
+        "pct": 0.091
+      },
+      {
+        "name": "attack_hero",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "move_down_right",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "move_down",
+        "count": 76,
+        "pct": 0.074
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0605,
+      "move_left": 0.0547,
+      "move_right": 0.1436,
+      "move_down": 0.0742,
+      "move_up_left": 0.0322,
+      "move_up_right": 0.0537,
+      "move_down_left": 0.0586,
+      "move_down_right": 0.0752,
+      "hold": 0.0576,
+      "attack_hero": 0.0791,
+      "attack_nearest_minion": 0.0908,
+      "attack_tower": 0.0703,
+      "retreat": 0.1494
+    }
+  },
+  {
+    "update": 15,
+    "steps": 1024,
+    "loss": 70.583809,
+    "metrics": {
+      "actor_loss": -0.005,
+      "critic_loss": 141.2272,
+      "entropy": 2.48,
+      "mean_ratio": 1.0,
+      "mean_value": -7.4659,
+      "total_loss": 70.5838
+    },
+    "episode_reward": -103.4051,
+    "episode_length": 216,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3967,
+    "reward_sum": -406.2065,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -12.5927,
+    "advantage_mean": -5.1816,
+    "advantage_min": -91.2827,
+    "advantage_max": 11.1445,
+    "value_mean": -7.4111,
+    "positive_reward_steps": 62,
+    "negative_reward_steps": 962,
+    "attack_rate": 0.216,
+    "movement_rate": 0.563,
+    "retreat_rate": 0.153,
+    "done_count": 4,
+    "truncated_count": 4,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 157,
+        "pct": 0.153
+      },
+      {
+        "name": "move_right",
+        "count": 141,
+        "pct": 0.138
+      },
+      {
+        "name": "move_down",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "attack_hero",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "move_down_right",
+        "count": 73,
+        "pct": 0.071
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0566,
+      "move_left": 0.042,
+      "move_right": 0.1377,
+      "move_down": 0.085,
+      "move_up_left": 0.0391,
+      "move_up_right": 0.0635,
+      "move_down_left": 0.0684,
+      "move_down_right": 0.0713,
+      "hold": 0.0674,
+      "attack_hero": 0.0811,
+      "attack_nearest_minion": 0.0811,
+      "attack_tower": 0.0537,
+      "retreat": 0.1533
+    }
+  },
+  {
+    "update": 16,
+    "steps": 1024,
+    "loss": 50.34948,
+    "metrics": {
+      "actor_loss": -0.0022,
+      "critic_loss": 100.7526,
+      "entropy": 2.4554,
+      "mean_ratio": 1.0001,
+      "mean_value": -8.0028,
+      "total_loss": 50.3495
+    },
+    "episode_reward": -99.312,
+    "episode_length": 228,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2984,
+    "reward_sum": -305.574,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -11.2621,
+    "advantage_mean": -3.5642,
+    "advantage_min": -90.0802,
+    "advantage_max": 11.6856,
+    "value_mean": -7.6979,
+    "positive_reward_steps": 48,
+    "negative_reward_steps": 976,
+    "attack_rate": 0.212,
+    "movement_rate": 0.538,
+    "retreat_rate": 0.185,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 189,
+        "pct": 0.185
+      },
+      {
+        "name": "move_right",
+        "count": 158,
+        "pct": 0.154
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "hold",
+        "count": 67,
+        "pct": 0.065
+      },
+      {
+        "name": "attack_tower",
+        "count": 66,
+        "pct": 0.064
+      },
+      {
+        "name": "move_down",
+        "count": 65,
+        "pct": 0.063
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0449,
+      "move_left": 0.0615,
+      "move_right": 0.1543,
+      "move_down": 0.0635,
+      "move_up_left": 0.0361,
+      "move_up_right": 0.0586,
+      "move_down_left": 0.0635,
+      "move_down_right": 0.0557,
+      "hold": 0.0654,
+      "attack_hero": 0.0635,
+      "attack_nearest_minion": 0.084,
+      "attack_tower": 0.0645,
+      "retreat": 0.1846
+    }
+  },
+  {
+    "update": 17,
+    "steps": 1024,
+    "loss": 33.160091,
+    "metrics": {
+      "actor_loss": -0.0093,
+      "critic_loss": 66.3879,
+      "entropy": 2.4592,
+      "mean_ratio": 0.9985,
+      "mean_value": -8.6808,
+      "total_loss": 33.1601
+    },
+    "episode_reward": -98.5883,
+    "episode_length": 379,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2044,
+    "reward_sum": -209.3097,
+    "reward_min": -100.008,
+    "reward_max": 3.212,
+    "return_mean": -10.619,
+    "advantage_mean": -1.8803,
+    "advantage_min": -89.4022,
+    "advantage_max": 3.9671,
+    "value_mean": -8.7386,
+    "positive_reward_steps": 54,
+    "negative_reward_steps": 970,
+    "attack_rate": 0.225,
+    "movement_rate": 0.571,
+    "retreat_rate": 0.156,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 181,
+        "pct": 0.177
+      },
+      {
+        "name": "retreat",
+        "count": 160,
+        "pct": 0.156
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "move_down_left",
+        "count": 78,
+        "pct": 0.076
+      },
+      {
+        "name": "move_up_right",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "move_down",
+        "count": 68,
+        "pct": 0.066
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.041,
+      "move_left": 0.0469,
+      "move_right": 0.1768,
+      "move_down": 0.0664,
+      "move_up_left": 0.0371,
+      "move_up_right": 0.0752,
+      "move_down_left": 0.0762,
+      "move_down_right": 0.0518,
+      "hold": 0.0479,
+      "attack_hero": 0.0625,
+      "attack_nearest_minion": 0.0967,
+      "attack_tower": 0.0654,
+      "retreat": 0.1562
+    }
+  },
+  {
+    "update": 18,
+    "steps": 1024,
+    "loss": 33.500603,
+    "metrics": {
+      "actor_loss": -0.007,
+      "critic_loss": 67.0645,
+      "entropy": 2.4648,
+      "mean_ratio": 1.0017,
+      "mean_value": -8.7795,
+      "total_loss": 33.5006
+    },
+    "episode_reward": -123.0966,
+    "episode_length": 284,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2198,
+    "reward_sum": -225.1044,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -10.9062,
+    "advantage_mean": -2.1693,
+    "advantage_min": -89.121,
+    "advantage_max": 12.0456,
+    "value_mean": -8.7369,
+    "positive_reward_steps": 61,
+    "negative_reward_steps": 963,
+    "attack_rate": 0.224,
+    "movement_rate": 0.57,
+    "retreat_rate": 0.152,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 156,
+        "pct": 0.152
+      },
+      {
+        "name": "move_right",
+        "count": 148,
+        "pct": 0.145
+      },
+      {
+        "name": "attack_hero",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "move_down_left",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "attack_tower",
+        "count": 76,
+        "pct": 0.074
+      },
+      {
+        "name": "move_down",
+        "count": 73,
+        "pct": 0.071
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0537,
+      "move_left": 0.0703,
+      "move_right": 0.1445,
+      "move_down": 0.0713,
+      "move_up_left": 0.0371,
+      "move_up_right": 0.0488,
+      "move_down_left": 0.0811,
+      "move_down_right": 0.0635,
+      "hold": 0.0537,
+      "attack_hero": 0.083,
+      "attack_nearest_minion": 0.0664,
+      "attack_tower": 0.0742,
+      "retreat": 0.1523
+    }
+  },
+  {
+    "update": 19,
+    "steps": 1024,
+    "loss": 49.499062,
+    "metrics": {
+      "actor_loss": -0.0055,
+      "critic_loss": 99.0588,
+      "entropy": 2.4858,
+      "mean_ratio": 0.9998,
+      "mean_value": -8.3211,
+      "total_loss": 49.4991
+    },
+    "episode_reward": -103.3654,
+    "episode_length": 307,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3031,
+    "reward_sum": -310.4138,
+    "reward_min": -100.208,
+    "reward_max": 10.232,
+    "return_mean": -11.7442,
+    "advantage_mean": -3.5924,
+    "advantage_min": -89.068,
+    "advantage_max": 10.2688,
+    "value_mean": -8.1518,
+    "positive_reward_steps": 53,
+    "negative_reward_steps": 971,
+    "attack_rate": 0.235,
+    "movement_rate": 0.589,
+    "retreat_rate": 0.121,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 171,
+        "pct": 0.167
+      },
+      {
+        "name": "retreat",
+        "count": 124,
+        "pct": 0.121
+      },
+      {
+        "name": "attack_tower",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "move_down",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "move_down_right",
+        "count": 79,
+        "pct": 0.077
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.043,
+      "move_left": 0.0547,
+      "move_right": 0.167,
+      "move_down": 0.0811,
+      "move_up_left": 0.0469,
+      "move_up_right": 0.0518,
+      "move_down_left": 0.0674,
+      "move_down_right": 0.0771,
+      "hold": 0.0547,
+      "attack_hero": 0.0732,
+      "attack_nearest_minion": 0.0791,
+      "attack_tower": 0.083,
+      "retreat": 0.1211
+    }
+  },
+  {
+    "update": 20,
+    "steps": 1024,
+    "loss": 32.401501,
+    "metrics": {
+      "actor_loss": -0.0027,
+      "critic_loss": 64.8584,
+      "entropy": 2.5009,
+      "mean_ratio": 1.0006,
+      "mean_value": -7.9555,
+      "total_loss": 32.4015
+    },
+    "episode_reward": -113.2216,
+    "episode_length": 221,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2193,
+    "reward_sum": -224.5801,
+    "reward_min": -100.008,
+    "reward_max": 3.212,
+    "return_mean": -10.2418,
+    "advantage_mean": -2.2918,
+    "advantage_min": -88.4619,
+    "advantage_max": 4.8225,
+    "value_mean": -7.9501,
+    "positive_reward_steps": 58,
+    "negative_reward_steps": 966,
+    "attack_rate": 0.255,
+    "movement_rate": 0.596,
+    "retreat_rate": 0.097,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 132,
+        "pct": 0.129
+      },
+      {
+        "name": "retreat",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "move_down",
+        "count": 90,
+        "pct": 0.088
+      },
+      {
+        "name": "attack_tower",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "attack_hero",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0566,
+      "move_left": 0.0576,
+      "move_right": 0.1289,
+      "move_down": 0.0879,
+      "move_up_left": 0.0469,
+      "move_up_right": 0.0713,
+      "move_down_left": 0.0684,
+      "move_down_right": 0.0781,
+      "hold": 0.0527,
+      "attack_hero": 0.0791,
+      "attack_nearest_minion": 0.0898,
+      "attack_tower": 0.0859,
+      "retreat": 0.0967
+    }
+  },
+  {
+    "update": 21,
+    "steps": 1024,
+    "loss": 48.382553,
+    "metrics": {
+      "actor_loss": -0.0008,
+      "critic_loss": 96.8162,
+      "entropy": 2.4694,
+      "mean_ratio": 1.0004,
+      "mean_value": -8.8143,
+      "total_loss": 48.3826
+    },
+    "episode_reward": -113.0272,
+    "episode_length": 357,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3204,
+    "reward_sum": -328.08,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -12.3448,
+    "advantage_mean": -3.7185,
+    "advantage_min": -88.312,
+    "advantage_max": 11.6996,
+    "value_mean": -8.6263,
+    "positive_reward_steps": 54,
+    "negative_reward_steps": 970,
+    "attack_rate": 0.239,
+    "movement_rate": 0.604,
+    "retreat_rate": 0.104,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 182,
+        "pct": 0.178
+      },
+      {
+        "name": "retreat",
+        "count": 107,
+        "pct": 0.104
+      },
+      {
+        "name": "attack_tower",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 84,
+        "pct": 0.082
+      },
+      {
+        "name": "move_down",
+        "count": 82,
+        "pct": 0.08
+      },
+      {
+        "name": "move_down_left",
+        "count": 80,
+        "pct": 0.078
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0459,
+      "move_left": 0.0664,
+      "move_right": 0.1777,
+      "move_down": 0.0801,
+      "move_up_left": 0.0459,
+      "move_up_right": 0.0537,
+      "move_down_left": 0.0781,
+      "move_down_right": 0.0557,
+      "hold": 0.0527,
+      "attack_hero": 0.0703,
+      "attack_nearest_minion": 0.082,
+      "attack_tower": 0.0869,
+      "retreat": 0.1045
+    }
+  },
+  {
+    "update": 22,
+    "steps": 1024,
+    "loss": 31.511614,
+    "metrics": {
+      "actor_loss": -0.0033,
+      "critic_loss": 63.08,
+      "entropy": 2.5105,
+      "mean_ratio": 1.0008,
+      "mean_value": -8.7565,
+      "total_loss": 31.5116
+    },
+    "episode_reward": -112.7619,
+    "episode_length": 438,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2208,
+    "reward_sum": -226.1238,
+    "reward_min": -100.008,
+    "reward_max": 1.212,
+    "return_mean": -10.9241,
+    "advantage_mean": -2.1389,
+    "advantage_min": -87.6297,
+    "advantage_max": 5.0275,
+    "value_mean": -8.7852,
+    "positive_reward_steps": 63,
+    "negative_reward_steps": 961,
+    "attack_rate": 0.241,
+    "movement_rate": 0.578,
+    "retreat_rate": 0.117,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 129,
+        "pct": 0.126
+      },
+      {
+        "name": "retreat",
+        "count": 120,
+        "pct": 0.117
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 94,
+        "pct": 0.092
+      },
+      {
+        "name": "move_left",
+        "count": 84,
+        "pct": 0.082
+      },
+      {
+        "name": "attack_hero",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "attack_tower",
+        "count": 76,
+        "pct": 0.074
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0547,
+      "move_left": 0.082,
+      "move_right": 0.126,
+      "move_down": 0.0586,
+      "move_up_left": 0.0537,
+      "move_up_right": 0.0586,
+      "move_down_left": 0.0732,
+      "move_down_right": 0.0713,
+      "hold": 0.0635,
+      "attack_hero": 0.0752,
+      "attack_nearest_minion": 0.0918,
+      "attack_tower": 0.0742,
+      "retreat": 0.1172
+    }
+  },
+  {
+    "update": 23,
+    "steps": 1024,
+    "loss": 16.20307,
+    "metrics": {
+      "actor_loss": -0.0073,
+      "critic_loss": 32.4695,
+      "entropy": 2.4428,
+      "mean_ratio": 0.9974,
+      "mean_value": -10.1388,
+      "total_loss": 16.2031
+    },
+    "episode_reward": -101.859,
+    "episode_length": 432,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.1111,
+    "reward_sum": -113.7663,
+    "reward_min": -100.058,
+    "reward_max": 1.2315,
+    "return_mean": -10.4859,
+    "advantage_mean": -0.1841,
+    "advantage_min": -87.41,
+    "advantage_max": 4.841,
+    "value_mean": -10.3019,
+    "positive_reward_steps": 65,
+    "negative_reward_steps": 959,
+    "attack_rate": 0.259,
+    "movement_rate": 0.581,
+    "retreat_rate": 0.11,
+    "done_count": 1,
+    "truncated_count": 1,
+    "actions": [
+      {
+        "name": "move_right",
+        "count": 166,
+        "pct": 0.162
+      },
+      {
+        "name": "retreat",
+        "count": 113,
+        "pct": 0.11
+      },
+      {
+        "name": "attack_hero",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "attack_tower",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "move_down_left",
+        "count": 78,
+        "pct": 0.076
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.041,
+      "move_left": 0.0732,
+      "move_right": 0.1621,
+      "move_down": 0.0664,
+      "move_up_left": 0.0381,
+      "move_up_right": 0.0586,
+      "move_down_left": 0.0762,
+      "move_down_right": 0.0654,
+      "hold": 0.0498,
+      "attack_hero": 0.0898,
+      "attack_nearest_minion": 0.0859,
+      "attack_tower": 0.083,
+      "retreat": 0.1104
+    }
+  },
+  {
+    "update": 24,
+    "steps": 1024,
+    "loss": 46.311348,
+    "metrics": {
+      "actor_loss": -0.0042,
+      "critic_loss": 92.681,
+      "entropy": 2.4919,
+      "mean_ratio": 0.9956,
+      "mean_value": -8.875,
+      "total_loss": 46.3113
+    },
+    "episode_reward": -103.512,
+    "episode_length": 243,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.32,
+    "reward_sum": -327.6736,
+    "reward_min": -100.058,
+    "reward_max": 1.212,
+    "return_mean": -12.4279,
+    "advantage_mean": -3.688,
+    "advantage_min": -87.3095,
+    "advantage_max": 7.16,
+    "value_mean": -8.7398,
+    "positive_reward_steps": 60,
+    "negative_reward_steps": 964,
+    "attack_rate": 0.228,
+    "movement_rate": 0.579,
+    "retreat_rate": 0.153,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 157,
+        "pct": 0.153
+      },
+      {
+        "name": "move_right",
+        "count": 133,
+        "pct": 0.13
+      },
+      {
+        "name": "move_left",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "attack_tower",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 78,
+        "pct": 0.076
+      },
+      {
+        "name": "move_down",
+        "count": 78,
+        "pct": 0.076
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0566,
+      "move_left": 0.0859,
+      "move_right": 0.1299,
+      "move_down": 0.0762,
+      "move_up_left": 0.0469,
+      "move_up_right": 0.0537,
+      "move_down_left": 0.0703,
+      "move_down_right": 0.0596,
+      "hold": 0.04,
+      "attack_hero": 0.0723,
+      "attack_nearest_minion": 0.0762,
+      "attack_tower": 0.0791,
+      "retreat": 0.1533
+    }
+  },
+  {
+    "update": 25,
+    "steps": 1024,
+    "loss": 47.853287,
+    "metrics": {
+      "actor_loss": -0.0063,
+      "critic_loss": 95.7693,
+      "entropy": 2.5072,
+      "mean_ratio": 0.9989,
+      "mean_value": -9.0125,
+      "total_loss": 47.8533
+    },
+    "episode_reward": -110.8861,
+    "episode_length": 525,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3054,
+    "reward_sum": -312.6802,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -12.4018,
+    "advantage_mean": -3.4011,
+    "advantage_min": -87.0767,
+    "advantage_max": 10.6666,
+    "value_mean": -9.0007,
+    "positive_reward_steps": 68,
+    "negative_reward_steps": 956,
+    "attack_rate": 0.238,
+    "movement_rate": 0.579,
+    "retreat_rate": 0.119,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "retreat",
+        "count": 122,
+        "pct": 0.119
+      },
+      {
+        "name": "move_right",
+        "count": 110,
+        "pct": 0.107
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 108,
+        "pct": 0.105
+      },
+      {
+        "name": "move_down_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_left",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "attack_tower",
+        "count": 71,
+        "pct": 0.069
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0527,
+      "move_left": 0.0811,
+      "move_right": 0.1074,
+      "move_down": 0.0654,
+      "move_up_left": 0.0566,
+      "move_up_right": 0.0664,
+      "move_down_left": 0.085,
+      "move_down_right": 0.0645,
+      "hold": 0.0635,
+      "attack_hero": 0.0635,
+      "attack_nearest_minion": 0.1055,
+      "attack_tower": 0.0693,
+      "retreat": 0.1191
+    }
+  },
+  {
+    "update": 26,
+    "steps": 1024,
+    "loss": 47.154747,
+    "metrics": {
+      "actor_loss": -0.0015,
+      "critic_loss": 94.3628,
+      "entropy": 2.5155,
+      "mean_ratio": 1.0001,
+      "mean_value": -8.7056,
+      "total_loss": 47.1547
+    },
+    "episode_reward": -112.5274,
+    "episode_length": 439,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3176,
+    "reward_sum": -325.2076,
+    "reward_min": -100.008,
+    "reward_max": 1.2312,
+    "return_mean": -12.235,
+    "advantage_mean": -3.8569,
+    "advantage_min": -86.8922,
+    "advantage_max": 4.0983,
+    "value_mean": -8.3782,
+    "positive_reward_steps": 62,
+    "negative_reward_steps": 962,
+    "attack_rate": 0.249,
+    "movement_rate": 0.599,
+    "retreat_rate": 0.102,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 113,
+        "pct": 0.11
+      },
+      {
+        "name": "retreat",
+        "count": 104,
+        "pct": 0.102
+      },
+      {
+        "name": "move_right",
+        "count": 97,
+        "pct": 0.095
+      },
+      {
+        "name": "move_up_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_left",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "move_down_left",
+        "count": 75,
+        "pct": 0.073
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0654,
+      "move_left": 0.0752,
+      "move_right": 0.0947,
+      "move_down": 0.0723,
+      "move_up_left": 0.0625,
+      "move_up_right": 0.085,
+      "move_down_left": 0.0732,
+      "move_down_right": 0.0703,
+      "hold": 0.0508,
+      "attack_hero": 0.0654,
+      "attack_nearest_minion": 0.1104,
+      "attack_tower": 0.0732,
+      "retreat": 0.1016
+    }
+  },
+  {
+    "update": 27,
+    "steps": 1024,
+    "loss": 30.791866,
+    "metrics": {
+      "actor_loss": -0.0037,
+      "critic_loss": 61.6416,
+      "entropy": 2.5215,
+      "mean_ratio": 1.0002,
+      "mean_value": -10.1954,
+      "total_loss": 30.7919
+    },
+    "episode_reward": -99.3974,
+    "episode_length": 224,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2057,
+    "reward_sum": -210.6143,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -11.7447,
+    "advantage_mean": -1.7613,
+    "advantage_min": -86.2865,
+    "advantage_max": 8.4986,
+    "value_mean": -9.9834,
+    "positive_reward_steps": 98,
+    "negative_reward_steps": 926,
+    "attack_rate": 0.245,
+    "movement_rate": 0.591,
+    "retreat_rate": 0.102,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 117,
+        "pct": 0.114
+      },
+      {
+        "name": "retreat",
+        "count": 104,
+        "pct": 0.102
+      },
+      {
+        "name": "move_up_right",
+        "count": 102,
+        "pct": 0.1
+      },
+      {
+        "name": "move_left",
+        "count": 82,
+        "pct": 0.08
+      },
+      {
+        "name": "move_down",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_down_left",
+        "count": 77,
+        "pct": 0.075
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0605,
+      "move_left": 0.0801,
+      "move_right": 0.0615,
+      "move_down": 0.0781,
+      "move_up_left": 0.0674,
+      "move_up_right": 0.0996,
+      "move_down_left": 0.0752,
+      "move_down_right": 0.0684,
+      "hold": 0.0625,
+      "attack_hero": 0.0654,
+      "attack_nearest_minion": 0.1143,
+      "attack_tower": 0.0654,
+      "retreat": 0.1016
+    }
+  },
+  {
+    "update": 28,
+    "steps": 1024,
+    "loss": 30.318066,
+    "metrics": {
+      "actor_loss": -0.0025,
+      "critic_loss": 60.6917,
+      "entropy": 2.5301,
+      "mean_ratio": 1.0002,
+      "mean_value": -9.8107,
+      "total_loss": 30.3181
+    },
+    "episode_reward": -102.079,
+    "episode_length": 289,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.1934,
+    "reward_sum": -198.036,
+    "reward_min": -100.058,
+    "reward_max": 1.225,
+    "return_mean": -11.6201,
+    "advantage_mean": -1.5373,
+    "advantage_min": -86.611,
+    "advantage_max": 4.4396,
+    "value_mean": -10.0828,
+    "positive_reward_steps": 58,
+    "negative_reward_steps": 966,
+    "attack_rate": 0.235,
+    "movement_rate": 0.604,
+    "retreat_rate": 0.092,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 115,
+        "pct": 0.112
+      },
+      {
+        "name": "move_up_right",
+        "count": 101,
+        "pct": 0.099
+      },
+      {
+        "name": "move_left",
+        "count": 95,
+        "pct": 0.093
+      },
+      {
+        "name": "retreat",
+        "count": 94,
+        "pct": 0.092
+      },
+      {
+        "name": "move_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "attack_tower",
+        "count": 71,
+        "pct": 0.069
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0576,
+      "move_left": 0.0928,
+      "move_right": 0.085,
+      "move_down": 0.0684,
+      "move_up_left": 0.0674,
+      "move_up_right": 0.0986,
+      "move_down_left": 0.0664,
+      "move_down_right": 0.0674,
+      "hold": 0.0693,
+      "attack_hero": 0.0537,
+      "attack_nearest_minion": 0.1123,
+      "attack_tower": 0.0693,
+      "retreat": 0.0918
+    }
+  },
+  {
+    "update": 29,
+    "steps": 1024,
+    "loss": 59.952686,
+    "metrics": {
+      "actor_loss": -0.0021,
+      "critic_loss": 119.9601,
+      "entropy": 2.5316,
+      "mean_ratio": 0.9998,
+      "mean_value": -9.2817,
+      "total_loss": 59.9527
+    },
+    "episode_reward": -102.1101,
+    "episode_length": 139,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.4015,
+    "reward_sum": -411.0947,
+    "reward_min": -100.0698,
+    "reward_max": 1.2319,
+    "return_mean": -14.0676,
+    "advantage_mean": -4.9369,
+    "advantage_min": -85.9228,
+    "advantage_max": 4.3491,
+    "value_mean": -9.1308,
+    "positive_reward_steps": 72,
+    "negative_reward_steps": 952,
+    "attack_rate": 0.28,
+    "movement_rate": 0.58,
+    "retreat_rate": 0.087,
+    "done_count": 4,
+    "truncated_count": 4,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 130,
+        "pct": 0.127
+      },
+      {
+        "name": "move_left",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "retreat",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "move_down_right",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "attack_tower",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_up_right",
+        "count": 80,
+        "pct": 0.078
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0752,
+      "move_left": 0.0967,
+      "move_right": 0.0664,
+      "move_down": 0.0625,
+      "move_up_left": 0.0586,
+      "move_up_right": 0.0781,
+      "move_down_left": 0.0586,
+      "move_down_right": 0.084,
+      "hold": 0.0527,
+      "attack_hero": 0.0752,
+      "attack_nearest_minion": 0.127,
+      "attack_tower": 0.0781,
+      "retreat": 0.0869
+    }
+  },
+  {
+    "update": 30,
+    "steps": 1024,
+    "loss": 44.640915,
+    "metrics": {
+      "actor_loss": -0.0026,
+      "critic_loss": 89.3375,
+      "entropy": 2.5174,
+      "mean_ratio": 1.0007,
+      "mean_value": -10.1209,
+      "total_loss": 44.6409
+    },
+    "episode_reward": -110.474,
+    "episode_length": 304,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2987,
+    "reward_sum": -305.8606,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -13.1153,
+    "advantage_mean": -3.2381,
+    "advantage_min": -85.5661,
+    "advantage_max": 12.1943,
+    "value_mean": -9.8772,
+    "positive_reward_steps": 70,
+    "negative_reward_steps": 954,
+    "attack_rate": 0.261,
+    "movement_rate": 0.594,
+    "retreat_rate": 0.082,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "move_left",
+        "count": 97,
+        "pct": 0.095
+      },
+      {
+        "name": "attack_tower",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "move_right",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "move_up",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "retreat",
+        "count": 84,
+        "pct": 0.082
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.085,
+      "move_left": 0.0947,
+      "move_right": 0.0859,
+      "move_down": 0.0635,
+      "move_up_left": 0.0635,
+      "move_up_right": 0.0703,
+      "move_down_left": 0.0693,
+      "move_down_right": 0.0615,
+      "hold": 0.0635,
+      "attack_hero": 0.0771,
+      "attack_nearest_minion": 0.0967,
+      "attack_tower": 0.0869,
+      "retreat": 0.082
+    }
+  },
+  {
+    "update": 31,
+    "steps": 1024,
+    "loss": 44.841114,
+    "metrics": {
+      "actor_loss": -0.0025,
+      "critic_loss": 89.7376,
+      "entropy": 2.5208,
+      "mean_ratio": 1.0002,
+      "mean_value": -9.4934,
+      "total_loss": 44.8411
+    },
+    "episode_reward": -102.6205,
+    "episode_length": 357,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3214,
+    "reward_sum": -329.1148,
+    "reward_min": -100.008,
+    "reward_max": 1.212,
+    "return_mean": -12.9335,
+    "advantage_mean": -3.6939,
+    "advantage_min": -85.2365,
+    "advantage_max": 10.5367,
+    "value_mean": -9.2396,
+    "positive_reward_steps": 48,
+    "negative_reward_steps": 976,
+    "attack_rate": 0.231,
+    "movement_rate": 0.63,
+    "retreat_rate": 0.074,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_left",
+        "count": 111,
+        "pct": 0.108
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 109,
+        "pct": 0.106
+      },
+      {
+        "name": "move_up_right",
+        "count": 98,
+        "pct": 0.096
+      },
+      {
+        "name": "move_up",
+        "count": 98,
+        "pct": 0.096
+      },
+      {
+        "name": "move_right",
+        "count": 78,
+        "pct": 0.076
+      },
+      {
+        "name": "retreat",
+        "count": 76,
+        "pct": 0.074
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0957,
+      "move_left": 0.1084,
+      "move_right": 0.0762,
+      "move_down": 0.0596,
+      "move_up_left": 0.0605,
+      "move_up_right": 0.0957,
+      "move_down_left": 0.0693,
+      "move_down_right": 0.0645,
+      "hold": 0.0645,
+      "attack_hero": 0.0596,
+      "attack_nearest_minion": 0.1064,
+      "attack_tower": 0.0654,
+      "retreat": 0.0742
+    }
+  },
+  {
+    "update": 32,
+    "steps": 1024,
+    "loss": 48.558186,
+    "metrics": {
+      "actor_loss": -0.0045,
+      "critic_loss": 97.1755,
+      "entropy": 2.5063,
+      "mean_ratio": 0.9991,
+      "mean_value": -11.4864,
+      "total_loss": 48.5582
+    },
+    "episode_reward": -102.6685,
+    "episode_length": 152,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.3388,
+    "reward_sum": -346.8841,
+    "reward_min": -100.058,
+    "reward_max": 1.2299,
+    "return_mean": -14.8152,
+    "advantage_mean": -3.7389,
+    "advantage_min": -85.8128,
+    "advantage_max": 4.2398,
+    "value_mean": -11.0764,
+    "positive_reward_steps": 74,
+    "negative_reward_steps": 950,
+    "attack_rate": 0.241,
+    "movement_rate": 0.616,
+    "retreat_rate": 0.09,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "move_left",
+        "count": 114,
+        "pct": 0.111
+      },
+      {
+        "name": "attack_nearest_minion",
+        "count": 110,
+        "pct": 0.107
+      },
+      {
+        "name": "retreat",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "move_up_right",
+        "count": 84,
+        "pct": 0.082
+      },
+      {
+        "name": "move_down_right",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "move_down_left",
+        "count": 80,
+        "pct": 0.078
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0762,
+      "move_left": 0.1113,
+      "move_right": 0.0732,
+      "move_down": 0.0576,
+      "move_up_left": 0.0586,
+      "move_up_right": 0.082,
+      "move_down_left": 0.0781,
+      "move_down_right": 0.0791,
+      "hold": 0.0527,
+      "attack_hero": 0.0596,
+      "attack_nearest_minion": 0.1074,
+      "attack_tower": 0.0742,
+      "retreat": 0.0898
+    }
+  },
+  {
+    "update": 33,
+    "steps": 1024,
+    "loss": 43.952652,
+    "metrics": {
+      "actor_loss": -0.0023,
+      "critic_loss": 87.9598,
+      "entropy": 2.4956,
+      "mean_ratio": 1.0003,
+      "mean_value": -12.1588,
+      "total_loss": 43.9527
+    },
+    "episode_reward": -101.7797,
+    "episode_length": 143,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2934,
+    "reward_sum": -300.4322,
+    "reward_min": -100.168,
+    "reward_max": 1.212,
+    "return_mean": -14.5382,
+    "advantage_mean": -2.6565,
+    "advantage_min": -84.8312,
+    "advantage_max": 4.6863,
+    "value_mean": -11.8817,
+    "positive_reward_steps": 81,
+    "negative_reward_steps": 943,
+    "attack_rate": 0.27,
+    "movement_rate": 0.595,
+    "retreat_rate": 0.079,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 153,
+        "pct": 0.149
+      },
+      {
+        "name": "move_left",
+        "count": 124,
+        "pct": 0.121
+      },
+      {
+        "name": "move_up_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_up",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "retreat",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "move_right",
+        "count": 75,
+        "pct": 0.073
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.083,
+      "move_left": 0.1211,
+      "move_right": 0.0732,
+      "move_down": 0.0605,
+      "move_up_left": 0.0518,
+      "move_up_right": 0.085,
+      "move_down_left": 0.0508,
+      "move_down_right": 0.0693,
+      "hold": 0.0566,
+      "attack_hero": 0.0547,
+      "attack_nearest_minion": 0.1494,
+      "attack_tower": 0.0654,
+      "retreat": 0.0791
+    }
+  },
+  {
+    "update": 34,
+    "steps": 1024,
+    "loss": 42.999981,
+    "metrics": {
+      "actor_loss": -0.0039,
+      "critic_loss": 86.0576,
+      "entropy": 2.4906,
+      "mean_ratio": 1.002,
+      "mean_value": -12.0922,
+      "total_loss": 43.0
+    },
+    "episode_reward": -101.1369,
+    "episode_length": 145,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.295,
+    "reward_sum": -302.0748,
+    "reward_min": -100.008,
+    "reward_max": 1.212,
+    "return_mean": -14.7973,
+    "advantage_mean": -2.654,
+    "advantage_min": -84.309,
+    "advantage_max": 4.2296,
+    "value_mean": -12.1433,
+    "positive_reward_steps": 59,
+    "negative_reward_steps": 965,
+    "attack_rate": 0.251,
+    "movement_rate": 0.597,
+    "retreat_rate": 0.104,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 130,
+        "pct": 0.127
+      },
+      {
+        "name": "move_left",
+        "count": 116,
+        "pct": 0.113
+      },
+      {
+        "name": "retreat",
+        "count": 106,
+        "pct": 0.104
+      },
+      {
+        "name": "move_up_right",
+        "count": 105,
+        "pct": 0.103
+      },
+      {
+        "name": "move_right",
+        "count": 73,
+        "pct": 0.071
+      },
+      {
+        "name": "move_down_left",
+        "count": 72,
+        "pct": 0.07
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0693,
+      "move_left": 0.1133,
+      "move_right": 0.0713,
+      "move_down": 0.0508,
+      "move_up_left": 0.0576,
+      "move_up_right": 0.1025,
+      "move_down_left": 0.0703,
+      "move_down_right": 0.0615,
+      "hold": 0.0488,
+      "attack_hero": 0.0605,
+      "attack_nearest_minion": 0.127,
+      "attack_tower": 0.0635,
+      "retreat": 0.1035
+    }
+  },
+  {
+    "update": 35,
+    "steps": 1024,
+    "loss": 31.730703,
+    "metrics": {
+      "actor_loss": -0.0024,
+      "critic_loss": 63.5159,
+      "entropy": 2.489,
+      "mean_ratio": 1.0004,
+      "mean_value": -11.6964,
+      "total_loss": 31.7307
+    },
+    "episode_reward": -108.7201,
+    "episode_length": 224,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2291,
+    "reward_sum": -234.5981,
+    "reward_min": -100.058,
+    "reward_max": 3.212,
+    "return_mean": -13.692,
+    "advantage_mean": -1.8183,
+    "advantage_min": -84.0148,
+    "advantage_max": 5.8206,
+    "value_mean": -11.8737,
+    "positive_reward_steps": 68,
+    "negative_reward_steps": 956,
+    "attack_rate": 0.263,
+    "movement_rate": 0.597,
+    "retreat_rate": 0.085,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 121,
+        "pct": 0.118
+      },
+      {
+        "name": "move_left",
+        "count": 110,
+        "pct": 0.107
+      },
+      {
+        "name": "move_up",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "move_up_right",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "retreat",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "attack_tower",
+        "count": 79,
+        "pct": 0.077
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0859,
+      "move_left": 0.1074,
+      "move_right": 0.0703,
+      "move_down": 0.0557,
+      "move_up_left": 0.0547,
+      "move_up_right": 0.0859,
+      "move_down_left": 0.0615,
+      "move_down_right": 0.0752,
+      "hold": 0.0557,
+      "attack_hero": 0.0674,
+      "attack_nearest_minion": 0.1182,
+      "attack_tower": 0.0771,
+      "retreat": 0.085
+    }
+  },
+  {
+    "update": 36,
+    "steps": 1024,
+    "loss": 28.2985,
+    "metrics": {
+      "actor_loss": -0.0025,
+      "critic_loss": 56.6517,
+      "entropy": 2.4906,
+      "mean_ratio": 0.9999,
+      "mean_value": -10.7438,
+      "total_loss": 28.2985
+    },
+    "episode_reward": -98.68,
+    "episode_length": 436,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2027,
+    "reward_sum": -207.5216,
+    "reward_min": -99.968,
+    "reward_max": 1.2317,
+    "return_mean": -12.4345,
+    "advantage_mean": -1.514,
+    "advantage_min": -83.861,
+    "advantage_max": 7.383,
+    "value_mean": -10.9204,
+    "positive_reward_steps": 79,
+    "negative_reward_steps": 945,
+    "attack_rate": 0.272,
+    "movement_rate": 0.618,
+    "retreat_rate": 0.051,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 141,
+        "pct": 0.138
+      },
+      {
+        "name": "move_left",
+        "count": 119,
+        "pct": 0.116
+      },
+      {
+        "name": "move_up_right",
+        "count": 115,
+        "pct": 0.112
+      },
+      {
+        "name": "move_up",
+        "count": 76,
+        "pct": 0.074
+      },
+      {
+        "name": "move_down_right",
+        "count": 73,
+        "pct": 0.071
+      },
+      {
+        "name": "attack_tower",
+        "count": 71,
+        "pct": 0.069
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0742,
+      "move_left": 0.1162,
+      "move_right": 0.0596,
+      "move_down": 0.0596,
+      "move_up_left": 0.0605,
+      "move_up_right": 0.1123,
+      "move_down_left": 0.0645,
+      "move_down_right": 0.0713,
+      "hold": 0.0586,
+      "attack_hero": 0.0654,
+      "attack_nearest_minion": 0.1377,
+      "attack_tower": 0.0693,
+      "retreat": 0.0508
+    }
+  },
+  {
+    "update": 37,
+    "steps": 1024,
+    "loss": 28.573227,
+    "metrics": {
+      "actor_loss": -0.004,
+      "critic_loss": 57.204,
+      "entropy": 2.4789,
+      "mean_ratio": 0.9992,
+      "mean_value": -11.8271,
+      "total_loss": 28.5732
+    },
+    "episode_reward": -107.787,
+    "episode_length": 369,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2132,
+    "reward_sum": -218.3677,
+    "reward_min": -100.088,
+    "reward_max": 1.231,
+    "return_mean": -13.4902,
+    "advantage_mean": -1.4485,
+    "advantage_min": -83.4783,
+    "advantage_max": 10.6876,
+    "value_mean": -12.0417,
+    "positive_reward_steps": 66,
+    "negative_reward_steps": 958,
+    "attack_rate": 0.312,
+    "movement_rate": 0.562,
+    "retreat_rate": 0.064,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 171,
+        "pct": 0.167
+      },
+      {
+        "name": "move_left",
+        "count": 100,
+        "pct": 0.098
+      },
+      {
+        "name": "attack_tower",
+        "count": 92,
+        "pct": 0.09
+      },
+      {
+        "name": "move_up_right",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_right",
+        "count": 82,
+        "pct": 0.08
+      },
+      {
+        "name": "move_up",
+        "count": 81,
+        "pct": 0.079
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0791,
+      "move_left": 0.0977,
+      "move_right": 0.0801,
+      "move_down": 0.0527,
+      "move_up_left": 0.0488,
+      "move_up_right": 0.085,
+      "move_down_left": 0.0664,
+      "move_down_right": 0.0518,
+      "hold": 0.0615,
+      "attack_hero": 0.0557,
+      "attack_nearest_minion": 0.167,
+      "attack_tower": 0.0898,
+      "retreat": 0.0645
+    }
+  },
+  {
+    "update": 38,
+    "steps": 1024,
+    "loss": 42.960384,
+    "metrics": {
+      "actor_loss": -0.0041,
+      "critic_loss": 85.9785,
+      "entropy": 2.4743,
+      "mean_ratio": 1.0,
+      "mean_value": -12.3324,
+      "total_loss": 42.9604
+    },
+    "episode_reward": -98.1054,
+    "episode_length": 366,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2894,
+    "reward_sum": -296.3154,
+    "reward_min": -100.058,
+    "reward_max": 10.232,
+    "return_mean": -14.7611,
+    "advantage_mean": -2.5661,
+    "advantage_min": -83.191,
+    "advantage_max": 12.8353,
+    "value_mean": -12.1949,
+    "positive_reward_steps": 82,
+    "negative_reward_steps": 942,
+    "attack_rate": 0.324,
+    "movement_rate": 0.551,
+    "retreat_rate": 0.077,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 177,
+        "pct": 0.173
+      },
+      {
+        "name": "move_up_right",
+        "count": 109,
+        "pct": 0.106
+      },
+      {
+        "name": "move_up",
+        "count": 99,
+        "pct": 0.097
+      },
+      {
+        "name": "move_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "attack_tower",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "retreat",
+        "count": 79,
+        "pct": 0.077
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0967,
+      "move_left": 0.085,
+      "move_right": 0.0518,
+      "move_down": 0.0586,
+      "move_up_left": 0.0518,
+      "move_up_right": 0.1064,
+      "move_down_left": 0.0508,
+      "move_down_right": 0.0498,
+      "hold": 0.0479,
+      "attack_hero": 0.0674,
+      "attack_nearest_minion": 0.1729,
+      "attack_tower": 0.084,
+      "retreat": 0.0771
+    }
+  },
+  {
+    "update": 39,
+    "steps": 1024,
+    "loss": 15.032124,
+    "metrics": {
+      "actor_loss": -0.0022,
+      "critic_loss": 30.1185,
+      "entropy": 2.4887,
+      "mean_ratio": 0.9991,
+      "mean_value": -8.1952,
+      "total_loss": 15.0321
+    },
+    "episode_reward": -112.2613,
+    "episode_length": 965,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.1111,
+    "reward_sum": -113.7423,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -9.0296,
+    "advantage_mean": -0.3245,
+    "advantage_min": -82.8359,
+    "advantage_max": 13.4701,
+    "value_mean": -8.7051,
+    "positive_reward_steps": 27,
+    "negative_reward_steps": 997,
+    "attack_rate": 0.264,
+    "movement_rate": 0.632,
+    "retreat_rate": 0.049,
+    "done_count": 1,
+    "truncated_count": 1,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 148,
+        "pct": 0.145
+      },
+      {
+        "name": "move_up_right",
+        "count": 123,
+        "pct": 0.12
+      },
+      {
+        "name": "move_left",
+        "count": 112,
+        "pct": 0.109
+      },
+      {
+        "name": "move_up",
+        "count": 100,
+        "pct": 0.098
+      },
+      {
+        "name": "move_down_right",
+        "count": 72,
+        "pct": 0.07
+      },
+      {
+        "name": "move_up_left",
+        "count": 70,
+        "pct": 0.068
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0977,
+      "move_left": 0.1094,
+      "move_right": 0.0576,
+      "move_down": 0.0576,
+      "move_up_left": 0.0684,
+      "move_up_right": 0.1201,
+      "move_down_left": 0.0508,
+      "move_down_right": 0.0703,
+      "hold": 0.0557,
+      "attack_hero": 0.0654,
+      "attack_nearest_minion": 0.1445,
+      "attack_tower": 0.0537,
+      "retreat": 0.0488
+    }
+  },
+  {
+    "update": 40,
+    "steps": 1024,
+    "loss": 15.251131,
+    "metrics": {
+      "actor_loss": -0.0012,
+      "critic_loss": 30.5539,
+      "entropy": 2.4646,
+      "mean_ratio": 1.0011,
+      "mean_value": -12.3859,
+      "total_loss": 15.2511
+    },
+    "episode_reward": -97.179,
+    "episode_length": 527,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.0942,
+    "reward_sum": -96.4429,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -12.253,
+    "advantage_mean": 0.4263,
+    "advantage_min": -82.6316,
+    "advantage_max": 13.0152,
+    "value_mean": -12.6792,
+    "positive_reward_steps": 88,
+    "negative_reward_steps": 936,
+    "attack_rate": 0.344,
+    "movement_rate": 0.541,
+    "retreat_rate": 0.077,
+    "done_count": 1,
+    "truncated_count": 1,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 196,
+        "pct": 0.191
+      },
+      {
+        "name": "attack_tower",
+        "count": 95,
+        "pct": 0.093
+      },
+      {
+        "name": "move_left",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "retreat",
+        "count": 79,
+        "pct": 0.077
+      },
+      {
+        "name": "move_down_right",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "move_right",
+        "count": 73,
+        "pct": 0.071
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0664,
+      "move_left": 0.0859,
+      "move_right": 0.0713,
+      "move_down": 0.0557,
+      "move_up_left": 0.0664,
+      "move_up_right": 0.0537,
+      "move_down_left": 0.0664,
+      "move_down_right": 0.0752,
+      "hold": 0.0381,
+      "attack_hero": 0.0596,
+      "attack_nearest_minion": 0.1914,
+      "attack_tower": 0.0928,
+      "retreat": 0.0771
+    }
+  },
+  {
+    "update": 41,
+    "steps": 1024,
+    "loss": 29.265182,
+    "metrics": {
+      "actor_loss": -0.002,
+      "critic_loss": 58.5841,
+      "entropy": 2.4839,
+      "mean_ratio": 1.0006,
+      "mean_value": -10.3868,
+      "total_loss": 29.2652
+    },
+    "episode_reward": -99.392,
+    "episode_length": 369,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.1924,
+    "reward_sum": -196.9981,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -12.2895,
+    "advantage_mean": -1.4596,
+    "advantage_min": -82.8212,
+    "advantage_max": 11.7287,
+    "value_mean": -10.8299,
+    "positive_reward_steps": 89,
+    "negative_reward_steps": 935,
+    "attack_rate": 0.322,
+    "movement_rate": 0.549,
+    "retreat_rate": 0.072,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 185,
+        "pct": 0.181
+      },
+      {
+        "name": "move_up",
+        "count": 83,
+        "pct": 0.081
+      },
+      {
+        "name": "move_up_right",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_left",
+        "count": 78,
+        "pct": 0.076
+      },
+      {
+        "name": "attack_tower",
+        "count": 75,
+        "pct": 0.073
+      },
+      {
+        "name": "move_up_left",
+        "count": 74,
+        "pct": 0.072
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0811,
+      "move_left": 0.0762,
+      "move_right": 0.0566,
+      "move_down": 0.0557,
+      "move_up_left": 0.0723,
+      "move_up_right": 0.0781,
+      "move_down_left": 0.0596,
+      "move_down_right": 0.0693,
+      "hold": 0.0566,
+      "attack_hero": 0.0684,
+      "attack_nearest_minion": 0.1807,
+      "attack_tower": 0.0732,
+      "retreat": 0.0723
+    }
+  },
+  {
+    "update": 42,
+    "steps": 1024,
+    "loss": 28.012142,
+    "metrics": {
+      "actor_loss": -0.0036,
+      "critic_loss": 56.0808,
+      "entropy": 2.4602,
+      "mean_ratio": 1.0006,
+      "mean_value": -10.3008,
+      "total_loss": 28.0121
+    },
+    "episode_reward": -97.0004,
+    "episode_length": 213,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2009,
+    "reward_sum": -205.7055,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -11.9026,
+    "advantage_mean": -1.5757,
+    "advantage_min": -83.0633,
+    "advantage_max": 12.5704,
+    "value_mean": -10.3269,
+    "positive_reward_steps": 89,
+    "negative_reward_steps": 935,
+    "attack_rate": 0.343,
+    "movement_rate": 0.525,
+    "retreat_rate": 0.073,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 204,
+        "pct": 0.199
+      },
+      {
+        "name": "move_left",
+        "count": 85,
+        "pct": 0.083
+      },
+      {
+        "name": "retreat",
+        "count": 75,
+        "pct": 0.073
+      },
+      {
+        "name": "attack_tower",
+        "count": 74,
+        "pct": 0.072
+      },
+      {
+        "name": "attack_hero",
+        "count": 73,
+        "pct": 0.071
+      },
+      {
+        "name": "move_up_right",
+        "count": 72,
+        "pct": 0.07
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0537,
+      "move_left": 0.083,
+      "move_right": 0.0615,
+      "move_down": 0.0635,
+      "move_up_left": 0.0693,
+      "move_up_right": 0.0703,
+      "move_down_left": 0.0645,
+      "move_down_right": 0.0596,
+      "hold": 0.0586,
+      "attack_hero": 0.0713,
+      "attack_nearest_minion": 0.1992,
+      "attack_tower": 0.0723,
+      "retreat": 0.0732
+    }
+  },
+  {
+    "update": 43,
+    "steps": 1024,
+    "loss": 41.254875,
+    "metrics": {
+      "actor_loss": -0.0026,
+      "critic_loss": 82.5641,
+      "entropy": 2.4595,
+      "mean_ratio": 0.999,
+      "mean_value": -10.6437,
+      "total_loss": 41.2549
+    },
+    "episode_reward": -85.5745,
+    "episode_length": 530,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "neutral",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.281,
+    "reward_sum": -287.7627,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -13.268,
+    "advantage_mean": -2.7554,
+    "advantage_min": -82.34,
+    "advantage_max": 13.957,
+    "value_mean": -10.5126,
+    "positive_reward_steps": 80,
+    "negative_reward_steps": 944,
+    "attack_rate": 0.298,
+    "movement_rate": 0.569,
+    "retreat_rate": 0.086,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 155,
+        "pct": 0.151
+      },
+      {
+        "name": "retreat",
+        "count": 88,
+        "pct": 0.086
+      },
+      {
+        "name": "move_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_up_left",
+        "count": 84,
+        "pct": 0.082
+      },
+      {
+        "name": "move_up_right",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "attack_tower",
+        "count": 77,
+        "pct": 0.075
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0713,
+      "move_left": 0.085,
+      "move_right": 0.0693,
+      "move_down": 0.0645,
+      "move_up_left": 0.082,
+      "move_up_right": 0.0781,
+      "move_down_left": 0.0635,
+      "move_down_right": 0.0557,
+      "hold": 0.0469,
+      "attack_hero": 0.0713,
+      "attack_nearest_minion": 0.1514,
+      "attack_tower": 0.0752,
+      "retreat": 0.0859
+    }
+  },
+  {
+    "update": 44,
+    "steps": 1024,
+    "loss": 41.381496,
+    "metrics": {
+      "actor_loss": -0.0013,
+      "critic_loss": 82.8147,
+      "entropy": 2.4517,
+      "mean_ratio": 0.9996,
+      "mean_value": -11.4815,
+      "total_loss": 41.3815
+    },
+    "episode_reward": -122.4321,
+    "episode_length": 297,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.316,
+    "reward_sum": -323.6049,
+    "reward_min": -100.058,
+    "reward_max": 1.2319,
+    "return_mean": -14.5563,
+    "advantage_mean": -3.4588,
+    "advantage_min": -81.9475,
+    "advantage_max": 15.0965,
+    "value_mean": -11.0975,
+    "positive_reward_steps": 108,
+    "negative_reward_steps": 916,
+    "attack_rate": 0.363,
+    "movement_rate": 0.546,
+    "retreat_rate": 0.047,
+    "done_count": 3,
+    "truncated_count": 3,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 208,
+        "pct": 0.203
+      },
+      {
+        "name": "attack_tower",
+        "count": 95,
+        "pct": 0.093
+      },
+      {
+        "name": "move_left",
+        "count": 89,
+        "pct": 0.087
+      },
+      {
+        "name": "move_down_right",
+        "count": 81,
+        "pct": 0.079
+      },
+      {
+        "name": "move_up_left",
+        "count": 79,
+        "pct": 0.077
+      },
+      {
+        "name": "attack_hero",
+        "count": 69,
+        "pct": 0.067
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0645,
+      "move_left": 0.0869,
+      "move_right": 0.0527,
+      "move_down": 0.0654,
+      "move_up_left": 0.0771,
+      "move_up_right": 0.0586,
+      "move_down_left": 0.0615,
+      "move_down_right": 0.0791,
+      "hold": 0.0439,
+      "attack_hero": 0.0674,
+      "attack_nearest_minion": 0.2031,
+      "attack_tower": 0.0928,
+      "retreat": 0.0469
+    }
+  },
+  {
+    "update": 45,
+    "steps": 1024,
+    "loss": 29.274475,
+    "metrics": {
+      "actor_loss": -0.0011,
+      "critic_loss": 58.6006,
+      "entropy": 2.4674,
+      "mean_ratio": 0.9994,
+      "mean_value": -11.0744,
+      "total_loss": 29.2745
+    },
+    "episode_reward": -100.0323,
+    "episode_length": 154,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "farming",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2086,
+    "reward_sum": -213.5971,
+    "reward_min": -100.008,
+    "reward_max": 10.232,
+    "return_mean": -12.5629,
+    "advantage_mean": -1.7332,
+    "advantage_min": -81.7496,
+    "advantage_max": 16.4533,
+    "value_mean": -10.8297,
+    "positive_reward_steps": 92,
+    "negative_reward_steps": 932,
+    "attack_rate": 0.319,
+    "movement_rate": 0.562,
+    "retreat_rate": 0.063,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 195,
+        "pct": 0.19
+      },
+      {
+        "name": "move_up_right",
+        "count": 93,
+        "pct": 0.091
+      },
+      {
+        "name": "attack_hero",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_left",
+        "count": 79,
+        "pct": 0.077
+      },
+      {
+        "name": "move_up",
+        "count": 76,
+        "pct": 0.074
+      },
+      {
+        "name": "move_down",
+        "count": 75,
+        "pct": 0.073
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.0742,
+      "move_left": 0.0771,
+      "move_right": 0.0586,
+      "move_down": 0.0732,
+      "move_up_left": 0.0723,
+      "move_up_right": 0.0908,
+      "move_down_left": 0.0439,
+      "move_down_right": 0.0713,
+      "hold": 0.0557,
+      "attack_hero": 0.0781,
+      "attack_nearest_minion": 0.1904,
+      "attack_tower": 0.0508,
+      "retreat": 0.0635
+    }
+  },
+  {
+    "update": 46,
+    "steps": 1024,
+    "loss": 28.077984,
+    "metrics": {
+      "actor_loss": -0.0021,
+      "critic_loss": 56.2094,
+      "entropy": 2.4583,
+      "mean_ratio": 0.9999,
+      "mean_value": -11.8038,
+      "total_loss": 28.078
+    },
+    "episode_reward": -105.0337,
+    "episode_length": 438,
+    "terminated": true,
+    "truncated": true,
+    "opponent_strategy": "aggressive",
+    "strategy_switch_mode": "random_time",
+    "reward_mean": -0.2246,
+    "reward_sum": -230.0374,
+    "reward_min": -99.768,
+    "reward_max": 1.232,
+    "return_mean": -13.7715,
+    "advantage_mean": -1.5369,
+    "advantage_min": -81.1771,
+    "advantage_max": 7.343,
+    "value_mean": -12.2346,
+    "positive_reward_steps": 94,
+    "negative_reward_steps": 930,
+    "attack_rate": 0.36,
+    "movement_rate": 0.53,
+    "retreat_rate": 0.055,
+    "done_count": 2,
+    "truncated_count": 2,
+    "actions": [
+      {
+        "name": "attack_nearest_minion",
+        "count": 213,
+        "pct": 0.208
+      },
+      {
+        "name": "move_left",
+        "count": 87,
+        "pct": 0.085
+      },
+      {
+        "name": "move_up",
+        "count": 86,
+        "pct": 0.084
+      },
+      {
+        "name": "attack_hero",
+        "count": 80,
+        "pct": 0.078
+      },
+      {
+        "name": "move_up_right",
+        "count": 77,
+        "pct": 0.075
+      },
+      {
+        "name": "attack_tower",
+        "count": 76,
+        "pct": 0.074
+      }
+    ],
+    "action_distribution": {
+      "move_up": 0.084,
+      "move_left": 0.085,
+      "move_right": 0.0439,
+      "move_down": 0.0664,
+      "move_up_left": 0.0723,
+      "move_up_right": 0.0752,
+      "move_down_left": 0.0361,
+      "move_down_right": 0.0674,
+      "hold": 0.0547,
+      "attack_hero": 0.0781,
+      "attack_nearest_minion": 0.208,
+      "attack_tower": 0.0742,
+      "retreat": 0.0547
+    }
+  }
+]

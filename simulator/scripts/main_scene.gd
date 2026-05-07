@@ -174,3 +174,5 @@ func _configure_minion_spawner(canvas_layer: Node) -> void:
 	spawner.set_process(minions_enabled)
 	spawner.lane_center_x = ARENA_LANE_CENTER_X if String(SimConfig.get_env_value("map_name", "arena")) == "arena" else BASIC_LANE_CENTER_X
 	spawner.side_offset = 0.0
+	if spawner.has_method("reset_waves"):
+		spawner.reset_waves(minions_enabled)

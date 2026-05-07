@@ -15,7 +15,6 @@ from core.strategy.basic_strategy import (
     AggressiveStrategy,
     FarmingStrategy,
     NeutralStrategy,
-    ObservationCravingStrategy,
 )
 from core.utils.obs_encoder import unwrap_obs
 
@@ -27,7 +26,6 @@ STRATEGY_REGISTRY = {
     AggressiveStrategy.name: AggressiveStrategy,
     FarmingStrategy.name: FarmingStrategy,
     NeutralStrategy.name: NeutralStrategy,
-    ObservationCravingStrategy.name: ObservationCravingStrategy,
 }
 
 
@@ -299,13 +297,12 @@ class PPO:
                 
                 learning_obs = obs_list[self.learning_agent_id]
                 obs_vec = self.encoder.encode(learning_obs)
-                belief_vec = self.belief.update(obs_vec)
+                belief_vec = self.belief.update(learning_obs)
             
                 learning_action, logprob, value = self.select_action(
-                    obs_vec, 
+                    obs_vec,
                     belief_vec,
                     use_belief_input = self.use_belief_input
-
                 )
                 
                 all_actions, all_policy_names = self.select_env_actions(
@@ -332,7 +329,15 @@ class PPO:
 
                 learning_reward = reward_list[self.learning_agent_id]
                 learning_done = done_list[self.learning_agent_id]
-                learning_truncated = truncated_list[self.learning_agent_id]
+                learning_truncated = (
+                    not learning_done
+                    and (
+                        truncated_list[self.learning_agent_id]
+                        or step == self.max_steps_per_episode - 1
+                    )
+                )
+                all_truncated = list(truncated_list)
+                all_truncated[self.learning_agent_id] = learning_truncated
 
                 trajectory.append(
                     {
@@ -359,7 +364,7 @@ class PPO:
                         "all_policy_names": all_policy_names,
                         "all_rewards": reward_list,
                         "all_dones": done_list,
-                        "all_truncated": truncated_list,
+                        "all_truncated": all_truncated,
                     }
                 )
 
@@ -396,7 +401,7 @@ class PPO:
 
         learning_obs = obs_list[self.learning_agent_id]
         obs_vec = self.encoder.encode(learning_obs)
-        belief_vec = self.belief.update(obs_vec)
+        belief_vec = self.belief.update(learning_obs)
         return self.value(
             obs_vec,
             belief_vec,

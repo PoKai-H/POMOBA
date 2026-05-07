@@ -23,5 +23,4 @@ wave_interval_seconds = 10.0
 
 [node name="Sync" type="Node" parent="." unique_id=155072698]
 script = ExtResource("3_sugp2")
-control_mode = 0
 metadata/_custom_type_script = "uid://ytkdfi45dlwe"

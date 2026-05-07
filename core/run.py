@@ -1,11 +1,15 @@
+from collections import Counter
+from datetime import datetime
+import json
 from pathlib import Path
+from pprint import pformat
 import sys
 
 if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from config.basic_config import basic_config, training_config
-from core.beliefs.bayesian_belief import BayesianBelief
+from core.beliefs.dummy_belief import DummyBelief
 from core.envs.dummy_env import DummyEnv
 from core.models.ppo import PPO
 from core.utils.obs_encoder import ObservationEncoder
@@ -27,6 +31,8 @@ ACTION_NAMES = {
     11: "attack_tower",
     12: "retreat",
 }
+
+ANALYSIS_OUTPUT_ROOT = Path("outputs/training_analysis")
 
 
 def build_run_config():
@@ -78,6 +84,341 @@ def format_metrics(metrics):
     }
 
 
+def _mean(values):
+    return sum(values) / len(values) if values else 0.0
+
+
+def _quantiles(values):
+    if not values:
+        return {}
+
+    ordered = sorted(float(value) for value in values)
+    last_index = len(ordered) - 1
+    return {
+        "min": round(ordered[0], 4),
+        "p25": round(ordered[int(last_index * 0.25)], 4),
+        "mean": round(_mean(ordered), 4),
+        "p75": round(ordered[int(last_index * 0.75)], 4),
+        "max": round(ordered[-1], 4),
+        "sum": round(sum(ordered), 4),
+    }
+
+
+def _top_counts(values, limit=6):
+    total = len(values)
+    counts = Counter(values)
+    return [
+        {
+            "name": name,
+            "count": count,
+            "pct": round(count / total, 3) if total else 0.0,
+        }
+        for name, count in counts.most_common(limit)
+    ]
+
+
+def _summary_value(summary, path, default=0.0):
+    current = summary
+    for key in path:
+        if not isinstance(current, dict) or key not in current:
+            return default
+        current = current[key]
+    if current is None:
+        return default
+    return current
+
+
+def _unwrap_step_obs(step, agent_id):
+    obs_list = step.get("all_raw_obs", [])
+    if agent_id >= len(obs_list):
+        return {}
+    raw_obs = obs_list[agent_id]
+    if isinstance(raw_obs, dict) and isinstance(raw_obs.get("obs"), dict):
+        return raw_obs["obs"]
+    return raw_obs if isinstance(raw_obs, dict) else {}
+
+
+def _object_summary(obs):
+    objects = obs.get("objects", [])
+    visible_enemy_minions = 0
+    visible_ally_minions = 0
+    visible_enemy_towers = []
+    visible_ally_towers = []
+
+    for obj in objects:
+        if not obj.get("visible"):
+            continue
+        obj_type = obj.get("type")
+        team = obj.get("team")
+        hp = obj.get("status", {}).get("hp")
+        if obj_type == "minion":
+            if team == "enemy":
+                visible_enemy_minions += 1
+            elif team == "ally":
+                visible_ally_minions += 1
+        elif obj_type == "tower":
+            entry = {
+                "id": obj.get("id"),
+                "hp": round(float(hp), 2) if hp is not None else None,
+                "team": team,
+            }
+            if team == "enemy":
+                visible_enemy_towers.append(entry)
+            elif team == "ally":
+                visible_ally_towers.append(entry)
+
+    return {
+        "visible_ally_minions": visible_ally_minions,
+        "visible_enemy_minions": visible_enemy_minions,
+        "visible_ally_towers": visible_ally_towers,
+        "visible_enemy_towers": visible_enemy_towers,
+    }
+
+
+def _last_frame_summary(trajectory):
+    if not trajectory:
+        return {}
+
+    last = trajectory[-1]
+    all_actions = last.get("all_actions", [])
+    all_policy_names = last.get("all_policy_names", [])
+    all_rewards = last.get("all_rewards", [])
+    all_dones = last.get("all_dones", [])
+    all_truncated = last.get("all_truncated", [])
+    agents = []
+
+    for agent_id, action in enumerate(all_actions):
+        obs = _unwrap_step_obs(last, agent_id)
+        self_obs = obs.get("self", {})
+        status = self_obs.get("status", {})
+        agents.append(
+            {
+                "id": agent_id,
+                "policy": all_policy_names[agent_id] if agent_id < len(all_policy_names) else None,
+                "action": ACTION_NAMES.get(action, str(action)),
+                "reward": round(float(all_rewards[agent_id]), 4) if agent_id < len(all_rewards) else None,
+                "done": bool(all_dones[agent_id]) if agent_id < len(all_dones) else None,
+                "truncated": bool(all_truncated[agent_id]) if agent_id < len(all_truncated) else None,
+                "hp": round(float(status.get("hp", 0.0)), 2),
+                "objects": _object_summary(obs),
+            }
+        )
+
+    return {
+        "step": last.get("step"),
+        "agents": agents,
+    }
+
+
+def _latest_episode_details(agent):
+    if not agent.episode_logs:
+        return None
+
+    latest = agent.episode_logs[-1]
+    core_config = latest.get("core", {})
+    return {
+        "reward": round(float(latest["episode_reward"]), 4),
+        "length": int(latest["episode_length"]),
+        "terminated": bool(latest.get("terminated")),
+        "truncated": bool(latest.get("truncated")),
+        "opponent_strategy": core_config.get("opponent_strategy"),
+        "strategy_switch_mode": core_config.get("strategy_switch_mode"),
+    }
+
+
+def rollout_summary(trajectory, agent):
+    rewards = [float(step["reward"]) for step in trajectory]
+    values = [float(step["value"]) for step in trajectory]
+    returns = [float(step["return"]) for step in trajectory]
+    advantages = [float(step["advantage"]) for step in trajectory]
+    actions = [ACTION_NAMES.get(step["action"], str(step["action"])) for step in trajectory]
+    dones = [step for step in trajectory if step.get("done")]
+    truncated = [step for step in trajectory if step.get("truncated")]
+
+    return {
+        "reward": _quantiles(rewards),
+        "value": _quantiles(values),
+        "return": _quantiles(returns),
+        "advantage": _quantiles(advantages),
+        "positive_reward_steps": sum(value > 0.0 for value in rewards),
+        "negative_reward_steps": sum(value < 0.0 for value in rewards),
+        "actions": _top_counts(actions),
+        "attack_rate": round(
+            sum(action.startswith("attack") for action in actions) / len(actions),
+            3,
+        ) if actions else 0.0,
+        "movement_rate": round(
+            sum(action.startswith("move") for action in actions) / len(actions),
+            3,
+        ) if actions else 0.0,
+        "retreat_rate": round(actions.count("retreat") / len(actions), 3) if actions else 0.0,
+        "done_count": len(dones),
+        "truncated_count": len(truncated),
+        "done_steps": [step["step"] for step in dones[-3:]],
+        "truncated_steps": [step["step"] for step in truncated[-3:]],
+        "latest_episode": _latest_episode_details(agent),
+        "last_frame": _last_frame_summary(trajectory),
+    }
+
+
+def training_history_entry(update_idx, trajectory, loss, metrics, summary):
+    latest_episode = summary.get("latest_episode") or {}
+    actions = [ACTION_NAMES.get(step["action"], str(step["action"])) for step in trajectory]
+    action_counts = Counter(actions)
+    total_actions = len(actions)
+    return {
+        "update": update_idx,
+        "steps": len(trajectory),
+        "loss": round(float(loss), 6),
+        "metrics": format_metrics(metrics),
+        "episode_reward": latest_episode.get("reward"),
+        "episode_length": latest_episode.get("length"),
+        "terminated": latest_episode.get("terminated"),
+        "truncated": latest_episode.get("truncated"),
+        "opponent_strategy": latest_episode.get("opponent_strategy"),
+        "strategy_switch_mode": latest_episode.get("strategy_switch_mode"),
+        "reward_mean": _summary_value(summary, ("reward", "mean")),
+        "reward_sum": _summary_value(summary, ("reward", "sum")),
+        "reward_min": _summary_value(summary, ("reward", "min")),
+        "reward_max": _summary_value(summary, ("reward", "max")),
+        "return_mean": _summary_value(summary, ("return", "mean")),
+        "advantage_mean": _summary_value(summary, ("advantage", "mean")),
+        "advantage_min": _summary_value(summary, ("advantage", "min")),
+        "advantage_max": _summary_value(summary, ("advantage", "max")),
+        "value_mean": _summary_value(summary, ("value", "mean")),
+        "positive_reward_steps": summary.get("positive_reward_steps", 0),
+        "negative_reward_steps": summary.get("negative_reward_steps", 0),
+        "attack_rate": summary.get("attack_rate", 0.0),
+        "movement_rate": summary.get("movement_rate", 0.0),
+        "retreat_rate": summary.get("retreat_rate", 0.0),
+        "done_count": summary.get("done_count", 0),
+        "truncated_count": summary.get("truncated_count", 0),
+        "actions": summary.get("actions", []),
+        "action_distribution": {
+            name: round(action_counts.get(name, 0) / total_actions, 4)
+            for name in ACTION_NAMES.values()
+        },
+    }
+
+
+def _series(history, key, default=0.0):
+    return [default if item.get(key) is None else item.get(key) for item in history]
+
+
+def _metric_series(history, key, default=0.0):
+    return [
+        default if item.get("metrics", {}).get(key) is None else item["metrics"][key]
+        for item in history
+    ]
+
+
+def _save_json(path, data):
+    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+
+
+def save_training_artifacts(history, config):
+    if not history:
+        return None
+
+    output_dir = ANALYSIS_OUTPUT_ROOT / datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    _save_json(output_dir / "history.json", history)
+    _save_json(output_dir / "run_config.json", config)
+
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError as exc:
+        print(f"Could not generate training plots: {exc}")
+        return output_dir
+
+    updates = _series(history, "update")
+
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8), constrained_layout=True)
+    axes[0, 0].plot(updates, _series(history, "episode_reward", None), marker="o")
+    axes[0, 0].set_title("Episode Reward")
+    axes[0, 0].set_xlabel("Update")
+    axes[0, 0].set_ylabel("Reward")
+
+    axes[0, 1].plot(updates, _series(history, "episode_length", None), marker="o")
+    axes[0, 1].set_title("Episode Length")
+    axes[0, 1].set_xlabel("Update")
+    axes[0, 1].set_ylabel("Steps")
+
+    axes[1, 0].plot(updates, _series(history, "loss"), marker="o", label="total")
+    axes[1, 0].plot(updates, _metric_series(history, "critic_loss"), marker="o", label="critic")
+    axes[1, 0].plot(updates, _metric_series(history, "actor_loss"), marker="o", label="actor")
+    axes[1, 0].set_title("PPO Loss")
+    axes[1, 0].set_xlabel("Update")
+    axes[1, 0].legend()
+
+    axes[1, 1].plot(updates, _metric_series(history, "entropy"), marker="o")
+    axes[1, 1].set_title("Policy Entropy")
+    axes[1, 1].set_xlabel("Update")
+    axes[1, 1].set_ylabel("Entropy")
+    fig.savefig(output_dir / "training_curves.png", dpi=160)
+    plt.close(fig)
+
+    fig, axes = plt.subplots(2, 1, figsize=(12, 7), constrained_layout=True)
+    axes[0].plot(updates, _series(history, "attack_rate"), marker="o", label="attack")
+    axes[0].plot(updates, _series(history, "movement_rate"), marker="o", label="movement")
+    axes[0].plot(updates, _series(history, "retreat_rate"), marker="o", label="retreat")
+    axes[0].set_title("Action Group Rates")
+    axes[0].set_xlabel("Update")
+    axes[0].set_ylabel("Rate")
+    axes[0].set_ylim(0.0, 1.0)
+    axes[0].legend()
+
+    action_names = list(ACTION_NAMES.values())
+    action_rates = []
+    for item in history:
+        counts = item.get("action_distribution", {})
+        action_rates.append([counts.get(name, 0.0) for name in action_names])
+    image = axes[1].imshow(action_rates, aspect="auto", interpolation="nearest")
+    axes[1].set_title("Most Used Actions by Update")
+    axes[1].set_xlabel("Action")
+    axes[1].set_ylabel("Update")
+    axes[1].set_xticks(range(len(action_names)))
+    axes[1].set_xticklabels(action_names, rotation=45, ha="right")
+    axes[1].set_yticks(range(len(updates)))
+    axes[1].set_yticklabels(updates)
+    fig.colorbar(image, ax=axes[1], label="Rate")
+    fig.savefig(output_dir / "action_diagnostics.png", dpi=160)
+    plt.close(fig)
+
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8), constrained_layout=True)
+    axes[0, 0].plot(updates, _series(history, "reward_mean"), marker="o", label="mean")
+    axes[0, 0].plot(updates, _series(history, "reward_sum"), marker="o", label="sum")
+    axes[0, 0].set_title("Reward per Rollout")
+    axes[0, 0].set_xlabel("Update")
+    axes[0, 0].legend()
+
+    axes[0, 1].plot(updates, _series(history, "positive_reward_steps"), marker="o", label="positive")
+    axes[0, 1].plot(updates, _series(history, "negative_reward_steps"), marker="o", label="negative")
+    axes[0, 1].set_title("Reward Signal Frequency")
+    axes[0, 1].set_xlabel("Update")
+    axes[0, 1].set_ylabel("Steps")
+    axes[0, 1].legend()
+
+    axes[1, 0].plot(updates, _series(history, "advantage_mean"), marker="o", label="mean")
+    axes[1, 0].plot(updates, _series(history, "advantage_min"), marker="o", label="min")
+    axes[1, 0].plot(updates, _series(history, "advantage_max"), marker="o", label="max")
+    axes[1, 0].set_title("Advantage")
+    axes[1, 0].set_xlabel("Update")
+    axes[1, 0].legend()
+
+    axes[1, 1].plot(updates, _series(history, "return_mean"), marker="o", label="return")
+    axes[1, 1].plot(updates, _series(history, "value_mean"), marker="o", label="value")
+    axes[1, 1].set_title("Return vs Value")
+    axes[1, 1].set_xlabel("Update")
+    axes[1, 1].legend()
+    fig.savefig(output_dir / "reward_diagnostics.png", dpi=160)
+    plt.close(fig)
+
+    return output_dir
+
+
 def latest_episode_summary(agent):
     if not agent.episode_logs:
         return "episode_reward=n/a episode_length=n/a"
@@ -89,32 +430,75 @@ def latest_episode_summary(agent):
     )
 
 
+def print_training_stop(reason, update_idx, num_updates, agent):
+    print(
+        f"Training stopped during update {update_idx}/{num_updates}: {reason}"
+    )
+    print("Latest episode:", latest_episode_summary(agent))
+
+
 def train():
     config = build_run_config()
     env = make_env(config)
     encoder = ObservationEncoder()
-    belief = BayesianBelief()
+    belief = DummyBelief()
     agent = PPO(env=env, encoder=encoder, belief=belief, config=config)
 
     total_timesteps = int(config["TOTAL_TIMESTEPS"])
     timesteps_per_batch = int(config["TIMESTEP_PER_BATCH"])
     num_updates = max(1, total_timesteps // timesteps_per_batch)
+    history = []
 
     try:
         for update_idx in range(1, num_updates + 1):
             current_config = config_for_update(config, update_idx)
-            trajectory, last_value = agent.collect_rollout(config=current_config)
+            try:
+                trajectory, last_value = agent.collect_rollout(config=current_config)
+            except SystemExit as exc:
+                print_training_stop(
+                    f"environment exited with code {exc.code}",
+                    update_idx,
+                    num_updates,
+                    agent,
+                )
+                return agent
+            except (ConnectionError, ConnectionResetError, BrokenPipeError, OSError) as exc:
+                print_training_stop(
+                    f"{type(exc).__name__}: {exc}",
+                    update_idx,
+                    num_updates,
+                    agent,
+                )
+                return agent
+            except KeyboardInterrupt:
+                print_training_stop("keyboard interrupt", update_idx, num_updates, agent)
+                return agent
+
+            if not trajectory:
+                print_training_stop(
+                    "no rollout steps were collected",
+                    update_idx,
+                    num_updates,
+                    agent,
+                )
+                return agent
+
             trajectory = agent.attach_returns_and_advantages(
                 trajectory,
                 last_value=last_value,
             )
             batch = agent.build_ppo_batch(trajectory)
             loss, metrics = agent.update(batch)
-
-            sampled_actions = [
-                ACTION_NAMES.get(step["action"], str(step["action"]))
-                for step in trajectory[:5]
-            ]
+            summary = rollout_summary(trajectory, agent)
+            history.append(
+                training_history_entry(
+                    update_idx=update_idx,
+                    trajectory=trajectory,
+                    loss=loss,
+                    metrics=metrics,
+                    summary=summary,
+                )
+            )
 
             print(
                 f"[update {update_idx}/{num_updates}] "
@@ -123,10 +507,15 @@ def train():
                 f"{latest_episode_summary(agent)}"
             )
             print("  metrics:", format_metrics(metrics))
-            print("  sampled_actions:", sampled_actions)
+            print("  rollout:")
+            for line in pformat(summary, sort_dicts=False, width=100).splitlines():
+                print(f"    {line}")
 
     finally:
         env.close()
+        output_dir = save_training_artifacts(history, config)
+        if output_dir is not None:
+            print(f"Training analysis saved to: {output_dir}")
 
     print("Training complete!")
     return agent

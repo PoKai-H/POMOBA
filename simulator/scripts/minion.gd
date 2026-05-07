@@ -27,6 +27,7 @@ var _target: Variant = null
 func _ready() -> void:
 	actor_kind = &"minion"
 	super._ready()
+	detection_range = SimConfig.get_vision_radius_pixels()
 	reward_amount = minion_reward_amount
 	_configure_attack_range()
 	_configure_observation_area()

@@ -6,13 +6,14 @@ extends CombatActor
 @export var attack_ring_color: Color = Color(0.35, 0.7, 1.0, 0.08)
 @export var attack_ring_outline_color: Color = Color(0.35, 0.7, 1.0, 0.35)
 
-@export var reward_delta: float = -0.001
+@export var reward_delta: float = -0.0001
 @export var reward: float = 0.0
 @export var agent_reward_amount: float = 10.0
 @export var agent_death_penalty_amount: float = 10.0
 @export var damage_reward: float = 0.01
 
 var _click_attack_cooldown_remaining: float = 0.0
+var _spawn_position: Vector2 = Vector2.ZERO
 
 @onready var ai_controller: Node2D = $AIController2D
 @onready var attack_area: Area2D = $AttackArea
@@ -20,6 +21,7 @@ var _click_attack_cooldown_remaining: float = 0.0
 
 func _ready() -> void:
 	super._ready()
+	_spawn_position = global_position
 	reward_amount = agent_reward_amount
 	ai_controller.init(self)
 	_configure_attack_area()
@@ -59,7 +61,9 @@ func set_reward(amount) -> void:
 
 
 func get_reward() -> float:
-	return reward
+	var current_reward := reward
+	reward = 0.0
+	return current_reward
 
 
 func reward_penalty_on_death() -> void:
@@ -76,11 +80,9 @@ func get_reward_amount() -> float:
 
 func update_reward() -> void:
 	ai_controller.set_reward(reward)
-	print("%0.3f" % reward)
 
 
 func _handle_death() -> void:
-	emit_signal("died", self)
 	velocity = Vector2.ZERO
 	if collision_shape != null:
 		collision_shape.disabled = true
@@ -88,10 +90,28 @@ func _handle_death() -> void:
 		hurtbox_shape.disabled = true
 	if attack_area_shape != null:
 		attack_area_shape.disabled = true
-	
+
 	reward_penalty_on_death()
-	game_over()
-	get_tree().paused = true
+	_respawn()
+
+
+func _respawn() -> void:
+	ai_controller.done = false
+	ai_controller.needs_reset = false
+	hp = max_hp
+	global_position = _spawn_position
+	velocity = Vector2.ZERO
+	_click_attack_cooldown_remaining = 0.0
+	visible = true
+
+	if collision_shape != null:
+		collision_shape.disabled = false
+	if hurtbox_shape != null:
+		hurtbox_shape.disabled = false
+	if attack_area_shape != null:
+		attack_area_shape.disabled = false
+
+	queue_redraw()
 
 
 func _process_agent_attack() -> void:
