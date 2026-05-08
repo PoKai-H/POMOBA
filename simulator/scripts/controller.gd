@@ -27,6 +27,10 @@ var lane_progress_with_minion_reward: float = 0.01
 var approach_enemy_tower_with_minion_reward: float = 0.03
 var enemy_tower_no_minion_penalty: float = -0.05
 
+var _step_takedown_enemy_agents: int = 0
+var _step_takedown_enemy_minions: int = 0
+var _step_deaths: int = 0
+
 
 func get_obs() -> Dictionary:
 	if _player == null or not is_instance_valid(_player):
@@ -80,12 +84,42 @@ func get_reward() -> float:
 
 
 func get_info() -> Dictionary:
+	var event_counts := _read_and_clear_event_counts()
 	return {
 		"hp": _player.hp if _player != null and is_instance_valid(_player) else 0.0,
 		"alive": _player != null and is_instance_valid(_player) and _player.is_alive(),
+		"event_counts": event_counts,
 		"env_config": SimConfig.env_config.duplicate(true),
 		"episode_config": SimConfig.episode_config.duplicate(true)
 	}
+
+
+func record_takedown(victim: CombatActor) -> void:
+	if victim == null or _player == null or not is_instance_valid(_player):
+		return
+	if not _player.is_enemy(victim):
+		return
+
+	if victim.actor_kind == &"player":
+		_step_takedown_enemy_agents += 1
+	elif victim.actor_kind == &"minion":
+		_step_takedown_enemy_minions += 1
+
+
+func record_death() -> void:
+	_step_deaths += 1
+
+
+func _read_and_clear_event_counts() -> Dictionary:
+	var event_counts := {
+		"takedown_enemy_agents": _step_takedown_enemy_agents,
+		"takedown_enemy_minions": _step_takedown_enemy_minions,
+		"deaths": _step_deaths,
+	}
+	_step_takedown_enemy_agents = 0
+	_step_takedown_enemy_minions = 0
+	_step_deaths = 0
+	return event_counts
 
 
 func get_action_space() -> Dictionary:

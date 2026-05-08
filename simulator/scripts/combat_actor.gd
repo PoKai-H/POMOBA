@@ -165,6 +165,9 @@ func _handle_reward_on_death(attacker: CombatActor) -> void:
 		return
 	if attacker.is_in_group(&"player"):
 		attacker.set_reward(attacker.get_reward() + reward_amount)
+		var controller := attacker.get_node_or_null("AIController2D")
+		if controller != null and controller.has_method("record_takedown"):
+			controller.record_takedown(self)
 	
 
 func _after_damage(_attacker: CombatActor) -> void:

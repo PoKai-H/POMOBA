@@ -84,6 +84,8 @@ func update_reward() -> void:
 
 func _handle_death() -> void:
 	velocity = Vector2.ZERO
+	if ai_controller != null and ai_controller.has_method("record_death"):
+		ai_controller.record_death()
 	if collision_shape != null:
 		collision_shape.disabled = true
 	if hurtbox_shape != null:
