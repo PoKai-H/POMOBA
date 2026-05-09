@@ -1,20 +1,17 @@
 from collections import Counter
+import argparse
 from datetime import datetime
+import importlib
+import importlib.util
 import json
+import pickle
 from pathlib import Path
 from pprint import pformat
+import re
 import sys
 
 if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from config.basic_config import basic_config, training_config
-from core.beliefs.dummy_belief import DummyBelief
-from core.envs.dummy_env import DummyEnv
-from core.models.ppo import PPO
-from core.utils.obs_encoder import ObservationEncoder
-from godot_rl.core.godot_env import GodotEnv
-
 
 ACTION_NAMES = {
     0: "move_up",
@@ -33,12 +30,68 @@ ACTION_NAMES = {
 }
 
 ANALYSIS_OUTPUT_ROOT = Path("outputs/training_analysis")
+DEFAULT_CONFIG_MODULE = "config.neutralExpert_neutral"
 
 
-def build_run_config():
+def _sanitize_run_name(name):
+    sanitized = re.sub(r"[^A-Za-z0-9_.-]+", "_", name).strip("._")
+    return sanitized or "run"
+
+
+def _config_name_from_arg(config_arg):
+    config_path = Path(config_arg)
+    if config_path.suffix == ".py":
+        return config_path.stem
+    return config_arg.rsplit(".", 1)[-1]
+
+
+def _module_name_from_arg(config_arg):
+    if config_arg.endswith(".py") or "/" in config_arg:
+        return None
+    if "." in config_arg:
+        return config_arg
+    return f"config.{config_arg}"
+
+
+def load_config_module(config_arg):
+    module_name = _module_name_from_arg(config_arg)
+    if module_name is not None:
+        return importlib.import_module(module_name)
+
+    config_path = Path(config_arg)
+    if not config_path.is_absolute():
+        config_path = Path.cwd() / config_path
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found: {config_path}")
+
+    module_name = f"runtime_config_{config_path.stem}"
+    spec = importlib.util.spec_from_file_location(module_name, config_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Could not load config file: {config_path}")
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_run_config(config_arg):
+    module = load_config_module(config_arg)
+    if not hasattr(module, "basic_config") or not hasattr(module, "training_config"):
+        raise AttributeError(
+            "Config module must define both `basic_config` and `training_config`."
+        )
+    return (
+        module.basic_config,
+        module.training_config,
+        _sanitize_run_name(_config_name_from_arg(config_arg)),
+    )
+
+
+def build_run_config(basic_config, training_config, config_name):
     return {
         **basic_config,
         **training_config,
+        "CONFIG_NAME": config_name,
         "core": {
             **basic_config.get("core", {}),
             "opponent_strategy": training_config["opponent_strategy"],
@@ -51,9 +104,15 @@ def build_run_config():
 
 
 def config_for_update(base_config, update_idx):
-    del update_idx
+    initial_ratio = float(base_config.get("EXPERT_MIX_INITIAL_RATIO", 0.0))
+    final_ratio = float(base_config.get("EXPERT_MIX_FINAL_RATIO", 0.0))
+    decay_updates = max(1, int(base_config.get("EXPERT_MIX_DECAY_UPDATES", 1)))
+    decay_progress = min(max(update_idx - 1, 0), decay_updates) / decay_updates
+    expert_ratio = initial_ratio + (final_ratio - initial_ratio) * decay_progress
+
     return {
         **base_config,
+        "EXPERT_MIX_RATIO": expert_ratio,
         "core": {
             **base_config.get("core", {}),
             "opponent_strategy": base_config["opponent_strategy"],
@@ -67,7 +126,11 @@ def config_for_update(base_config, update_idx):
 
 def make_env(config):
     if config.get("USE_DUMMY_ENV", False):
+        from core.envs.dummy_env import DummyEnv
+
         return DummyEnv(seed=config.get("SEED", 42))
+
+    from godot_rl.core.godot_env import GodotEnv
 
     GodotEnv.DEFAULT_TIMEOUT = config.get("GODOT_TIMEOUT", 180)
     return GodotEnv(
@@ -210,6 +273,19 @@ def _last_frame_summary(trajectory):
     }
 
 
+def _event_counts(trajectory):
+    totals = {
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 0,
+        "deaths": 0,
+    }
+    for step in trajectory:
+        event_counts = step.get("info", {}).get("event_counts", {})
+        for key in totals:
+            totals[key] += int(event_counts.get(key, 0))
+    return totals
+
+
 def _latest_episode_details(agent):
     if not agent.episode_logs:
         return None
@@ -234,6 +310,8 @@ def rollout_summary(trajectory, agent):
     actions = [ACTION_NAMES.get(step["action"], str(step["action"])) for step in trajectory]
     dones = [step for step in trajectory if step.get("done")]
     truncated = [step for step in trajectory if step.get("truncated")]
+    expert_steps = [step for step in trajectory if step.get("expert_mask", 0.0)]
+    event_counts = _event_counts(trajectory)
 
     return {
         "reward": _quantiles(rewards),
@@ -252,6 +330,11 @@ def rollout_summary(trajectory, agent):
             3,
         ) if actions else 0.0,
         "retreat_rate": round(actions.count("retreat") / len(actions), 3) if actions else 0.0,
+        "expert_action_rate": round(len(expert_steps) / len(actions), 3) if actions else 0.0,
+        "configured_expert_ratio": round(float(agent.expert_mix_ratio), 3),
+        "takedown_enemy_agents": event_counts["takedown_enemy_agents"],
+        "takedown_enemy_minions": event_counts["takedown_enemy_minions"],
+        "death_count": event_counts["deaths"],
         "done_count": len(dones),
         "truncated_count": len(truncated),
         "done_steps": [step["step"] for step in dones[-3:]],
@@ -291,6 +374,11 @@ def training_history_entry(update_idx, trajectory, loss, metrics, summary):
         "attack_rate": summary.get("attack_rate", 0.0),
         "movement_rate": summary.get("movement_rate", 0.0),
         "retreat_rate": summary.get("retreat_rate", 0.0),
+        "expert_action_rate": summary.get("expert_action_rate", 0.0),
+        "configured_expert_ratio": summary.get("configured_expert_ratio", 0.0),
+        "takedown_enemy_agents": summary.get("takedown_enemy_agents", 0),
+        "takedown_enemy_minions": summary.get("takedown_enemy_minions", 0),
+        "death_count": summary.get("death_count", 0),
         "done_count": summary.get("done_count", 0),
         "truncated_count": summary.get("truncated_count", 0),
         "actions": summary.get("actions", []),
@@ -316,12 +404,37 @@ def _save_json(path, data):
     path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
 
 
-def save_training_artifacts(history, config):
+def create_output_dir(run_name):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_dir = ANALYSIS_OUTPUT_ROOT / f"{run_name}_{timestamp}"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    return output_dir
+
+
+def save_checkpoint(agent, output_dir, update_idx, final=False):
+    checkpoints_dir = output_dir / "checkpoints"
+    checkpoints_dir.mkdir(parents=True, exist_ok=True)
+    filename = "final.pkl" if final else f"update_{update_idx:04d}.pkl"
+    checkpoint_path = checkpoints_dir / filename
+    checkpoint = {
+        "update": int(update_idx),
+        "final": bool(final),
+        "params": agent.params,
+        "opt_state": agent.opt_state,
+        "network_signature": agent._network_signature,
+        "optimizer_signature": agent._optimizer_signature,
+        "config": agent.config,
+        "episode_logs": agent.episode_logs,
+    }
+    with checkpoint_path.open("wb") as file:
+        pickle.dump(checkpoint, file)
+    return checkpoint_path
+
+
+def save_training_artifacts(history, config, output_dir):
     if not history:
         return None
 
-    output_dir = ANALYSIS_OUTPUT_ROOT / datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir.mkdir(parents=True, exist_ok=True)
     _save_json(output_dir / "history.json", history)
     _save_json(output_dir / "run_config.json", config)
 
@@ -364,6 +477,14 @@ def save_training_artifacts(history, config):
     axes[0].plot(updates, _series(history, "attack_rate"), marker="o", label="attack")
     axes[0].plot(updates, _series(history, "movement_rate"), marker="o", label="movement")
     axes[0].plot(updates, _series(history, "retreat_rate"), marker="o", label="retreat")
+    axes[0].plot(updates, _series(history, "expert_action_rate"), marker="o", label="expert")
+    axes[0].plot(
+        updates,
+        _series(history, "configured_expert_ratio"),
+        marker="o",
+        linestyle="--",
+        label="expert target",
+    )
     axes[0].set_title("Action Group Rates")
     axes[0].set_xlabel("Update")
     axes[0].set_ylabel("Rate")
@@ -416,6 +537,17 @@ def save_training_artifacts(history, config):
     fig.savefig(output_dir / "reward_diagnostics.png", dpi=160)
     plt.close(fig)
 
+    fig, ax = plt.subplots(figsize=(12, 5), constrained_layout=True)
+    ax.plot(updates, _series(history, "takedown_enemy_agents"), marker="o", label="enemy agents")
+    ax.plot(updates, _series(history, "takedown_enemy_minions"), marker="o", label="enemy minions")
+    ax.plot(updates, _series(history, "death_count"), marker="o", label="deaths")
+    ax.set_title("Combat Events per Update")
+    ax.set_xlabel("Update")
+    ax.set_ylabel("Count")
+    ax.legend()
+    fig.savefig(output_dir / "combat_events.png", dpi=160)
+    plt.close(fig)
+
     return output_dir
 
 
@@ -437,8 +569,17 @@ def print_training_stop(reason, update_idx, num_updates, agent):
     print("Latest episode:", latest_episode_summary(agent))
 
 
-def train():
-    config = build_run_config()
+def train(config_arg=DEFAULT_CONFIG_MODULE):
+    from core.beliefs.dummy_belief import DummyBelief
+    from core.models.ppo import PPO
+    from core.utils.obs_encoder import ObservationEncoder
+
+    basic_config, training_config, config_name = load_run_config(config_arg)
+    config = build_run_config(basic_config, training_config, config_name)
+    print(f"Using config: {config_name} ({config_arg})")
+    output_dir = create_output_dir(config_name)
+    print(f"Output directory: {output_dir}")
+    _save_json(output_dir / "run_config.json", config)
     env = make_env(config)
     encoder = ObservationEncoder()
     belief = DummyBelief()
@@ -447,10 +588,13 @@ def train():
     total_timesteps = int(config["TOTAL_TIMESTEPS"])
     timesteps_per_batch = int(config["TIMESTEP_PER_BATCH"])
     num_updates = max(1, total_timesteps // timesteps_per_batch)
+    checkpoint_every = int(config.get("CHECKPOINT_EVERY_UPDATES", 0))
     history = []
+    last_update_idx = 0
 
     try:
         for update_idx in range(1, num_updates + 1):
+            last_update_idx = update_idx
             current_config = config_for_update(config, update_idx)
             try:
                 trajectory, last_value = agent.collect_rollout(config=current_config)
@@ -511,18 +655,51 @@ def train():
             for line in pformat(summary, sort_dicts=False, width=100).splitlines():
                 print(f"    {line}")
 
+            if checkpoint_every > 0 and update_idx % checkpoint_every == 0:
+                checkpoint_path = save_checkpoint(
+                    agent,
+                    output_dir,
+                    update_idx=update_idx,
+                )
+                print(f"  checkpoint: {checkpoint_path}")
+
     finally:
         env.close()
-        output_dir = save_training_artifacts(history, config)
-        if output_dir is not None:
+        if history:
+            final_update = history[-1]["update"]
+            checkpoint_path = save_checkpoint(
+                agent,
+                output_dir,
+                update_idx=final_update,
+                final=True,
+            )
+            print(f"Final checkpoint saved to: {checkpoint_path}")
+        elif last_update_idx > 0:
+            print("No completed update was available for checkpointing.")
+
+        if save_training_artifacts(history, config, output_dir) is not None:
             print(f"Training analysis saved to: {output_dir}")
 
     print("Training complete!")
     return agent
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run PPO training.")
+    parser.add_argument(
+        "--config",
+        default=DEFAULT_CONFIG_MODULE,
+        help=(
+            "Config module or file path. Examples: "
+            "`ppo_neutral`, `config.ppo_neutral`, or `config/ppo_neutral.py`."
+        ),
+    )
+    return parser.parse_args()
+
+
 def main():
-    train()
+    args = parse_args()
+    train(config_arg=args.config)
 
 
 if __name__ == "__main__":

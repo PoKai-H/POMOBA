@@ -108,6 +108,10 @@ class PPO:
         self.clip_eps = config.get("CLIP_EPS", config.get("PPO_CLIP_EPS", 0.2))
         self.value_coef = config.get("VF_COEF", config.get("VALUE_COEF", 0.5))
         self.entropy_coef = config.get("ENT_COEF", config.get("ENTROPY_COEF", 0.01))
+        self.bc_coef = config.get("BC_COEF", 0.0)
+        self.expert_mix_strategy = config.get("EXPERT_MIX_STRATEGY", "neutral")
+        self.expert_mix_ratio = config.get("EXPERT_MIX_RATIO", 0.0)
+        self.expert_policy = self._build_expert_policy(self.expert_mix_strategy)
         self.learning_rate = config.get("LR", config.get("LEARNING_RATE", 3e-4))
         self.max_grad_norm = config.get("MAX_GRAD_NORM", 0.5)
         self.update_epochs = config.get("UPDATE_EPOCHS", 4)
@@ -131,6 +135,13 @@ class PPO:
             "ENT_COEF",
             config.get("ENTROPY_COEF", self.entropy_coef),
         )
+        self.bc_coef = config.get("BC_COEF", self.bc_coef)
+        self.expert_mix_strategy = config.get(
+            "EXPERT_MIX_STRATEGY",
+            self.expert_mix_strategy,
+        )
+        self.expert_mix_ratio = float(config.get("EXPERT_MIX_RATIO", self.expert_mix_ratio))
+        self.expert_policy = self._build_expert_policy(self.expert_mix_strategy)
         self.learning_rate = config.get("LR", config.get("LEARNING_RATE", self.learning_rate))
         self.max_grad_norm = config.get("MAX_GRAD_NORM", self.max_grad_norm)
         self.update_epochs = config.get("UPDATE_EPOCHS", self.update_epochs)
@@ -138,6 +149,15 @@ class PPO:
         self.strategy_manager.set_config(config)
         self._init_network_if_needed()
         self._init_optimizer_if_needed()
+
+    def _build_expert_policy(self, strategy_name):
+        strategy_cls = STRATEGY_REGISTRY.get(strategy_name)
+        if strategy_cls is None:
+            available = ", ".join(sorted(STRATEGY_REGISTRY))
+            raise ValueError(
+                f"Unknown expert strategy '{strategy_name}'. Available strategies: {available}"
+            )
+        return strategy_cls()
         
 
     def build_policy_input(self, obs_vec, belief_vec, use_belief_input=True):
@@ -165,6 +185,49 @@ class PPO:
         logprob = pi.log_prob(action)
 
         return int(action), float(logprob), float(value)
+
+    def action_logprob(self, obs_vec, belief_vec, action, use_belief_input=None):
+        if use_belief_input is None:
+            use_belief_input = self.use_belief_input
+
+        policy_input = self.build_policy_input(
+            obs_vec,
+            belief_vec,
+            use_belief_input=use_belief_input,
+        )
+        pi, _ = self.network.apply(
+            self.params,
+            jnp.asarray(policy_input, dtype=jnp.float32),
+        )
+        return float(pi.log_prob(jnp.asarray(action, dtype=jnp.int32)))
+
+    def _select_learning_action(
+        self,
+        learning_obs,
+        obs_vec,
+        belief_vec,
+    ):
+        ppo_action, ppo_logprob, value = self.select_action(
+            obs_vec,
+            belief_vec,
+            use_belief_input=self.use_belief_input,
+        )
+
+        if self.expert_mix_ratio <= 0.0:
+            return ppo_action, ppo_logprob, value, ppo_action, 0.0, 1.0
+
+        use_expert = self.np_rng.random() < self.expert_mix_ratio
+        if not use_expert:
+            return ppo_action, ppo_logprob, value, ppo_action, 0.0, 1.0
+
+        expert_action = int(self.expert_policy.select_action(unwrap_obs(learning_obs)))
+        expert_logprob = self.action_logprob(
+            obs_vec,
+            belief_vec,
+            expert_action,
+            use_belief_input=self.use_belief_input,
+        )
+        return expert_action, expert_logprob, value, expert_action, 1.0, 0.0
 
     def value(self, obs_vec, belief_vec, use_belief_input=None):
         if use_belief_input is None:
@@ -299,23 +362,32 @@ class PPO:
                 obs_vec = self.encoder.encode(learning_obs)
                 belief_vec = self.belief.update(learning_obs)
             
-                learning_action, logprob, value = self.select_action(
+                (
+                    learning_action,
+                    logprob,
+                    value,
+                    expert_action,
+                    expert_mask,
+                    ppo_actor_mask,
+                ) = self._select_learning_action(
+                    learning_obs,
                     obs_vec,
                     belief_vec,
-                    use_belief_input = self.use_belief_input
                 )
+                learning_policy_name = "ppo_expert" if expert_mask else "ppo"
                 
                 all_actions, all_policy_names = self.select_env_actions(
                     obs_list,
                     self.learning_agent_id,
                     learning_action,
                     step,
+                    learning_policy_name=learning_policy_name,
                 )
 
                 action_for_env = [np.asarray(all_actions, dtype=np.int32)]
 
                 try:
-                    obs_new_list, reward_list, done_list, truncated_list, _ = self.env.step(action_for_env)
+                    obs_new_list, reward_list, done_list, truncated_list, info_list = self.env.step(action_for_env)
                 except (ConnectionError, ConnectionResetError, BrokenPipeError, OSError, socket.error) as e:
                     print("Godot connection lost during step():", e)
                     try:
@@ -356,6 +428,9 @@ class PPO:
                         "truncated": float(learning_truncated),
                         "logprob": float(logprob),
                         "value": float(value),
+                        "expert_action": int(expert_action),
+                        "expert_mask": float(expert_mask),
+                        "ppo_actor_mask": float(ppo_actor_mask),
 
                         # Debug / analysis fields
                         "raw_obs": learning_obs,
@@ -365,6 +440,12 @@ class PPO:
                         "all_rewards": reward_list,
                         "all_dones": done_list,
                         "all_truncated": all_truncated,
+                        "all_infos": info_list,
+                        "info": (
+                            info_list[self.learning_agent_id]
+                            if self.learning_agent_id < len(info_list)
+                            else {}
+                        ),
                     }
                 )
 
@@ -415,6 +496,7 @@ class PPO:
         learning_agent_id,
         learning_action,
         step,
+        learning_policy_name="ppo",
     ):
         all_actions = []
         all_policy_names = []
@@ -422,7 +504,7 @@ class PPO:
         for agent_id, agent_obs in enumerate(obs_list):
             if agent_id == learning_agent_id:
                 action = learning_action
-                policy_name = "ppo"
+                policy_name = learning_policy_name
             else:
                 policy = self.strategy_manager.policy_for(agent_id, agent_obs, step)
                 action = policy.select_action(unwrap_obs(agent_obs))
@@ -485,6 +567,18 @@ class PPO:
             "belief": np.asarray([step["belief"] for step in trajectory], dtype=np.float32),
             "actions": np.asarray([step["action"] for step in trajectory], dtype=np.int32),
             "old_logprobs": np.asarray([step["logprob"] for step in trajectory], dtype=np.float32),
+            "expert_actions": np.asarray(
+                [step.get("expert_action", step["action"]) for step in trajectory],
+                dtype=np.int32,
+            ),
+            "expert_mask": np.asarray(
+                [step.get("expert_mask", 0.0) for step in trajectory],
+                dtype=np.float32,
+            ),
+            "ppo_actor_mask": np.asarray(
+                [step.get("ppo_actor_mask", 1.0) for step in trajectory],
+                dtype=np.float32,
+            ),
             "values": np.asarray([step["value"] for step in trajectory], dtype=np.float32),
             "returns": np.asarray([step["return"] for step in trajectory], dtype=np.float32),
             "advantages": np.asarray([step["advantage"] for step in trajectory], dtype=np.float32),
@@ -512,23 +606,35 @@ class PPO:
             jnp.clip(ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps)
             * batch["advantages"]
         )
-        actor_loss = -jnp.minimum(unclipped, clipped)
+        actor_loss_per_step = -jnp.minimum(unclipped, clipped)
+        actor_mask = batch["ppo_actor_mask"]
+        actor_denom = jnp.maximum(jnp.sum(actor_mask), 1.0)
+        actor_loss = jnp.sum(actor_loss_per_step * actor_mask) / actor_denom
 
         value_error = batch["returns"] - value
-        critic_loss = 0.5 * jnp.square(value_error)
+        critic_loss = jnp.mean(0.5 * jnp.square(value_error))
         entropy = pi.entropy()
+        entropy_loss = jnp.mean(entropy)
+
+        expert_logprob = pi.log_prob(batch["expert_actions"])
+        expert_mask = batch["expert_mask"]
+        expert_denom = jnp.maximum(jnp.sum(expert_mask), 1.0)
+        bc_loss = -jnp.sum(expert_logprob * expert_mask) / expert_denom
 
         total_loss = (
             actor_loss
             + self.value_coef * critic_loss
-            - self.entropy_coef * entropy
+            - self.entropy_coef * entropy_loss
+            + self.bc_coef * bc_loss
         )
 
         metrics = {
-            "total_loss": jnp.mean(total_loss),
-            "actor_loss": jnp.mean(actor_loss),
-            "critic_loss": jnp.mean(critic_loss),
-            "entropy": jnp.mean(entropy),
+            "total_loss": total_loss,
+            "actor_loss": actor_loss,
+            "critic_loss": critic_loss,
+            "bc_loss": bc_loss,
+            "entropy": entropy_loss,
+            "expert_action_rate": jnp.mean(expert_mask),
             "mean_ratio": jnp.mean(ratio),
             "mean_value": jnp.mean(value),
         }

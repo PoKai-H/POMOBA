@@ -8,7 +8,7 @@ import numpy as np
 if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config.basic_config import basic_config, training_config
+from config.neutralExpert_neutral import basic_config, training_config
 from core.envs.dummy_env import DummyEnv
 from core.strategy.basic_strategy import NeutralStrategy
 from core.utils.obs_encoder import unwrap_obs

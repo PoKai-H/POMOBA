@@ -1,0 +1,3826 @@
+{
+  "checkpoint": "outputs/training_analysis/ppo_neutral_20260507_183401/checkpoints/final.pkl",
+  "deterministic": true,
+  "summaries": [
+    {
+      "opponent": "aggressive",
+      "episodes": 50,
+      "mean_reward": -89.57,
+      "mean_length": 606.24,
+      "win_rate": 0.02,
+      "mean_deaths": 2.7,
+      "mean_enemy_agent_takedowns": 0.0,
+      "mean_enemy_minion_takedowns": 14.98
+    },
+    {
+      "opponent": "neutral",
+      "episodes": 50,
+      "mean_reward": -86.4194,
+      "mean_length": 354.58,
+      "win_rate": 0.04,
+      "mean_deaths": 0.86,
+      "mean_enemy_agent_takedowns": 0.0,
+      "mean_enemy_minion_takedowns": 8.52
+    },
+    {
+      "opponent": "farming",
+      "episodes": 50,
+      "mean_reward": -88.0818,
+      "mean_length": 339.4,
+      "win_rate": 0.04,
+      "mean_deaths": 0.54,
+      "mean_enemy_agent_takedowns": 0.0,
+      "mean_enemy_minion_takedowns": 8.9
+    }
+  ],
+  "episodes": {
+    "aggressive": [
+      {
+        "opponent": "aggressive",
+        "episode_reward": -100.4826,
+        "episode_length": 159,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            126
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 1
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -109.6996,
+        "episode_length": 943,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 30,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            785
+          ],
+          [
+            "retreat",
+            158
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 2
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -6.3926,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 24,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            905
+          ],
+          [
+            "retreat",
+            95
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 3
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -114.0923,
+        "episode_length": 455,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            374
+          ],
+          [
+            "retreat",
+            81
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 4
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -109.555,
+        "episode_length": 210,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            151
+          ],
+          [
+            "retreat",
+            59
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 5
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -157.0583,
+        "episode_length": 820,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 23,
+        "death_count": 8,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            661
+          ],
+          [
+            "retreat",
+            159
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 6
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -102.4428,
+        "episode_length": 662,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 12,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            573
+          ],
+          [
+            "retreat",
+            89
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 7
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": 106.9816,
+        "episode_length": 750,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 23,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            702
+          ],
+          [
+            "retreat",
+            48
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 8
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -97.6799,
+        "episode_length": 242,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            184
+          ],
+          [
+            "retreat",
+            58
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 9
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -106.6609,
+        "episode_length": 516,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 15,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            425
+          ],
+          [
+            "retreat",
+            90
+          ],
+          [
+            "move_right",
+            1
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 10
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -6.4765,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 31,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            888
+          ],
+          [
+            "retreat",
+            112
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 11
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -110.1375,
+        "episode_length": 359,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            294
+          ],
+          [
+            "retreat",
+            65
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 12
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -24.7094,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 26,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            905
+          ],
+          [
+            "retreat",
+            95
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 13
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -122.272,
+        "episode_length": 581,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 12,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            468
+          ],
+          [
+            "retreat",
+            113
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 14
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -104.2199,
+        "episode_length": 522,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            424
+          ],
+          [
+            "retreat",
+            98
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 15
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -126.1978,
+        "episode_length": 527,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            442
+          ],
+          [
+            "retreat",
+            85
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 16
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -8.1344,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 31,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            863
+          ],
+          [
+            "retreat",
+            137
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 17
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -100.5189,
+        "episode_length": 750,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 19,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            636
+          ],
+          [
+            "retreat",
+            114
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 18
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -116.0294,
+        "episode_length": 517,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 15,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            428
+          ],
+          [
+            "retreat",
+            89
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 19
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -99.2976,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 20
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -126.4789,
+        "episode_length": 725,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            624
+          ],
+          [
+            "retreat",
+            101
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 21
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -21.891,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 29,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            914
+          ],
+          [
+            "retreat",
+            86
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 22
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -103.7096,
+        "episode_length": 351,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 8,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            272
+          ],
+          [
+            "retreat",
+            75
+          ],
+          [
+            "move_right",
+            4
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 23
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -108.2364,
+        "episode_length": 742,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 17,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            640
+          ],
+          [
+            "retreat",
+            102
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 24
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -98.5322,
+        "episode_length": 364,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 11,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            313
+          ],
+          [
+            "retreat",
+            51
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 25
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -98.2776,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            116
+          ],
+          [
+            "retreat",
+            30
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 26
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -113.2648,
+        "episode_length": 448,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            358
+          ],
+          [
+            "retreat",
+            90
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 27
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -111.7388,
+        "episode_length": 444,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            351
+          ],
+          [
+            "retreat",
+            93
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 28
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -127.2584,
+        "episode_length": 376,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 8,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            290
+          ],
+          [
+            "retreat",
+            86
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 29
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -37.1997,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 25,
+        "death_count": 6,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            890
+          ],
+          [
+            "retreat",
+            110
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 30
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -19.242,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 28,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            854
+          ],
+          [
+            "retreat",
+            146
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 31
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -113.4218,
+        "episode_length": 366,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            313
+          ],
+          [
+            "retreat",
+            53
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 32
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -37.4174,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 20,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            849
+          ],
+          [
+            "retreat",
+            150
+          ],
+          [
+            "move_right",
+            1
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 33
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -104.2524,
+        "episode_length": 446,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            383
+          ],
+          [
+            "retreat",
+            63
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 34
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -105.2796,
+        "episode_length": 383,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 8,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            302
+          ],
+          [
+            "retreat",
+            81
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 35
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -32.1616,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 29,
+        "death_count": 6,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            876
+          ],
+          [
+            "retreat",
+            124
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 36
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -126.7513,
+        "episode_length": 962,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 24,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            827
+          ],
+          [
+            "retreat",
+            135
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 37
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -89.0874,
+        "episode_length": 367,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            325
+          ],
+          [
+            "retreat",
+            42
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 38
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -137.7609,
+        "episode_length": 370,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            269
+          ],
+          [
+            "retreat",
+            101
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 39
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -105.3092,
+        "episode_length": 737,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 17,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            666
+          ],
+          [
+            "retreat",
+            71
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 40
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -122.344,
+        "episode_length": 520,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 11,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            444
+          ],
+          [
+            "retreat",
+            76
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 41
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -147.8218,
+        "episode_length": 800,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 6,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            636
+          ],
+          [
+            "retreat",
+            164
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 42
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -120.0793,
+        "episode_length": 447,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 11,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            329
+          ],
+          [
+            "retreat",
+            118
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 43
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -110.003,
+        "episode_length": 580,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 13,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            512
+          ],
+          [
+            "retreat",
+            68
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 44
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -101.2129,
+        "episode_length": 654,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 18,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            540
+          ],
+          [
+            "retreat",
+            114
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 45
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -125.7618,
+        "episode_length": 660,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            570
+          ],
+          [
+            "retreat",
+            90
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 46
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": 9.7384,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 27,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            888
+          ],
+          [
+            "retreat",
+            112
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 47
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -118.3047,
+        "episode_length": 593,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 13,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            459
+          ],
+          [
+            "retreat",
+            132
+          ],
+          [
+            "move_right",
+            2
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 48
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -106.9551,
+        "episode_length": 288,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            243
+          ],
+          [
+            "retreat",
+            45
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 49
+      },
+      {
+        "opponent": "aggressive",
+        "episode_reward": -103.4093,
+        "episode_length": 384,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            324
+          ],
+          [
+            "retreat",
+            60
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "episode": 50
+      }
+    ],
+    "neutral": [
+      {
+        "opponent": "neutral",
+        "episode_reward": -116.1897,
+        "episode_length": 431,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 8,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            355
+          ],
+          [
+            "retreat",
+            76
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 1
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.9577,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            115
+          ],
+          [
+            "retreat",
+            31
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 2
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": 96.3844,
+        "episode_length": 609,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            516
+          ],
+          [
+            "retreat",
+            93
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 3
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": 110.1631,
+        "episode_length": 617,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            546
+          ],
+          [
+            "retreat",
+            71
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 4
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -99.3726,
+        "episode_length": 147,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            34
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 5
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.2166,
+        "episode_length": 144,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            121
+          ],
+          [
+            "retreat",
+            23
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 6
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -96.4541,
+        "episode_length": 223,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 5,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            174
+          ],
+          [
+            "retreat",
+            49
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 7
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.7478,
+        "episode_length": 142,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            116
+          ],
+          [
+            "retreat",
+            26
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 8
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -87.0792,
+        "episode_length": 435,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 11,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            355
+          ],
+          [
+            "retreat",
+            79
+          ],
+          [
+            "attack_hero",
+            1
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 9
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -97.755,
+        "episode_length": 139,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            123
+          ],
+          [
+            "retreat",
+            16
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 10
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -94.232,
+        "episode_length": 370,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 6,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            313
+          ],
+          [
+            "retreat",
+            57
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 11
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.8752,
+        "episode_length": 143,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            110
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 12
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -94.4522,
+        "episode_length": 222,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 6,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            168
+          ],
+          [
+            "retreat",
+            54
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 13
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -97.3442,
+        "episode_length": 153,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            125
+          ],
+          [
+            "retreat",
+            28
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 14
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -103.2044,
+        "episode_length": 816,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 24,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            717
+          ],
+          [
+            "retreat",
+            99
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 15
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -103.667,
+        "episode_length": 286,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            243
+          ],
+          [
+            "retreat",
+            43
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 16
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -120.4576,
+        "episode_length": 662,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 20,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            593
+          ],
+          [
+            "retreat",
+            69
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 17
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -108.2395,
+        "episode_length": 293,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            223
+          ],
+          [
+            "retreat",
+            70
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 18
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -100.7218,
+        "episode_length": 434,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            369
+          ],
+          [
+            "retreat",
+            65
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 19
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.4152,
+        "episode_length": 171,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 1,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            138
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 20
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.9453,
+        "episode_length": 227,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            194
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 21
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.6246,
+        "episode_length": 217,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            180
+          ],
+          [
+            "retreat",
+            37
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 22
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -94.4257,
+        "episode_length": 433,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            384
+          ],
+          [
+            "retreat",
+            49
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 23
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -101.4711,
+        "episode_length": 296,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            248
+          ],
+          [
+            "retreat",
+            48
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 24
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -97.6503,
+        "episode_length": 287,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            252
+          ],
+          [
+            "retreat",
+            35
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 25
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -108.8144,
+        "episode_length": 217,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            163
+          ],
+          [
+            "retreat",
+            54
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 26
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -104.0205,
+        "episode_length": 290,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            240
+          ],
+          [
+            "retreat",
+            49
+          ],
+          [
+            "move_right",
+            1
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 27
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -104.5538,
+        "episode_length": 290,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            245
+          ],
+          [
+            "retreat",
+            45
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 28
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -113.58,
+        "episode_length": 449,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            401
+          ],
+          [
+            "retreat",
+            48
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 29
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -31.066,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 29,
+        "death_count": 6,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            883
+          ],
+          [
+            "retreat",
+            117
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 30
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": 15.175,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 32,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            876
+          ],
+          [
+            "retreat",
+            124
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 31
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -99.5376,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            115
+          ],
+          [
+            "retreat",
+            31
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 32
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.7792,
+        "episode_length": 148,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            107
+          ],
+          [
+            "retreat",
+            41
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 33
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -98.2744,
+        "episode_length": 142,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            112
+          ],
+          [
+            "retreat",
+            30
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 34
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -99.2432,
+        "episode_length": 147,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            115
+          ],
+          [
+            "retreat",
+            32
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 35
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -105.3309,
+        "episode_length": 604,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            494
+          ],
+          [
+            "retreat",
+            110
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 36
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": 4.9717,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 32,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            910
+          ],
+          [
+            "retreat",
+            90
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 37
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -100.1936,
+        "episode_length": 141,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 1,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            110
+          ],
+          [
+            "retreat",
+            31
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 38
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -90.7304,
+        "episode_length": 369,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 8,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            319
+          ],
+          [
+            "retreat",
+            50
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 39
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -96.4623,
+        "episode_length": 599,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            559
+          ],
+          [
+            "retreat",
+            40
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 40
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -84.5269,
+        "episode_length": 430,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 12,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            344
+          ],
+          [
+            "retreat",
+            86
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 41
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -104.9474,
+        "episode_length": 296,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            253
+          ],
+          [
+            "retreat",
+            43
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 42
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -100.5314,
+        "episode_length": 223,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            178
+          ],
+          [
+            "retreat",
+            45
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 43
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -107.2723,
+        "episode_length": 208,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            154
+          ],
+          [
+            "retreat",
+            54
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 44
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -99.6852,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            33
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 45
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -97.6222,
+        "episode_length": 157,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            116
+          ],
+          [
+            "retreat",
+            41
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 46
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -105.5672,
+        "episode_length": 214,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 5,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            134
+          ],
+          [
+            "retreat",
+            79
+          ],
+          [
+            "move_right",
+            1
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 47
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -89.8848,
+        "episode_length": 303,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            251
+          ],
+          [
+            "retreat",
+            52
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 48
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -87.2501,
+        "episode_length": 433,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 12,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            365
+          ],
+          [
+            "retreat",
+            68
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 49
+      },
+      {
+        "opponent": "neutral",
+        "episode_reward": -116.2927,
+        "episode_length": 734,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            650
+          ],
+          [
+            "retreat",
+            84
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "episode": 50
+      }
+    ],
+    "farming": [
+      {
+        "opponent": "farming",
+        "episode_reward": -100.3606,
+        "episode_length": 822,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 25,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            717
+          ],
+          [
+            "retreat",
+            105
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 1
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -93.2192,
+        "episode_length": 223,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            192
+          ],
+          [
+            "retreat",
+            31
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 2
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": 108.8167,
+        "episode_length": 501,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            442
+          ],
+          [
+            "retreat",
+            59
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 3
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.9105,
+        "episode_length": 148,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            127
+          ],
+          [
+            "retreat",
+            21
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 4
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -105.0921,
+        "episode_length": 213,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 5,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            145
+          ],
+          [
+            "retreat",
+            66
+          ],
+          [
+            "move_right",
+            2
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 5
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.8404,
+        "episode_length": 222,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            188
+          ],
+          [
+            "retreat",
+            34
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 6
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.9061,
+        "episode_length": 143,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            30
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 7
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -96.6378,
+        "episode_length": 146,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            111
+          ],
+          [
+            "retreat",
+            35
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 8
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -88.7393,
+        "episode_length": 420,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            360
+          ],
+          [
+            "retreat",
+            60
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 9
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -83.8387,
+        "episode_length": 440,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            381
+          ],
+          [
+            "retreat",
+            59
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 10
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.2535,
+        "episode_length": 213,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            155
+          ],
+          [
+            "retreat",
+            58
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 11
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.2929,
+        "episode_length": 147,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            34
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 12
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.7475,
+        "episode_length": 158,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            126
+          ],
+          [
+            "retreat",
+            32
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 13
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -93.1638,
+        "episode_length": 443,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            393
+          ],
+          [
+            "retreat",
+            50
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 14
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -89.9882,
+        "episode_length": 444,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            399
+          ],
+          [
+            "retreat",
+            45
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 15
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -79.7911,
+        "episode_length": 586,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 17,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            449
+          ],
+          [
+            "retreat",
+            137
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 16
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.016,
+        "episode_length": 467,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            428
+          ],
+          [
+            "retreat",
+            39
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 17
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.4633,
+        "episode_length": 151,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            119
+          ],
+          [
+            "retreat",
+            32
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 18
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.3568,
+        "episode_length": 145,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            118
+          ],
+          [
+            "retreat",
+            27
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 19
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.9578,
+        "episode_length": 437,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 10,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            375
+          ],
+          [
+            "retreat",
+            62
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 20
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -96.056,
+        "episode_length": 144,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            121
+          ],
+          [
+            "retreat",
+            23
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 21
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -84.0427,
+        "episode_length": 590,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 21,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            527
+          ],
+          [
+            "retreat",
+            63
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 22
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -103.3653,
+        "episode_length": 277,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            229
+          ],
+          [
+            "retreat",
+            48
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 23
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -94.5296,
+        "episode_length": 285,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            253
+          ],
+          [
+            "retreat",
+            32
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 24
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.0552,
+        "episode_length": 143,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            109
+          ],
+          [
+            "retreat",
+            34
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 25
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.1099,
+        "episode_length": 145,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            32
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 26
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -103.6878,
+        "episode_length": 431,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 15,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            349
+          ],
+          [
+            "retreat",
+            82
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 27
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -94.1503,
+        "episode_length": 296,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 7,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            245
+          ],
+          [
+            "retreat",
+            51
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 28
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -104.4021,
+        "episode_length": 656,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 15,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            577
+          ],
+          [
+            "retreat",
+            79
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 29
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.1192,
+        "episode_length": 148,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            122
+          ],
+          [
+            "retreat",
+            26
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 30
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.7748,
+        "episode_length": 141,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            119
+          ],
+          [
+            "retreat",
+            22
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 31
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -100.9189,
+        "episode_length": 145,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 1,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            128
+          ],
+          [
+            "retreat",
+            17
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 32
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -105.6438,
+        "episode_length": 520,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 13,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            406
+          ],
+          [
+            "retreat",
+            114
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 33
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -100.4176,
+        "episode_length": 288,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            245
+          ],
+          [
+            "retreat",
+            43
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 34
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -96.2353,
+        "episode_length": 439,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 11,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            393
+          ],
+          [
+            "retreat",
+            46
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 35
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -89.8662,
+        "episode_length": 347,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 9,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            304
+          ],
+          [
+            "retreat",
+            43
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 36
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -95.6784,
+        "episode_length": 222,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 5,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            183
+          ],
+          [
+            "retreat",
+            39
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 37
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -107.4708,
+        "episode_length": 511,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 12,
+        "death_count": 2,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            454
+          ],
+          [
+            "retreat",
+            57
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 38
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -85.6303,
+        "episode_length": 424,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 13,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            367
+          ],
+          [
+            "retreat",
+            57
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 39
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -91.7332,
+        "episode_length": 517,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            428
+          ],
+          [
+            "retreat",
+            89
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 40
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -92.9236,
+        "episode_length": 515,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            413
+          ],
+          [
+            "retreat",
+            102
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 41
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -99.2592,
+        "episode_length": 148,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            113
+          ],
+          [
+            "retreat",
+            35
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 42
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.0558,
+        "episode_length": 217,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 4,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            187
+          ],
+          [
+            "retreat",
+            30
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 43
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -90.9212,
+        "episode_length": 590,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 16,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            492
+          ],
+          [
+            "retreat",
+            98
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 44
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.7208,
+        "episode_length": 150,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 2,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            120
+          ],
+          [
+            "retreat",
+            30
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 45
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -98.1424,
+        "episode_length": 152,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            127
+          ],
+          [
+            "retreat",
+            25
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 46
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": 115.5427,
+        "episode_length": 468,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 14,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            456
+          ],
+          [
+            "retreat",
+            12
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 47
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -85.3683,
+        "episode_length": 723,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 22,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            622
+          ],
+          [
+            "retreat",
+            101
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 48
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -104.1039,
+        "episode_length": 729,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 23,
+        "death_count": 3,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            652
+          ],
+          [
+            "retreat",
+            77
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 49
+      },
+      {
+        "opponent": "farming",
+        "episode_reward": -97.4931,
+        "episode_length": 140,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 0,
+        "takedown_enemy_minions": 3,
+        "death_count": 0,
+        "top_actions": [
+          [
+            "attack_nearest_minion",
+            112
+          ],
+          [
+            "retreat",
+            28
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "episode": 50
+      }
+    ]
+  }
+}

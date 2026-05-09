@@ -61,6 +61,49 @@ learning_truncated = (
   - all done flags,
   - all truncated flags.
 
+### Expert Action Mixing And Behavior Cloning
+
+- Added optional expert action mixing for PPO training.
+- The learning agent can execute a scripted expert action with a decaying probability.
+- The expert policy is configured by:
+
+```python
+"EXPERT_MIX_STRATEGY": "neutral"
+```
+
+- The default expert ratio schedule is:
+
+```python
+"EXPERT_MIX_INITIAL_RATIO": 0.9
+"EXPERT_MIX_FINAL_RATIO": 0.0
+"EXPERT_MIX_DECAY_UPDATES": 80
+```
+
+- `core/run.py` computes `EXPERT_MIX_RATIO` for each update.
+- During rollout:
+  - with probability `EXPERT_MIX_RATIO`, the learning agent executes the expert action,
+  - otherwise, it executes the PPO-sampled action.
+- Expert-executed steps are marked with:
+  - `expert_action`,
+  - `expert_mask`,
+  - `ppo_actor_mask`.
+- PPO actor loss is masked out on expert-executed steps to avoid treating expert actions as on-policy PPO samples.
+- Critic/value learning still uses all rollout steps.
+- Added behavior cloning loss:
+
+```python
+bc_loss = -log pi(expert_action | obs)
+```
+
+- `BC_COEF` controls the strength of this supervised imitation term.
+- Training metrics now include:
+  - `bc_loss`,
+  - `expert_action_rate`.
+- `run.py` rollout summaries and saved history include:
+  - actual expert action rate,
+  - configured expert ratio.
+- `action_diagnostics.png` plots both actual expert usage and the configured expert-ratio schedule.
+
 ### Scripted Strategy Changes
 
 - Reduced scripted strategies from four to three:
@@ -356,4 +399,3 @@ _action_index_to_type(action_index)
   - `last_action_index`,
   - `last_action_type`.
 - This supports both scripted strategies and PPO diagnostics.
-
