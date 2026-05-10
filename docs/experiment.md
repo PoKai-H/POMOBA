@@ -213,7 +213,7 @@ belief-conditioned: pi(a | o, b)
 | aggressiveExpert_neutral | obs | 140.953 | 109.8512 | 51.082 | 0.0133 | 14.34 | 22.6733 | 20.9333 |
 | aggressiveExpert_neutral_belief | obs+belief | 119.9651 | 89.492 | 54.4178 | 0.0067 | 14.2467 | 21.5867 | 17.7533 |
 
-![Fixed downstream performance](paper_belief_analysis/downstream_fixed.png)
+![Fixed downstream performance](evaluation/paper_belief_analysis/downstream_fixed.png)
 
 ## Strategy-Switching Stability
 
@@ -222,7 +222,7 @@ belief-conditioned: pi(a | o, b)
 | aggressiveExpert_neutral | obs | strategySwitching_onlyOBS | 139.3384 | 0.02 | 14.62 | 22.8 | 21.06 | -0.0148 | -0.1981 | 0.496 |
 | aggressiveExpert_neutral_belief | obs+belief | strategySwitching_belief | 112.4393 | 0.0 | 14.0 | 20.86 | 17.48 | 0.0013 | 0.1022 | 0.4128 |
 
-![Switching stability](paper_belief_analysis/switching_stability.png)
+![Switching stability](evaluation/paper_belief_analysis/switching_stability.png)
 
 ## Belief Minus Observation Deltas
 
@@ -260,7 +260,7 @@ input is perturbed.
 | aggressiveExpert_neutral_belief | random | strategySwitching_belief | 127.2314 | 0.0 | 14.26 | 22.02 | 17.8 | 0.5183 | 0.474 | 40.1087 | 0.9632 |
 | aggressiveExpert_neutral_belief | shuffled | strategySwitching_belief | 119.277 | 0.04 | 13.5 | 20.94 | 16.76 | 0.4907 | 0.4613 | 36.587 | 0.9688 |
 
-![Belief ablation](paper_belief_analysis/belief_ablation.png)
+![Belief ablation](evaluation/paper_belief_analysis/belief_ablation.png)
 
 The shuffled-belief condition performs worse than correct belief, suggesting
 that the ordering and semantics of the belief vector matter. However, random
