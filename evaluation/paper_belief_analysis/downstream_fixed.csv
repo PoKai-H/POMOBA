@@ -1,0 +1,3 @@
+policy,input,avg_reward,worst_reward,reward_gap,avg_win_rate,avg_deaths,avg_agent_takedowns,avg_minion_takedowns
+aggressiveExpert_neutral,obs,140.953,109.8512,51.082,0.0133,14.34,22.6733,20.9333
+aggressiveExpert_neutral_belief,obs+belief,119.9651,89.492,54.4178,0.0067,14.2467,21.5867,17.7533

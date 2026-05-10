@@ -14,5 +14,6 @@ This table compares each trained checkpoint when the opponent strategy changes d
 | policy_checkpoint | eval_config | avg_reward_across_opponents | avg_win_rate | avg_deaths | avg_enemy_agent_takedowns | avg_enemy_minion_takedowns | avg_switch_reward_delta | avg_switch_reward_std_delta | avg_switch_action_shift |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aggressiveExpert_neutral | strategySwitching_onlyOBS | 139.3384 | 0.02 | 14.62 | 22.8 | 21.06 | -0.0148 | -0.1981 | 0.496 |
+| aggressiveExpert_random_onlyOBS | strategySwitching_onlyOBS | 138.2989 | 0.0 | 14.36 | 22.42 | 21.82 | -0.0097 | -0.1384 | 0.5656 |
 | aggressiveExpert_farming | strategySwitching_onlyOBS | 108.4256 | 0.0 | 14.36 | 19.76 | 20.82 | 0.0262 | -0.0334 | 0.4976 |
 | ppo_neutral | strategySwitching_onlyOBS | -82.988 | 0.02 | 1.6 | 0.0 | 13.46 | -0.1487 | 0.6957 | 0.2013 |

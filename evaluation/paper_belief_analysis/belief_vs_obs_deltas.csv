@@ -1,0 +1,3 @@
+comparison,reward_delta,death_delta,agent_takedown_delta,minion_takedown_delta,switch_reward_delta_delta,switch_std_delta_delta,action_shift_delta
+belief - observation,-20.9879,-0.0933,-1.0866,-3.18,0.0,0.0,0.0
+belief - observation,-26.8991,-0.62,-1.94,-3.58,0.0161,0.3003,-0.0832

@@ -1,0 +1,5329 @@
+{
+  "checkpoint": "outputs/training_analysis/aggressiveExpert_neutral_belief_20260509_224537/checkpoints/final.pkl",
+  "eval_config": null,
+  "deterministic": true,
+  "switch_window": 50,
+  "summaries": [
+    {
+      "opponent": "aggressive",
+      "episodes": 50,
+      "mean_reward": 89.492,
+      "mean_length": 970.66,
+      "win_rate": 0.0,
+      "mean_deaths": 15.46,
+      "mean_enemy_agent_takedowns": 20.24,
+      "mean_enemy_minion_takedowns": 17.56,
+      "initial_strategy_counts": {
+        "aggressive": 50
+      },
+      "next_strategy_counts": {},
+      "mean_switch_reward_delta": 0.0,
+      "mean_switch_reward_std_delta": 0.0,
+      "mean_switch_action_shift": 0.0,
+      "mean_pre_switch_attack_rate": 0.0,
+      "mean_post_switch_attack_rate": 0.0,
+      "mean_pre_switch_retreat_rate": 0.0,
+      "mean_post_switch_retreat_rate": 0.0
+    },
+    {
+      "opponent": "neutral",
+      "episodes": 50,
+      "mean_reward": 126.4935,
+      "mean_length": 983.9,
+      "win_rate": 0.0,
+      "mean_deaths": 14.44,
+      "mean_enemy_agent_takedowns": 22.02,
+      "mean_enemy_minion_takedowns": 17.88,
+      "initial_strategy_counts": {
+        "neutral": 50
+      },
+      "next_strategy_counts": {},
+      "mean_switch_reward_delta": 0.0,
+      "mean_switch_reward_std_delta": 0.0,
+      "mean_switch_action_shift": 0.0,
+      "mean_pre_switch_attack_rate": 0.0,
+      "mean_post_switch_attack_rate": 0.0,
+      "mean_pre_switch_retreat_rate": 0.0,
+      "mean_post_switch_retreat_rate": 0.0
+    },
+    {
+      "opponent": "farming",
+      "episodes": 50,
+      "mean_reward": 143.9098,
+      "mean_length": 979.18,
+      "win_rate": 0.02,
+      "mean_deaths": 12.84,
+      "mean_enemy_agent_takedowns": 22.5,
+      "mean_enemy_minion_takedowns": 17.82,
+      "initial_strategy_counts": {
+        "farming": 50
+      },
+      "next_strategy_counts": {},
+      "mean_switch_reward_delta": 0.0,
+      "mean_switch_reward_std_delta": 0.0,
+      "mean_switch_action_shift": 0.0,
+      "mean_pre_switch_attack_rate": 0.0,
+      "mean_post_switch_attack_rate": 0.0,
+      "mean_pre_switch_retreat_rate": 0.0,
+      "mean_post_switch_retreat_rate": 0.0
+    }
+  ],
+  "episodes": {
+    "aggressive": [
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 94.8645,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 15,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            497
+          ],
+          [
+            "attack_nearest_minion",
+            253
+          ],
+          [
+            "move_down",
+            250
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 1
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 113.039,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 20,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            459
+          ],
+          [
+            "move_down",
+            281
+          ],
+          [
+            "attack_nearest_minion",
+            260
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 2
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 134.1488,
+        "terminal_reward": 0.0193,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 17,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            492
+          ],
+          [
+            "attack_nearest_minion",
+            290
+          ],
+          [
+            "move_down",
+            218
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 3
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 95.8731,
+        "terminal_reward": 0.0492,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 14,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            443
+          ],
+          [
+            "attack_nearest_minion",
+            308
+          ],
+          [
+            "move_down",
+            249
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 4
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 84.1653,
+        "terminal_reward": 0.0485,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 19,
+        "death_count": 18,
+        "top_actions": [
+          [
+            "attack_hero",
+            456
+          ],
+          [
+            "move_down",
+            287
+          ],
+          [
+            "attack_nearest_minion",
+            257
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 5
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 65.1737,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 15,
+        "takedown_enemy_minions": 20,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "move_down",
+            372
+          ],
+          [
+            "attack_nearest_minion",
+            315
+          ],
+          [
+            "attack_hero",
+            313
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 6
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 135.8479,
+        "terminal_reward": -0.1509,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 18,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            453
+          ],
+          [
+            "attack_nearest_minion",
+            326
+          ],
+          [
+            "move_down",
+            221
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 7
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 86.0268,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 16,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            424
+          ],
+          [
+            "move_down",
+            356
+          ],
+          [
+            "attack_nearest_minion",
+            220
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 8
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 83.4499,
+        "terminal_reward": 0.0089,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 19,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            489
+          ],
+          [
+            "move_down",
+            284
+          ],
+          [
+            "attack_nearest_minion",
+            227
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 9
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 98.5654,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 20,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            468
+          ],
+          [
+            "attack_nearest_minion",
+            292
+          ],
+          [
+            "move_down",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 10
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 74.2749,
+        "terminal_reward": 0.0279,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 18,
+        "takedown_enemy_minions": 23,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            488
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ],
+          [
+            "move_down",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 11
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 80.2083,
+        "terminal_reward": 0.0283,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 16,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            434
+          ],
+          [
+            "attack_nearest_minion",
+            310
+          ],
+          [
+            "move_down",
+            256
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 12
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -49.1184,
+        "terminal_reward": -100.0208,
+        "episode_length": 749,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 9,
+        "takedown_enemy_minions": 9,
+        "death_count": 6,
+        "top_actions": [
+          [
+            "attack_hero",
+            337
+          ],
+          [
+            "attack_nearest_minion",
+            214
+          ],
+          [
+            "move_down",
+            198
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 13
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 96.7416,
+        "terminal_reward": 0.0491,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 14,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            450
+          ],
+          [
+            "move_down",
+            289
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 14
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 162.3205,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 21,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            494
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ],
+          [
+            "move_down",
+            245
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 15
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 123.1078,
+        "terminal_reward": 0.009,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 19,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            484
+          ],
+          [
+            "attack_nearest_minion",
+            281
+          ],
+          [
+            "move_down",
+            235
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 16
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 111.8373,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 16,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            457
+          ],
+          [
+            "attack_nearest_minion",
+            272
+          ],
+          [
+            "move_down",
+            271
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 17
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 117.4309,
+        "terminal_reward": 0.1692,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 28,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            439
+          ],
+          [
+            "attack_nearest_minion",
+            324
+          ],
+          [
+            "move_down",
+            237
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 18
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 85.5249,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 16,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            511
+          ],
+          [
+            "move_down",
+            259
+          ],
+          [
+            "attack_nearest_minion",
+            230
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 19
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 56.288,
+        "terminal_reward": 0.0491,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 17,
+        "takedown_enemy_minions": 22,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            368
+          ],
+          [
+            "attack_nearest_minion",
+            360
+          ],
+          [
+            "move_down",
+            272
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 20
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 92.4202,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 17,
+        "death_count": 19,
+        "top_actions": [
+          [
+            "attack_hero",
+            428
+          ],
+          [
+            "move_down",
+            293
+          ],
+          [
+            "attack_nearest_minion",
+            279
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 21
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 134.9267,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 17,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            412
+          ],
+          [
+            "attack_nearest_minion",
+            310
+          ],
+          [
+            "move_down",
+            278
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 22
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 69.4428,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 19,
+        "takedown_enemy_minions": 16,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            431
+          ],
+          [
+            "attack_nearest_minion",
+            330
+          ],
+          [
+            "move_down",
+            239
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 23
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 101.0367,
+        "terminal_reward": 0.229,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 18,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            474
+          ],
+          [
+            "move_down",
+            267
+          ],
+          [
+            "attack_nearest_minion",
+            259
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 24
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 116.4959,
+        "terminal_reward": -10.0309,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            476
+          ],
+          [
+            "attack_nearest_minion",
+            285
+          ],
+          [
+            "move_down",
+            239
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 25
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 120.3328,
+        "terminal_reward": 0.0453,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 23,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            440
+          ],
+          [
+            "attack_nearest_minion",
+            319
+          ],
+          [
+            "move_down",
+            241
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 26
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 116.1563,
+        "terminal_reward": 0.0493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            444
+          ],
+          [
+            "attack_nearest_minion",
+            307
+          ],
+          [
+            "move_down",
+            249
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 27
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -95.1112,
+        "terminal_reward": -100.0208,
+        "episode_length": 450,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 3,
+        "takedown_enemy_minions": 7,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "move_down",
+            237
+          ],
+          [
+            "attack_hero",
+            111
+          ],
+          [
+            "attack_nearest_minion",
+            102
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 28
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 112.1037,
+        "terminal_reward": 0.0471,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 16,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            464
+          ],
+          [
+            "attack_nearest_minion",
+            307
+          ],
+          [
+            "move_down",
+            229
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 29
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 111.9846,
+        "terminal_reward": 0.2493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 24,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            428
+          ],
+          [
+            "attack_nearest_minion",
+            316
+          ],
+          [
+            "move_down",
+            256
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 30
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 118.1771,
+        "terminal_reward": 1.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 21,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            454
+          ],
+          [
+            "attack_nearest_minion",
+            295
+          ],
+          [
+            "move_down",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 31
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 101.5878,
+        "terminal_reward": 0.2291,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 16,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            423
+          ],
+          [
+            "attack_nearest_minion",
+            310
+          ],
+          [
+            "move_down",
+            267
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 32
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 87.6799,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 12,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            410
+          ],
+          [
+            "move_down",
+            384
+          ],
+          [
+            "attack_nearest_minion",
+            206
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 33
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 108.7122,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 21,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            412
+          ],
+          [
+            "attack_nearest_minion",
+            329
+          ],
+          [
+            "move_down",
+            259
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 34
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 113.6063,
+        "terminal_reward": 0.0274,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 20,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            423
+          ],
+          [
+            "attack_nearest_minion",
+            318
+          ],
+          [
+            "move_down",
+            259
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 35
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 135.6881,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 17,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            456
+          ],
+          [
+            "attack_nearest_minion",
+            276
+          ],
+          [
+            "move_down",
+            268
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 36
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -29.1234,
+        "terminal_reward": -100.0208,
+        "episode_length": 815,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 14,
+        "takedown_enemy_minions": 5,
+        "death_count": 9,
+        "top_actions": [
+          [
+            "move_down",
+            336
+          ],
+          [
+            "attack_hero",
+            331
+          ],
+          [
+            "attack_nearest_minion",
+            148
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 37
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 120.2544,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 24,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            396
+          ],
+          [
+            "attack_nearest_minion",
+            358
+          ],
+          [
+            "move_down",
+            246
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 38
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 101.8653,
+        "terminal_reward": 0.0473,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 18,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            455
+          ],
+          [
+            "attack_nearest_minion",
+            283
+          ],
+          [
+            "move_down",
+            262
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 39
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 115.9999,
+        "terminal_reward": 0.0193,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 20,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            437
+          ],
+          [
+            "move_down",
+            307
+          ],
+          [
+            "attack_nearest_minion",
+            256
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 40
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 102.6147,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 19,
+        "death_count": 18,
+        "top_actions": [
+          [
+            "attack_hero",
+            454
+          ],
+          [
+            "move_down",
+            290
+          ],
+          [
+            "attack_nearest_minion",
+            256
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 41
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 120.6107,
+        "terminal_reward": 0.2493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 14,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            483
+          ],
+          [
+            "attack_nearest_minion",
+            279
+          ],
+          [
+            "move_down",
+            238
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 42
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 79.5349,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 19,
+        "takedown_enemy_minions": 24,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            420
+          ],
+          [
+            "attack_nearest_minion",
+            294
+          ],
+          [
+            "move_down",
+            286
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 43
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 81.9191,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 9,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            492
+          ],
+          [
+            "move_down",
+            382
+          ],
+          [
+            "attack_nearest_minion",
+            126
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 44
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 74.3815,
+        "terminal_reward": 0.0488,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 19,
+        "takedown_enemy_minions": 13,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            462
+          ],
+          [
+            "attack_nearest_minion",
+            278
+          ],
+          [
+            "move_down",
+            260
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 45
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 89.3868,
+        "terminal_reward": 1.2284,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 19,
+        "death_count": 18,
+        "top_actions": [
+          [
+            "attack_hero",
+            432
+          ],
+          [
+            "move_down",
+            288
+          ],
+          [
+            "attack_nearest_minion",
+            280
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 46
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 133.227,
+        "terminal_reward": 0.0283,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 17,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            431
+          ],
+          [
+            "attack_nearest_minion",
+            331
+          ],
+          [
+            "move_down",
+            238
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 47
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 89.2726,
+        "terminal_reward": 0.0489,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 25,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            455
+          ],
+          [
+            "attack_nearest_minion",
+            276
+          ],
+          [
+            "move_down",
+            269
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 48
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 79.4287,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 20,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            489
+          ],
+          [
+            "attack_nearest_minion",
+            260
+          ],
+          [
+            "move_down",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 49
+      },
+      {
+        "opponent": "aggressive",
+        "initial_opponent_strategy": "aggressive",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -79.7815,
+        "terminal_reward": -100.0208,
+        "episode_length": 519,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 5,
+        "takedown_enemy_minions": 4,
+        "death_count": 4,
+        "top_actions": [
+          [
+            "move_down",
+            297
+          ],
+          [
+            "attack_hero",
+            186
+          ],
+          [
+            "attack_nearest_minion",
+            36
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "aggressive"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 50
+      }
+    ],
+    "neutral": [
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 144.2538,
+        "terminal_reward": 1.2289,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 22,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            460
+          ],
+          [
+            "attack_nearest_minion",
+            312
+          ],
+          [
+            "move_down",
+            228
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 1
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 101.9771,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 17,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            464
+          ],
+          [
+            "attack_nearest_minion",
+            295
+          ],
+          [
+            "move_down",
+            241
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 2
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 154.0011,
+        "terminal_reward": -10.0713,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 14,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            511
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ],
+          [
+            "move_down",
+            228
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 3
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 98.8025,
+        "terminal_reward": 0.225,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 19,
+        "takedown_enemy_minions": 16,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            475
+          ],
+          [
+            "attack_nearest_minion",
+            291
+          ],
+          [
+            "move_down",
+            234
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 4
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 111.4112,
+        "terminal_reward": 0.0493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 14,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            424
+          ],
+          [
+            "move_down",
+            380
+          ],
+          [
+            "attack_nearest_minion",
+            196
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 5
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 113.7678,
+        "terminal_reward": 0.0084,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 12,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            526
+          ],
+          [
+            "move_down",
+            262
+          ],
+          [
+            "attack_nearest_minion",
+            212
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 6
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 136.231,
+        "terminal_reward": 0.009,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 18,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            481
+          ],
+          [
+            "attack_nearest_minion",
+            302
+          ],
+          [
+            "move_down",
+            217
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 7
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 179.3633,
+        "terminal_reward": 0.0491,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 17,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            486
+          ],
+          [
+            "attack_nearest_minion",
+            283
+          ],
+          [
+            "move_down",
+            231
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 8
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 138.3935,
+        "terminal_reward": 0.0291,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 21,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            490
+          ],
+          [
+            "move_down",
+            287
+          ],
+          [
+            "attack_nearest_minion",
+            223
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 9
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 123.8493,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 16,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            500
+          ],
+          [
+            "attack_nearest_minion",
+            274
+          ],
+          [
+            "move_down",
+            226
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 10
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 130.754,
+        "terminal_reward": 0.249,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 16,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            463
+          ],
+          [
+            "move_down",
+            296
+          ],
+          [
+            "attack_nearest_minion",
+            241
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 11
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 125.5429,
+        "terminal_reward": 0.0492,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 17,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            473
+          ],
+          [
+            "move_down",
+            280
+          ],
+          [
+            "attack_nearest_minion",
+            247
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 12
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -84.8438,
+        "terminal_reward": -100.1008,
+        "episode_length": 294,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 2,
+        "takedown_enemy_minions": 1,
+        "death_count": 1,
+        "top_actions": [
+          [
+            "move_down",
+            223
+          ],
+          [
+            "attack_hero",
+            44
+          ],
+          [
+            "attack_nearest_minion",
+            27
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 13
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 150.7795,
+        "terminal_reward": 0.0291,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 22,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            476
+          ],
+          [
+            "attack_nearest_minion",
+            291
+          ],
+          [
+            "move_down",
+            233
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 14
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 133.5478,
+        "terminal_reward": 0.0278,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 15,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            482
+          ],
+          [
+            "move_down",
+            266
+          ],
+          [
+            "attack_nearest_minion",
+            252
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 15
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 106.5286,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 20,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            461
+          ],
+          [
+            "move_down",
+            281
+          ],
+          [
+            "attack_nearest_minion",
+            258
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 16
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 141.8395,
+        "terminal_reward": 0.2492,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            448
+          ],
+          [
+            "attack_nearest_minion",
+            312
+          ],
+          [
+            "move_down",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 17
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 139.0351,
+        "terminal_reward": 0.009,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            480
+          ],
+          [
+            "move_down",
+            282
+          ],
+          [
+            "attack_nearest_minion",
+            238
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 18
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 152.6015,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 16,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            472
+          ],
+          [
+            "move_down",
+            294
+          ],
+          [
+            "attack_nearest_minion",
+            234
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 19
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 171.5308,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 19,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            484
+          ],
+          [
+            "attack_nearest_minion",
+            287
+          ],
+          [
+            "move_down",
+            229
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 20
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 139.6959,
+        "terminal_reward": 1.2287,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 20,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            482
+          ],
+          [
+            "attack_nearest_minion",
+            270
+          ],
+          [
+            "move_down",
+            248
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 21
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 143.0916,
+        "terminal_reward": 0.0287,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 21,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            469
+          ],
+          [
+            "attack_nearest_minion",
+            272
+          ],
+          [
+            "move_down",
+            259
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 22
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 137.0181,
+        "terminal_reward": 0.2485,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            479
+          ],
+          [
+            "attack_nearest_minion",
+            281
+          ],
+          [
+            "move_down",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 23
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 147.2645,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            444
+          ],
+          [
+            "attack_nearest_minion",
+            309
+          ],
+          [
+            "move_down",
+            247
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 24
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 93.0075,
+        "terminal_reward": 0.0477,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 10,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            506
+          ],
+          [
+            "move_down",
+            301
+          ],
+          [
+            "attack_nearest_minion",
+            193
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 25
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 166.1123,
+        "terminal_reward": -0.0532,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            439
+          ],
+          [
+            "attack_nearest_minion",
+            352
+          ],
+          [
+            "move_down",
+            209
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 26
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 126.281,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            462
+          ],
+          [
+            "attack_nearest_minion",
+            280
+          ],
+          [
+            "move_down",
+            258
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 27
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 115.1147,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            420
+          ],
+          [
+            "attack_nearest_minion",
+            345
+          ],
+          [
+            "move_down",
+            235
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 28
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 176.7236,
+        "terminal_reward": 0.0087,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 24,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            458
+          ],
+          [
+            "attack_nearest_minion",
+            294
+          ],
+          [
+            "move_down",
+            248
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 29
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 106.9922,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 20,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            466
+          ],
+          [
+            "move_down",
+            277
+          ],
+          [
+            "attack_nearest_minion",
+            257
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 30
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -12.6096,
+        "terminal_reward": -100.0208,
+        "episode_length": 901,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 15,
+        "takedown_enemy_minions": 13,
+        "death_count": 10,
+        "top_actions": [
+          [
+            "attack_hero",
+            400
+          ],
+          [
+            "move_down",
+            315
+          ],
+          [
+            "attack_nearest_minion",
+            186
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 31
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 149.5532,
+        "terminal_reward": -0.1507,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            502
+          ],
+          [
+            "attack_nearest_minion",
+            251
+          ],
+          [
+            "move_down",
+            247
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 32
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 136.0608,
+        "terminal_reward": 0.029,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 17,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            489
+          ],
+          [
+            "attack_nearest_minion",
+            262
+          ],
+          [
+            "move_down",
+            249
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 33
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 162.337,
+        "terminal_reward": 0.0279,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            460
+          ],
+          [
+            "attack_nearest_minion",
+            304
+          ],
+          [
+            "move_down",
+            236
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 34
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 112.7746,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            480
+          ],
+          [
+            "attack_nearest_minion",
+            287
+          ],
+          [
+            "move_down",
+            233
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 35
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 110.28,
+        "terminal_reward": 0.0091,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 16,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            494
+          ],
+          [
+            "attack_nearest_minion",
+            286
+          ],
+          [
+            "move_down",
+            220
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 36
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 134.5412,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 13,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            501
+          ],
+          [
+            "move_down",
+            258
+          ],
+          [
+            "attack_nearest_minion",
+            241
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 37
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 141.3207,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 22,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            490
+          ],
+          [
+            "attack_nearest_minion",
+            257
+          ],
+          [
+            "move_down",
+            253
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 38
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 139.1731,
+        "terminal_reward": 0.0285,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 15,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            542
+          ],
+          [
+            "move_down",
+            275
+          ],
+          [
+            "attack_nearest_minion",
+            183
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 39
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 106.7245,
+        "terminal_reward": 0.229,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 14,
+        "death_count": 17,
+        "top_actions": [
+          [
+            "attack_hero",
+            481
+          ],
+          [
+            "move_down",
+            320
+          ],
+          [
+            "attack_nearest_minion",
+            199
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 40
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 161.0548,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 20,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            495
+          ],
+          [
+            "attack_nearest_minion",
+            286
+          ],
+          [
+            "move_down",
+            219
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 41
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 121.8733,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            434
+          ],
+          [
+            "attack_nearest_minion",
+            291
+          ],
+          [
+            "move_down",
+            275
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 42
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 135.0014,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 18,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            481
+          ],
+          [
+            "attack_nearest_minion",
+            275
+          ],
+          [
+            "move_down",
+            244
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 43
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 143.0245,
+        "terminal_reward": 0.0483,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 22,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            466
+          ],
+          [
+            "move_down",
+            283
+          ],
+          [
+            "attack_nearest_minion",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 44
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 45.8865,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 18,
+        "takedown_enemy_minions": 17,
+        "death_count": 18,
+        "top_actions": [
+          [
+            "attack_hero",
+            494
+          ],
+          [
+            "move_down",
+            264
+          ],
+          [
+            "attack_nearest_minion",
+            242
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 45
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 162.5047,
+        "terminal_reward": 0.2283,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 22,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            485
+          ],
+          [
+            "attack_nearest_minion",
+            265
+          ],
+          [
+            "move_down",
+            250
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 46
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 143.2883,
+        "terminal_reward": 0.0489,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            476
+          ],
+          [
+            "attack_nearest_minion",
+            273
+          ],
+          [
+            "move_down",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 47
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 121.8447,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 16,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            459
+          ],
+          [
+            "move_down",
+            290
+          ],
+          [
+            "attack_nearest_minion",
+            251
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 48
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 141.5424,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 21,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            504
+          ],
+          [
+            "attack_nearest_minion",
+            262
+          ],
+          [
+            "move_down",
+            234
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 49
+      },
+      {
+        "opponent": "neutral",
+        "initial_opponent_strategy": "neutral",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 147.8319,
+        "terminal_reward": 0.028,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 17,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            484
+          ],
+          [
+            "attack_nearest_minion",
+            263
+          ],
+          [
+            "move_down",
+            253
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "neutral"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 50
+      }
+    ],
+    "farming": [
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 175.4507,
+        "terminal_reward": 0.0493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 23,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            464
+          ],
+          [
+            "attack_nearest_minion",
+            319
+          ],
+          [
+            "move_down",
+            217
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 1
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 134.4635,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 19,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            508
+          ],
+          [
+            "move_down",
+            252
+          ],
+          [
+            "attack_nearest_minion",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 2
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 152.4077,
+        "terminal_reward": 0.0288,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 15,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            511
+          ],
+          [
+            "move_down",
+            284
+          ],
+          [
+            "attack_nearest_minion",
+            205
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 3
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 159.0267,
+        "terminal_reward": 0.0279,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            495
+          ],
+          [
+            "attack_nearest_minion",
+            292
+          ],
+          [
+            "move_down",
+            213
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 4
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 176.1378,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 16,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            506
+          ],
+          [
+            "attack_nearest_minion",
+            260
+          ],
+          [
+            "move_down",
+            234
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 5
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 160.6053,
+        "terminal_reward": 0.0292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 20,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            496
+          ],
+          [
+            "attack_nearest_minion",
+            276
+          ],
+          [
+            "move_down",
+            228
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 6
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 171.7941,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 14,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            538
+          ],
+          [
+            "attack_nearest_minion",
+            236
+          ],
+          [
+            "move_down",
+            226
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 7
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 176.374,
+        "terminal_reward": 0.2291,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 15,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            514
+          ],
+          [
+            "attack_nearest_minion",
+            266
+          ],
+          [
+            "move_down",
+            220
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 8
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 166.4723,
+        "terminal_reward": 0.0289,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 18,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            509
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ],
+          [
+            "move_down",
+            230
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 9
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 145.8533,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 17,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            493
+          ],
+          [
+            "attack_nearest_minion",
+            299
+          ],
+          [
+            "move_down",
+            208
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 10
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 152.5221,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 20,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            474
+          ],
+          [
+            "attack_nearest_minion",
+            270
+          ],
+          [
+            "move_down",
+            256
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 11
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 23.2254,
+        "terminal_reward": -100.0208,
+        "episode_length": 898,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 18,
+        "takedown_enemy_minions": 14,
+        "death_count": 10,
+        "top_actions": [
+          [
+            "attack_hero",
+            401
+          ],
+          [
+            "move_down",
+            303
+          ],
+          [
+            "attack_nearest_minion",
+            194
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 12
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 184.7398,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 26,
+        "takedown_enemy_minions": 16,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            528
+          ],
+          [
+            "attack_nearest_minion",
+            272
+          ],
+          [
+            "move_down",
+            200
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 13
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 142.8952,
+        "terminal_reward": 0.0286,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            472
+          ],
+          [
+            "attack_nearest_minion",
+            273
+          ],
+          [
+            "move_down",
+            255
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 14
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 166.6378,
+        "terminal_reward": 10.249,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 17,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            530
+          ],
+          [
+            "move_down",
+            257
+          ],
+          [
+            "attack_nearest_minion",
+            213
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 15
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 159.0544,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 18,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            490
+          ],
+          [
+            "attack_nearest_minion",
+            267
+          ],
+          [
+            "move_down",
+            243
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 16
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 158.8123,
+        "terminal_reward": 0.0088,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 20,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            526
+          ],
+          [
+            "move_down",
+            237
+          ],
+          [
+            "attack_nearest_minion",
+            237
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 17
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 187.7366,
+        "terminal_reward": 0.0088,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 15,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            551
+          ],
+          [
+            "attack_nearest_minion",
+            252
+          ],
+          [
+            "move_down",
+            197
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 18
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 148.9378,
+        "terminal_reward": 0.2488,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 14,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            426
+          ],
+          [
+            "move_down",
+            373
+          ],
+          [
+            "attack_nearest_minion",
+            201
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 19
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 149.3005,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 18,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            466
+          ],
+          [
+            "move_down",
+            299
+          ],
+          [
+            "attack_nearest_minion",
+            235
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 20
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 179.5642,
+        "terminal_reward": 0.0485,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 25,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            508
+          ],
+          [
+            "attack_nearest_minion",
+            277
+          ],
+          [
+            "move_down",
+            215
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 21
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 167.3387,
+        "terminal_reward": 0.2292,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 25,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            455
+          ],
+          [
+            "attack_nearest_minion",
+            314
+          ],
+          [
+            "move_down",
+            231
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 22
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 153.5666,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 18,
+        "death_count": 11,
+        "top_actions": [
+          [
+            "attack_hero",
+            443
+          ],
+          [
+            "move_down",
+            373
+          ],
+          [
+            "attack_nearest_minion",
+            184
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 23
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 178.3361,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 26,
+        "takedown_enemy_minions": 17,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            503
+          ],
+          [
+            "attack_nearest_minion",
+            264
+          ],
+          [
+            "move_down",
+            233
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 24
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 150.3999,
+        "terminal_reward": 0.0492,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 21,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            498
+          ],
+          [
+            "move_down",
+            258
+          ],
+          [
+            "attack_nearest_minion",
+            244
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 25
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 186.6403,
+        "terminal_reward": 0.2272,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 20,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            485
+          ],
+          [
+            "move_down",
+            265
+          ],
+          [
+            "attack_nearest_minion",
+            250
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 26
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 103.5352,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 20,
+        "takedown_enemy_minions": 20,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            530
+          ],
+          [
+            "attack_nearest_minion",
+            236
+          ],
+          [
+            "move_down",
+            234
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 27
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 170.0287,
+        "terminal_reward": 0.0492,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 17,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            519
+          ],
+          [
+            "attack_nearest_minion",
+            253
+          ],
+          [
+            "move_down",
+            228
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 28
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 151.2157,
+        "terminal_reward": 0.029,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 22,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            516
+          ],
+          [
+            "attack_nearest_minion",
+            253
+          ],
+          [
+            "move_down",
+            231
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 29
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 128.7791,
+        "terminal_reward": 0.0293,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 22,
+        "takedown_enemy_minions": 19,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            486
+          ],
+          [
+            "move_down",
+            274
+          ],
+          [
+            "attack_nearest_minion",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 30
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 189.336,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 19,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            545
+          ],
+          [
+            "attack_nearest_minion",
+            245
+          ],
+          [
+            "move_down",
+            210
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 31
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 154.4016,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 21,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            502
+          ],
+          [
+            "attack_nearest_minion",
+            287
+          ],
+          [
+            "move_down",
+            211
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 32
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 148.2733,
+        "terminal_reward": 0.0283,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 22,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            528
+          ],
+          [
+            "move_down",
+            258
+          ],
+          [
+            "attack_nearest_minion",
+            214
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 33
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 165.9334,
+        "terminal_reward": 0.0493,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 16,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            498
+          ],
+          [
+            "move_down",
+            262
+          ],
+          [
+            "attack_nearest_minion",
+            240
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 34
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 165.9695,
+        "terminal_reward": 0.0193,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 18,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            517
+          ],
+          [
+            "move_down",
+            273
+          ],
+          [
+            "attack_nearest_minion",
+            210
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 35
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 203.14,
+        "terminal_reward": 99.9792,
+        "episode_length": 869,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 14,
+        "takedown_enemy_minions": 18,
+        "death_count": 8,
+        "top_actions": [
+          [
+            "attack_hero",
+            390
+          ],
+          [
+            "attack_nearest_minion",
+            301
+          ],
+          [
+            "move_down",
+            178
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 36
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 1.6929,
+        "terminal_reward": -99.9608,
+        "episode_length": 959,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 17,
+        "takedown_enemy_minions": 13,
+        "death_count": 11,
+        "top_actions": [
+          [
+            "attack_hero",
+            404
+          ],
+          [
+            "move_down",
+            311
+          ],
+          [
+            "attack_nearest_minion",
+            244
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 37
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -25.3274,
+        "terminal_reward": -100.0208,
+        "episode_length": 522,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 10,
+        "takedown_enemy_minions": 8,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "move_down",
+            209
+          ],
+          [
+            "attack_hero",
+            198
+          ],
+          [
+            "attack_nearest_minion",
+            115
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 38
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 35.3792,
+        "terminal_reward": -100.0208,
+        "episode_length": 970,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 16,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            482
+          ],
+          [
+            "move_down",
+            311
+          ],
+          [
+            "attack_nearest_minion",
+            177
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 39
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 172.0674,
+        "terminal_reward": 0.229,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 22,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            503
+          ],
+          [
+            "attack_nearest_minion",
+            272
+          ],
+          [
+            "move_down",
+            225
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 40
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 115.8171,
+        "terminal_reward": 0.0076,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 19,
+        "takedown_enemy_minions": 16,
+        "death_count": 12,
+        "top_actions": [
+          [
+            "attack_hero",
+            437
+          ],
+          [
+            "attack_nearest_minion",
+            285
+          ],
+          [
+            "move_down",
+            278
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 41
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 89.3519,
+        "terminal_reward": 0.0289,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 21,
+        "takedown_enemy_minions": 8,
+        "death_count": 16,
+        "top_actions": [
+          [
+            "attack_hero",
+            504
+          ],
+          [
+            "move_down",
+            328
+          ],
+          [
+            "attack_nearest_minion",
+            168
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 42
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": -29.2162,
+        "terminal_reward": -100.0208,
+        "episode_length": 741,
+        "terminated": true,
+        "truncated": false,
+        "takedown_enemy_agents": 10,
+        "takedown_enemy_minions": 7,
+        "death_count": 5,
+        "top_actions": [
+          [
+            "attack_hero",
+            297
+          ],
+          [
+            "move_down",
+            268
+          ],
+          [
+            "attack_nearest_minion",
+            176
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 43
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 175.3468,
+        "terminal_reward": -0.0207,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 25,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            483
+          ],
+          [
+            "attack_nearest_minion",
+            289
+          ],
+          [
+            "move_down",
+            228
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 44
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 148.6394,
+        "terminal_reward": 0.0491,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 13,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            506
+          ],
+          [
+            "move_down",
+            267
+          ],
+          [
+            "attack_nearest_minion",
+            227
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 45
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 184.6512,
+        "terminal_reward": 0.0487,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 19,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            494
+          ],
+          [
+            "move_down",
+            274
+          ],
+          [
+            "attack_nearest_minion",
+            232
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 46
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 168.3196,
+        "terminal_reward": 0.0075,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 24,
+        "takedown_enemy_minions": 21,
+        "death_count": 13,
+        "top_actions": [
+          [
+            "attack_hero",
+            529
+          ],
+          [
+            "move_down",
+            236
+          ],
+          [
+            "attack_nearest_minion",
+            235
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 47
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 141.8004,
+        "terminal_reward": 0.0288,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 23,
+        "takedown_enemy_minions": 16,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            515
+          ],
+          [
+            "move_down",
+            255
+          ],
+          [
+            "attack_nearest_minion",
+            230
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 48
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 165.1395,
+        "terminal_reward": 0.049,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 23,
+        "death_count": 15,
+        "top_actions": [
+          [
+            "attack_hero",
+            495
+          ],
+          [
+            "attack_nearest_minion",
+            261
+          ],
+          [
+            "move_down",
+            244
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 49
+      },
+      {
+        "opponent": "farming",
+        "initial_opponent_strategy": "farming",
+        "next_opponent_strategy": null,
+        "strategy_switch_step": null,
+        "episode_reward": 162.9212,
+        "terminal_reward": -0.0007,
+        "episode_length": 1000,
+        "terminated": false,
+        "truncated": true,
+        "takedown_enemy_agents": 25,
+        "takedown_enemy_minions": 15,
+        "death_count": 14,
+        "top_actions": [
+          [
+            "attack_hero",
+            521
+          ],
+          [
+            "move_down",
+            259
+          ],
+          [
+            "attack_nearest_minion",
+            220
+          ]
+        ],
+        "all_policy_names": [
+          "ppo_eval",
+          "farming"
+        ],
+        "switch_analysis": null,
+        "switch_trace": [],
+        "episode": 50
+      }
+    ]
+  }
+}

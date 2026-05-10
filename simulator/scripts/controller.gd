@@ -381,9 +381,26 @@ func _build_observed_enemy_actions() -> Dictionary:
 			continue
 
 		var observed_action = actor_controller.get("last_action_index")
-		observed_actions[str(_get_actor_id(actor))] = observed_action if observed_action != null else null
+		var observed_action_type = String(actor_controller.get("last_action_type"))
+		observed_actions[str(_get_actor_id(actor))] = {
+			"action": observed_action if observed_action != null else null,
+			"action_type": observed_action_type,
+			"target_type": _target_type_for_action(observed_action_type)
+		}
 
 	return observed_actions
+
+
+func _target_type_for_action(action_type: String) -> Variant:
+	match action_type:
+		ACTION_ATTACK_HERO:
+			return "hero"
+		ACTION_ATTACK_NEAREST_MINION:
+			return "minion"
+		ACTION_ATTACK_TOWER:
+			return "tower"
+		_:
+			return null
 
 
 func _resolve_move_action() -> Vector2:

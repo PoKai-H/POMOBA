@@ -389,17 +389,6 @@ def training_history_entry(update_idx, trajectory, loss, metrics, summary):
     }
 
 
-def _series(history, key, default=0.0):
-    return [default if item.get(key) is None else item.get(key) for item in history]
-
-
-def _metric_series(history, key, default=0.0):
-    return [
-        default if item.get("metrics", {}).get(key) is None else item["metrics"][key]
-        for item in history
-    ]
-
-
 def _save_json(path, data):
     path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
 
@@ -431,123 +420,11 @@ def save_checkpoint(agent, output_dir, update_idx, final=False):
     return checkpoint_path
 
 
-def save_training_artifacts(history, config, output_dir):
+def save_training_artifacts(history, output_dir):
     if not history:
         return None
 
     _save_json(output_dir / "history.json", history)
-    _save_json(output_dir / "run_config.json", config)
-
-    try:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
-    except ImportError as exc:
-        print(f"Could not generate training plots: {exc}")
-        return output_dir
-
-    updates = _series(history, "update")
-
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8), constrained_layout=True)
-    axes[0, 0].plot(updates, _series(history, "episode_reward", None), marker="o")
-    axes[0, 0].set_title("Episode Reward")
-    axes[0, 0].set_xlabel("Update")
-    axes[0, 0].set_ylabel("Reward")
-
-    axes[0, 1].plot(updates, _series(history, "episode_length", None), marker="o")
-    axes[0, 1].set_title("Episode Length")
-    axes[0, 1].set_xlabel("Update")
-    axes[0, 1].set_ylabel("Steps")
-
-    axes[1, 0].plot(updates, _series(history, "loss"), marker="o", label="total")
-    axes[1, 0].plot(updates, _metric_series(history, "critic_loss"), marker="o", label="critic")
-    axes[1, 0].plot(updates, _metric_series(history, "actor_loss"), marker="o", label="actor")
-    axes[1, 0].set_title("PPO Loss")
-    axes[1, 0].set_xlabel("Update")
-    axes[1, 0].legend()
-
-    axes[1, 1].plot(updates, _metric_series(history, "entropy"), marker="o")
-    axes[1, 1].set_title("Policy Entropy")
-    axes[1, 1].set_xlabel("Update")
-    axes[1, 1].set_ylabel("Entropy")
-    fig.savefig(output_dir / "training_curves.png", dpi=160)
-    plt.close(fig)
-
-    fig, axes = plt.subplots(2, 1, figsize=(12, 7), constrained_layout=True)
-    axes[0].plot(updates, _series(history, "attack_rate"), marker="o", label="attack")
-    axes[0].plot(updates, _series(history, "movement_rate"), marker="o", label="movement")
-    axes[0].plot(updates, _series(history, "retreat_rate"), marker="o", label="retreat")
-    axes[0].plot(updates, _series(history, "expert_action_rate"), marker="o", label="expert")
-    axes[0].plot(
-        updates,
-        _series(history, "configured_expert_ratio"),
-        marker="o",
-        linestyle="--",
-        label="expert target",
-    )
-    axes[0].set_title("Action Group Rates")
-    axes[0].set_xlabel("Update")
-    axes[0].set_ylabel("Rate")
-    axes[0].set_ylim(0.0, 1.0)
-    axes[0].legend()
-
-    action_names = list(ACTION_NAMES.values())
-    action_rates = []
-    for item in history:
-        counts = item.get("action_distribution", {})
-        action_rates.append([counts.get(name, 0.0) for name in action_names])
-    image = axes[1].imshow(action_rates, aspect="auto", interpolation="nearest")
-    axes[1].set_title("Most Used Actions by Update")
-    axes[1].set_xlabel("Action")
-    axes[1].set_ylabel("Update")
-    axes[1].set_xticks(range(len(action_names)))
-    axes[1].set_xticklabels(action_names, rotation=45, ha="right")
-    axes[1].set_yticks(range(len(updates)))
-    axes[1].set_yticklabels(updates)
-    fig.colorbar(image, ax=axes[1], label="Rate")
-    fig.savefig(output_dir / "action_diagnostics.png", dpi=160)
-    plt.close(fig)
-
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8), constrained_layout=True)
-    axes[0, 0].plot(updates, _series(history, "reward_mean"), marker="o", label="mean")
-    axes[0, 0].plot(updates, _series(history, "reward_sum"), marker="o", label="sum")
-    axes[0, 0].set_title("Reward per Rollout")
-    axes[0, 0].set_xlabel("Update")
-    axes[0, 0].legend()
-
-    axes[0, 1].plot(updates, _series(history, "positive_reward_steps"), marker="o", label="positive")
-    axes[0, 1].plot(updates, _series(history, "negative_reward_steps"), marker="o", label="negative")
-    axes[0, 1].set_title("Reward Signal Frequency")
-    axes[0, 1].set_xlabel("Update")
-    axes[0, 1].set_ylabel("Steps")
-    axes[0, 1].legend()
-
-    axes[1, 0].plot(updates, _series(history, "advantage_mean"), marker="o", label="mean")
-    axes[1, 0].plot(updates, _series(history, "advantage_min"), marker="o", label="min")
-    axes[1, 0].plot(updates, _series(history, "advantage_max"), marker="o", label="max")
-    axes[1, 0].set_title("Advantage")
-    axes[1, 0].set_xlabel("Update")
-    axes[1, 0].legend()
-
-    axes[1, 1].plot(updates, _series(history, "return_mean"), marker="o", label="return")
-    axes[1, 1].plot(updates, _series(history, "value_mean"), marker="o", label="value")
-    axes[1, 1].set_title("Return vs Value")
-    axes[1, 1].set_xlabel("Update")
-    axes[1, 1].legend()
-    fig.savefig(output_dir / "reward_diagnostics.png", dpi=160)
-    plt.close(fig)
-
-    fig, ax = plt.subplots(figsize=(12, 5), constrained_layout=True)
-    ax.plot(updates, _series(history, "takedown_enemy_agents"), marker="o", label="enemy agents")
-    ax.plot(updates, _series(history, "takedown_enemy_minions"), marker="o", label="enemy minions")
-    ax.plot(updates, _series(history, "death_count"), marker="o", label="deaths")
-    ax.set_title("Combat Events per Update")
-    ax.set_xlabel("Update")
-    ax.set_ylabel("Count")
-    ax.legend()
-    fig.savefig(output_dir / "combat_events.png", dpi=160)
-    plt.close(fig)
-
     return output_dir
 
 
@@ -571,6 +448,7 @@ def print_training_stop(reason, update_idx, num_updates, agent):
 
 def train(config_arg=DEFAULT_CONFIG_MODULE):
     from core.beliefs.dummy_belief import DummyBelief
+    from core.beliefs.bayesian_belief import BayesianBelief
     from core.models.ppo import PPO
     from core.utils.obs_encoder import ObservationEncoder
 
@@ -582,7 +460,7 @@ def train(config_arg=DEFAULT_CONFIG_MODULE):
     _save_json(output_dir / "run_config.json", config)
     env = make_env(config)
     encoder = ObservationEncoder()
-    belief = DummyBelief()
+    belief = BayesianBelief()
     agent = PPO(env=env, encoder=encoder, belief=belief, config=config)
 
     total_timesteps = int(config["TOTAL_TIMESTEPS"])
@@ -677,8 +555,8 @@ def train(config_arg=DEFAULT_CONFIG_MODULE):
         elif last_update_idx > 0:
             print("No completed update was available for checkpointing.")
 
-        if save_training_artifacts(history, config, output_dir) is not None:
-            print(f"Training analysis saved to: {output_dir}")
+        if save_training_artifacts(history, output_dir) is not None:
+            print(f"Training history saved to: {output_dir / 'history.json'}")
 
     print("Training complete!")
     return agent

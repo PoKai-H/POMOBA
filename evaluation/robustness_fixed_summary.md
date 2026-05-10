@@ -13,6 +13,7 @@ This table compares each trained checkpoint against fixed scripted opponents.
 | policy_checkpoint | avg_reward_across_opponents | worst_opponent_reward | robustness_gap | avg_win_rate | avg_deaths | avg_enemy_agent_takedowns | avg_enemy_minion_takedowns |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | aggressiveExpert_neutral | 140.953 | 109.8512 | 51.082 | 0.0133 | 14.34 | 22.6733 | 20.9333 |
+| aggressiveExpert_random_onlyOBS | 133.5411 | 101.118 | 60.0585 | 0.0 | 14.52 | 22.3533 | 20.6867 |
 | aggressiveExpert_farming | 114.1531 | 72.7278 | 73.3819 | 0.0 | 14.3333 | 20.1733 | 21.7267 |
 | farmingExpert_neutral | 93.7264 | 67.2418 | 51.2219 | 0.0067 | 15.0133 | 21.0867 | 8.28 |
 | neutralExpert_neutral | -1.3345 | -20.2767 | 28.6504 | 0.0 | 12.5533 | 14.42 | 0.0 |

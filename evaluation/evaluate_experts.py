@@ -17,8 +17,6 @@ from statistics import mean
 
 
 DEFAULT_HISTORY_GLOB = "outputs/training_analysis/*/history.json"
-DEFAULT_REPORT_PATH = "evaluation/expert_evaluation_report.md"
-
 SCORE_EXPLANATION = """# Expert Evaluation Score
 
 The score is a heuristic ranking metric for comparing which expert curriculum
@@ -275,11 +273,7 @@ def _markdown_table(rows):
     return "\n".join(lines)
 
 
-def save_markdown_report(path, rows):
-    if not path:
-        return
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
+def markdown_report(rows):
     report = (
         SCORE_EXPLANATION.rstrip()
         + "\n\n"
@@ -287,8 +281,7 @@ def save_markdown_report(path, rows):
         + _markdown_table(rows)
         + "\n"
     )
-    path.write_text(report, encoding="utf-8")
-    print(f"Saved markdown report to: {path}")
+    return report
 
 
 def parse_args():
@@ -325,8 +318,8 @@ def parse_args():
     parser.add_argument("--save-csv", default=None, help="Optional CSV output path.")
     parser.add_argument(
         "--save-md",
-        default=DEFAULT_REPORT_PATH,
-        help="Markdown report path. Use an empty string to disable.",
+        default=None,
+        help=argparse.SUPPRESS,
     )
     return parser.parse_args()
 
@@ -342,17 +335,14 @@ def main():
         rows = [row for row in rows if row["opponent"] == args.opponent]
 
     rows.sort(key=lambda row: row["score"], reverse=True)
-    print_table(rows)
-    print()
-    print(SCORE_EXPLANATION)
-
     if args.save_json:
         with Path(args.save_json).open("w", encoding="utf-8") as file:
             json.dump(rows, file, indent=2)
     if args.save_csv:
         save_csv(args.save_csv, rows)
+    print(markdown_report(rows))
     if args.save_md:
-        save_markdown_report(args.save_md, rows)
+        print("Markdown files are no longer written; reports are printed to stdout.")
 
 
 if __name__ == "__main__":

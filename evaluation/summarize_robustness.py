@@ -3,9 +3,6 @@
 
 Example:
     python evaluation/summarize_robustness.py
-    python evaluation/summarize_robustness.py \
-        --save-fixed-md evaluation/robustness_fixed_summary.md \
-        --save-switching-md evaluation/robustness_switching_summary.md
 """
 
 from __future__ import annotations
@@ -18,9 +15,6 @@ from statistics import mean
 
 
 DEFAULT_RESULTS_GLOB = "evaluation/robustness_results/*/robustness_results.json"
-DEFAULT_FIXED_MD_PATH = "evaluation/robustness_fixed_summary.md"
-DEFAULT_SWITCHING_MD_PATH = "evaluation/robustness_switching_summary.md"
-
 
 def _mean(values):
     values = [float(value) for value in values if value is not None]
@@ -132,9 +126,7 @@ def _markdown_table(rows, headers):
     return "\n".join(lines)
 
 
-def save_fixed_markdown(path, rows):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
+def fixed_markdown(rows):
     content = (
         "# Fixed-Opponent Robustness Summary\n\n"
         "This table compares each trained checkpoint against fixed scripted opponents.\n\n"
@@ -148,13 +140,10 @@ def save_fixed_markdown(path, rows):
         + _markdown_table(rows, FIXED_HEADERS)
         + "\n"
     )
-    path.write_text(content, encoding="utf-8")
-    print(f"Saved fixed-opponent markdown summary to: {path}")
+    return content
 
 
-def save_switching_markdown(path, rows):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
+def switching_markdown(rows):
     content = (
         "# Strategy-Switching Robustness Summary\n\n"
         "This table compares each trained checkpoint when the opponent strategy changes during an episode.\n\n"
@@ -169,8 +158,7 @@ def save_switching_markdown(path, rows):
         + _markdown_table(rows, SWITCHING_HEADERS)
         + "\n"
     )
-    path.write_text(content, encoding="utf-8")
-    print(f"Saved strategy-switching markdown summary to: {path}")
+    return content
 
 
 def save_csv(path, rows):
@@ -201,13 +189,13 @@ def parse_args():
     )
     parser.add_argument(
         "--save-fixed-md",
-        default=DEFAULT_FIXED_MD_PATH,
-        help="Markdown output path for fixed-opponent results.",
+        default=None,
+        help=argparse.SUPPRESS,
     )
     parser.add_argument(
         "--save-switching-md",
-        default=DEFAULT_SWITCHING_MD_PATH,
-        help="Markdown output path for strategy-switching results.",
+        default=None,
+        help=argparse.SUPPRESS,
     )
     parser.add_argument("--save-csv", default=None, help="Optional CSV output path.")
     parser.add_argument("--save-json", default=None, help="Optional JSON output path.")
@@ -222,13 +210,10 @@ def main():
     fixed_rows.sort(key=lambda row: row["avg_reward_across_opponents"], reverse=True)
     switching_rows.sort(key=lambda row: row["avg_reward_across_opponents"], reverse=True)
 
-    print_table("Fixed-Opponent Robustness", fixed_rows, FIXED_HEADERS)
-    print_table("Strategy-Switching Robustness", switching_rows, SWITCHING_HEADERS)
-
-    if args.save_fixed_md:
-        save_fixed_markdown(args.save_fixed_md, fixed_rows)
-    if args.save_switching_md:
-        save_switching_markdown(args.save_switching_md, switching_rows)
+    print(fixed_markdown(fixed_rows))
+    print(switching_markdown(switching_rows))
+    if args.save_fixed_md or args.save_switching_md:
+        print("Markdown files are no longer written; reports are printed to stdout.")
     if args.save_csv:
         save_csv(args.save_csv, rows)
     if args.save_json:

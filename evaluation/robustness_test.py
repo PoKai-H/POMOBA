@@ -484,15 +484,11 @@ def run_robustness_test(args):
         "episodes": all_results,
     }
     json_path = output_dir / "robustness_results.json"
-    md_path = output_dir / "robustness_report.md"
     json_path.write_text(json.dumps(result_payload, indent=2, default=str), encoding="utf-8")
-    md_path.write_text(
-        _markdown_report(args.checkpoint, not args.stochastic, eval_config_name, summaries),
-        encoding="utf-8",
-    )
 
     print(f"Saved robustness JSON to: {json_path}")
-    print(f"Saved robustness report to: {md_path}")
+    print()
+    print(_markdown_report(args.checkpoint, not args.stochastic, eval_config_name, summaries))
 
 
 def parse_args():
