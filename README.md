@@ -9,21 +9,14 @@ Python command. The Python process will wait for the Godot connection.
 
 # Setting Up:
 
- 1. Install Godot
- 2. Pull the latest changes
- 3. Create a Python virtual environment of your choice
- 4. Run this command inside the environment: pip install -r rl_requirements.txt
- 5. Activate vitrual environment: source <venv>/bin/activate
+ 1. Pull the latest changes
+ 2. Create a Python virtual environment of your choice
+ 3. Run this command inside the environment: pip install -r rl_requirements.txt
+ 4. Activate vitrual environment: source <venv>/bin/activate
 
 ## 1. Instructions to run with RL Agents:
 
-### 1.1 Open Godot
-### 1.2 In the main scene click the sync node and set the "Control Mode" to "Training".
-### 1.3 Open a terminal in the root directory of this repository
-
-### 1.4 Train PPO Checkpoints
-
-Run these from the project root.
+Run these from the project root. The godot executable works on MacOS and Windows.
 
 ### Observation-only baselines
 
@@ -64,7 +57,6 @@ run_config.json
 checkpoints/final.pkl
 ```
 
-### 1.5 press play in Godot
 
 
 ## 2. Generate Training Plots
