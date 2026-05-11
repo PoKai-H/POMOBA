@@ -182,7 +182,7 @@ Opponent behavior is governed by a latent strategy $\theta \in \Theta$, where ea
 
 An episode terminates when a terminal condition is reached (e.g., objective completion or time limit).
 
-\paragraph{Simulator implementation.} The Godot side is responsible for world dynamics, combat resolution, visibility, scripted minion and tower interactions, structured observation export, and termination/reward signaling. Python is responsible for policy learning, belief updates, experiment control, and evaluation. This separation allows us to keep the environment mechanics fixed while varying the learning and inference methods on top of the same simulator.
+\paragraph{Simulator Implementation.} The Godot side is responsible for world dynamics, combat resolution, visibility, scripted minion and tower interactions, structured observation export, and termination/reward signaling. Python is responsible for policy learning, belief updates, experiment control, and evaluation. This separation allows us to keep the environment mechanics fixed while varying the learning and inference methods on top of the same simulator.
 
 \begin{figure}[H]
 \centering
@@ -191,6 +191,9 @@ An episode terminates when a terminal condition is reached (e.g., objective comp
 \label{fig:simulator_overview}
 \end{figure}
 
+\paragraph{Godot-Python Communication.} We used code from the open source package "Godot RL Agents" from \cite{beeching2021godotrlagents} to help facilitate communication between the Godot simulator and the Python RL scripts.  Godot RL Agents uses a socket-based interface. The simulator sends structured observations and event logs to the Python side at each time step, while the Python side sends back action commands. The Python side configures each experiment by sending a config message. This config message is a structured dictionary that the Godot side uses to determine what map to use, how many agents to include, and whether or not towers, minions, and neutral camps should be enabled. This allows for flexible experiment control and integration with standard RL algorithms.
+
+The package includes a Godot plugin, which improves the ease of development with the Godot editor.  The plugin includes a sync node that handles communication. It can be set to "human," "training," or "Onnx Inference" mode. In "human" mode, the plugin allows for human playtesting by forwarding keyboard inputs as actions. In "training" mode, it waits for action commands from the Python side. In "Onnx Inference" mode, it runs a pre-trained ONNX model directly within Godot for inference without Python communication.
 
 \section{Approach}
 
