@@ -408,7 +408,8 @@ def main():
     # Close the environment
     env.close()
     print("Training complete!")
-    #TODO need to add a message to close the environment/exit the python code when you exit the simulator
+    print("Closing environment and exiting...")
+    sys.exit(0)
     
 
 

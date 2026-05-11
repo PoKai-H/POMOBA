@@ -272,14 +272,21 @@ class GodotEnv:
         message = {
             "type": "close",
         }
-        self._send_as_json(message)
-        print("close message sent")
-        time.sleep(1.0)
-        self.connection.close()
         try:
-            atexit.unregister(self._close)
-        except Exception as e:
-            print("exception unregistering close method", e)
+            self._send_as_json(message)
+            print("close message sent")
+            time.sleep(1.0)
+        except (OSError, BrokenPipeError) as e:
+            print(f"Socket already closed when sending close message: {e}")
+        finally:
+            try:
+                self.connection.close()
+            except Exception as e:
+                print(f"Exception closing socket: {e}")
+            try:
+                atexit.unregister(self._close)
+            except Exception as e:
+                print("exception unregistering close method", e)
 
     @property
     def action_space(self):
