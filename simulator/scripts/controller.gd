@@ -50,6 +50,23 @@ func get_obs() -> Dictionary:
 		}
 
 	var self_position: Vector2 = _player.global_position
+	#print({
+		#"timestep": n_steps,
+		#"self": {
+			#"id": _get_actor_id(_player),
+			#"team": "ally",
+			#"position": [self_position.x, self_position.y],
+			#"status": {
+				#"alive": _player.is_alive(),
+				#"hp": _player.hp
+			#}
+		#},
+		#"agents": _build_other_agents(self_position),
+		#"objects": _build_objects(self_position),
+		#"extensions": {
+			#"observed_enemy_actions": _build_observed_enemy_actions()
+		#}
+	#})
 	return {
 		"timestep": n_steps,
 		"self": {
@@ -282,14 +299,20 @@ func _build_objects(self_position: Vector2) -> Array[Dictionary]:
 	for node in get_tree().get_nodes_in_group("combat_actor"):
 		if not (node is CombatActor):
 			continue
+		
 
 		var actor := node as CombatActor
 		if actor == _player or actor.actor_kind == &"player":
 			continue
-
+		
+		
+		var enemy_tower_pos = actor.actor_kind == &"tower" and actor.team_id != _player.team_id
+		var hp_value = null
 		var visible := _is_visible_actor(actor)
 		var relative_position = null
-		if visible:
+		
+		if visible or enemy_tower_pos:
+			visible = true
 			relative_position = [
 				actor.global_position.x - self_position.x,
 				actor.global_position.y - self_position.y
