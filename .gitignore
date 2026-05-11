@@ -1,5 +1,14 @@
 *.pyc
 
 rl/*
+CSCI5512_final_paper/*.aux
+CSCI5512_final_paper/*.log
+CSCI5512_final_paper/*.out
+CSCI5512_final_paper/*.toc
+CSCI5512_final_paper/*.fls
+CSCI5512_final_paper/*.fdb_latexmk
+CSCI5512_final_paper/*.synctex.gz
+CSCI5512_final_paper/*.bbl
+CSCI5512_final_paper/*.blg
 
 
