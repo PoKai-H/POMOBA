@@ -4,8 +4,8 @@ This file lists the terminal commands needed to reproduce the current training,
 evaluation, robustness, belief, and plotting results.
 
 Most commands assume the Godot simulator is available. If no exported game
-binary is configured, start the Godot editor and press Play before running the
-Python command. The Python process will wait for the Godot connection.
+binary is configured, start the Godot editor and press Play after running the
+Python command. The Python process will wait for the Godot connection.  At any time you can stop execution by exiting the Godot simulation window that appears.
 
 # Setting Up:
 
