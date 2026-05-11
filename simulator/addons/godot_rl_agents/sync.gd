@@ -385,9 +385,9 @@ func _get_agents():
 			)
 			agent_demo_record = agent
 
-	printerr("all_agents count = ", all_agents.size())
+	print_verbose("all_agents count = ", all_agents.size())
 	for agent in all_agents:
-			printerr("agent path = ", agent.get_path(), " mode = ", agent.control_mode)
+		print_verbose("agent path = ", agent.get_path(), " mode = ", agent.control_mode)
 
 
 	var training_agent_count = agents_training.size()
