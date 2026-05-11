@@ -1,4 +1,19 @@
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+
+if sys.platform == "win32":
+    godot_env_path = ROOT / "exports" / "windows" / "pomoba"
+elif sys.platform == "darwin":
+    godot_env_path = ROOT / "exports" / "mac" / "pomoba"
+else:
+    godot_env_path = None
+
 basic_config = {
+    "GODOT_ENV_PATH": str(godot_env_path) if godot_env_path else None,
+    "GODOT_PORT": 11008,
+    "SHOW_WINDOW": True,
     "core": {
         "map_name": "arena",
         "random_seed": 42,
