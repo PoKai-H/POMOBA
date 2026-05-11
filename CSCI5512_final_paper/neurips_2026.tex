@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{placeins}
+\usepackage{float}
 % The authors should use one of these tracks.
 % Before accepting by the NeurIPS conference, select one of the options below.
 % 0. "default" for submission
@@ -124,6 +125,7 @@ Understanding this is important for designing agents that can robustly operate i
 We make the following contributions:
 \begin{itemize}
     \item We propose a controlled framework for studying belief-based reasoning under partial observability and non-stationary opponent dynamics.
+    \item We implement a configurable Godot-based MOBA-like simulator with partial observability, scripted strategy switching, RL-compatible observation/action interfaces, and event logging for controlled evaluation.
     \item We isolate the effect of belief-based reasoning through a causal evaluation design, including perturbed belief baselines.
     \item We provide empirical analysis of when and under what conditions belief-based reasoning improves strategy inference, change detection, and downstream decision-making.
 \end{itemize}
@@ -168,15 +170,26 @@ We hypothesize that explicitly modeling a belief over opponent strategies improv
 
 \section{Environment}
 
-We design a simplified MOBA-style multi-agent environment with two teams interacting in a partially observable setting. Each team consists of two agents (a laner and a jungler) operating in a symmetric map with a central lane and surrounding regions.
+We design a simplified MOBA-like environment implemented in Godot for controlled study of hidden and non-stationary opponent behavior. The experimental setting used in this paper is a 1v1 lane-focused scenario: one learning-controlled agent interacts with one scripted opponent in a symmetric 2D arena with bushes, lane geometry, and optional lane objectives.
 
-At each time step, agents receive partial observations $o_t$ consisting of nearby units, visible opponents, and state variables (e.g., health, position, cooldowns). Observations are limited by fog of war.
+The simulator uses a continuous 2D space rather than a grid world. Partial observability is created through a limited vision radius, obstacle-aware line of sight, and bush regions that hide units unless they share the same bush or regain direct visibility.
 
-Agents select actions from a discrete set, including movement, attacks, and ability usage. The environment evolves according to these joint actions.
+At each time step, the learning agent receives a structured observation $o_t$ containing self state, visible agents, visible objects, and selected opponent-action information when the opponent is observed. In the current implementation, objects include lane minions, towers, and neutral monsters when enabled. The environment also exports per-step event counts such as takedowns and deaths for evaluation.
+
+Agents act through a discrete 13-action interface consisting of 8 movement directions, hold, attack-hero, attack-nearest-minion, attack-tower, and retreat. The environment evolves according to these actions together with the scripted opponent policy.
 
 Opponent behavior is governed by a latent strategy $\theta \in \Theta$, where each strategy corresponds to a stochastic policy. During an episode, the opponent may switch strategies at unknown time steps, inducing non-stationarity.
 
 An episode terminates when a terminal condition is reached (e.g., objective completion or time limit).
+
+\paragraph{Simulator implementation.} The Godot side is responsible for world dynamics, combat resolution, visibility, scripted minion and tower interactions, structured observation export, and termination/reward signaling. Python is responsible for policy learning, belief updates, experiment control, and evaluation. This separation allows us to keep the environment mechanics fixed while varying the learning and inference methods on top of the same simulator.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\linewidth]{images/example_sim.png}
+\caption{Example state from the Godot-based simulator. The environment includes a central lane, bushes for partial observability, lane towers, lane minions, and neutral monsters, providing a controlled MOBA-like setting for opponent-modeling experiments.}
+\label{fig:simulator_overview}
+\end{figure}
 
 
 \section{Approach}
@@ -247,6 +260,8 @@ The actor outputs logits for a categorical distribution over 13 discrete actions
 
 For the observation-only baseline, the input is the environment observation vector. 
 For the belief-conditioned policy, a belief vector over opponent strategies is concatenated with the observation, resulting in an increased input dimension.
+
+On the simulator side, the observation exported from Godot is a structured dictionary containing self state, visible agents, visible objects, and an extension field for observed enemy actions. This allows the belief module to access opponent behavior signals without directly exposing the hidden opponent strategy label. The simulator additionally records combat events such as deaths, enemy-agent takedowns, and enemy-minion takedowns, which are used both for reward shaping and for downstream evaluation.
 
 We train the policy using PPO with a learning rate of $3\times 10^{-4}$, discount factor $\gamma=0.99$, and GAE parameter $\lambda=0.95$. 
 The PPO clipping parameter is set to 0.2, with value loss coefficient 0.5 and entropy coefficient 0.003. 
@@ -593,8 +608,8 @@ Finally, the policy architecture is relatively simple and may not be sufficient 
 \paragraph{Future Work}
 
 Future work should explore end-to-end learning of belief representations, 
-as well as architectures that more explicitly couple belief inference with policy updates. 
-Extending the framework to more complex multi-agent settings, including cooperative scenarios and unseen strategies, 
+as well as architectures that more explicitly couple belief inference with policy updates. Another natural extension is power scaling through experience gain: minion and neutral-monster takedowns could grant XP that increases agent strength over time, creating a clearer strategic incentive to farm lane and jungle resources instead of only pursuing immediate combat outcomes. 
+Extending the framework to more complex multi-agent settings, including cooperative scenarios, richer progression systems, and unseen strategies, 
 would further test the usefulness of belief-based reasoning.
 
 \section{Conclusion}
