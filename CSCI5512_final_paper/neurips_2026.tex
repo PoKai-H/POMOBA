@@ -88,7 +88,7 @@ University of Minnesota \\
 \texttt{pede1116@umn.edu}
 \AND
 Adam Wagner \\
-Unversity of Minnesota \\
+University of Minnesota \\
 \texttt{Wagn1200@umn.edu}
 \And
 Nikita Tuli \\
@@ -110,15 +110,15 @@ University of Minnesota \\
 
 \section{Introduction}
 
-Partial observability and non-stationary opponents are two key challenges in multi-agent reinforcement learning (\cite{hernandez2017survey, hernandez2019critique, papoudakis2019dealing}). In many multi-agent environments, agents must make decisions based on incomplete information about the environment while interacting with other agents whose behavior may change over time. These challenges are especially prominent in competitive settings, where the policies of other agents may evolve or switch strategies during interaction.
+Partial observability and non-stationary opponents are two key challenges in multi-agent reinforcement learning \cite{hernandez2017survey, hernandez2019critique, papoudakis2019dealing}. In many multi-agent environments, agents must make decisions based on incomplete information about the environment while interacting with other agents whose behavior may change over time. These challenges are especially prominent in competitive settings, where the policies of other agents may evolve or switch strategies during interaction.
 
 A large body of research has studied decision-making under partial observability (\cite{srinivasan2018acpo}) and learning in non-stationary multi-agent environments separately. However, in many real-world strategic scenarios, agents must address both challenges simultaneously. In such settings, an agent must reason about hidden opponent behaviors while also adapting to potential changes in those behaviors over time.
 
 Some recent approaches have begun to consider this joint setting by combining opponent modeling with partially observable environments (\cite{zheng2018deep, wang2022bayesian, davies2020opponent}). In many of these methods, opponent behaviors are assumed to be drawn from a bounded or predefined library of strategies. While this assumption simplifies the learning problem, it still leaves a fundamental challenge unresolved.
 
-Under partial observability and stochastic policies, the same observation sequence may be explained by multiple strategies, making strategy inference fundamentally ambiguous. As a result, an agent must not only infer the opponent’s current strategy from interaction history, but also determine whether changes in observed behavior are due to stochastic variation or an actual shift in the underlying strategy.
+Under partial observability and stochastic opponent policies, multiple latent strategies can produce indistinguishable observation sequences. This creates a fundamental ambiguity: apparent behavioral changes may reflect either stochastic variation or a true shift in the opponent’s underlying strategy.
 
-This leads to a key research question: does explicitly modeling a belief over opponent strategies help resolve this ambiguity, enabling more accurate detection of strategy changes and improving decision-making under partial observability?
+This raises the central question of this work: does explicitly maintaining a belief over opponent strategies improve inference and decision-making under partial observability and non-stationarity?
 
 Understanding this is important for designing agents that can robustly operate in real-world strategic environments, where both uncertainty and non-stationarity are unavoidable.
 
@@ -158,7 +158,7 @@ We study whether conditioning on this belief improves:
 
 In addition, we explicitly evaluate whether the inferred belief improves downstream decision-making performance when integrated into a reinforcement learning policy.
 
-\section{Hypotheses}
+\section{Hypothesis}
 
 We hypothesize that explicitly modeling a belief over opponent strategies improves inference and decision-making in partially observable environments with non-stationary opponents.
 
@@ -487,7 +487,7 @@ farming & 0.5096 \\
 \end{table}
 
 As shown in Table~\ref{tab:belief_accuracy}, the belief model identifies aggressive behavior reliably, but performs worse on neutral and farming strategies. 
-In particular, neutral is difficult to classify because its behavior overlaps with both aggressive and farming patterns under partial observability.
+Neutral is difficult to classify because its behavior overlaps with both aggressive and farming patterns under partial observability.
 
 These results suggest that the belief module provides a meaningful but noisy opponent-strategy signal. 
 Therefore, the following experiments should be interpreted as evaluating whether an imperfect belief representation can still improve downstream policy performance.
